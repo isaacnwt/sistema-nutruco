@@ -8,4 +8,4 @@ Este projeto está sendo desenvolvido como trabalho final da disciplina de Desen
 
 ## 📃 Documentação do Projeto
 
-Você encontra uma cópia da documentação do projeto [AQUI](resources/docs/Nutruco.pdf).
+[Aqui](src/main/resources/com/doo/sistemanutruco/docs/Nutruco.pdf) Você encontra uma cópia da documentação do projeto.
