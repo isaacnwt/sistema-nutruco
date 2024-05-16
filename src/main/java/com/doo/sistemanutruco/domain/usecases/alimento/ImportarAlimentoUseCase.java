@@ -1,9 +1,9 @@
 package com.doo.sistemanutruco.domain.usecases.alimento;
 
-public class CadastrarAlimentoUseCase {
+public class ImportarAlimentoUseCase {
     private final AlimentoDAO alimentoDAO;
 
-    public CadastrarAlimentoUseCase(AlimentoDAO alimentoDAO){
+    public ImportarAlimentoUseCase(AlimentoDAO alimentoDAO){
         this.alimentoDAO = alimentoDAO;
     }
 }
