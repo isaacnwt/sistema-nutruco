@@ -3,6 +3,45 @@ package com.doo.sistemanutruco.domain.entities.paciente;
 import java.util.Date;
 
 public class Paciente {
+    //    private Dieta dieta;
+    private Boolean inativo;
+    private String cpf;
+    private String nome;
+    private Date dataNascimento;
+    private Integer telefone;
+    private String email;
+    private Double altura;
+    private String objetivo;
+    private Integer porcentagemGordura;
+    private Integer porcentagemMassaMagra;
+    private Integer porcentagemMassaGorda;
+    private Double peso;
+    private Integer colesterolLDL;
+    private Integer colesterolHDL;
+    private Boolean hipertenso;
+    private Boolean diabetico;
+    private Boolean celiaco;
+
+    public Paciente(Boolean inativo, String cpf, String nome, Date dataNascimento, Integer telefone, String email, Double altura, String objetivo, Integer porcentagemGordura, Integer porcentagemMassaMagra, Integer porcentagemMassaGorda, Double peso, Integer colesterolLDL, Integer colesterolHDL, Boolean hipertenso, Boolean diabetico, Boolean celiaco) {
+        this.inativo = inativo;
+        this.cpf = cpf;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+        this.email = email;
+        this.altura = altura;
+        this.objetivo = objetivo;
+        this.porcentagemGordura = porcentagemGordura;
+        this.porcentagemMassaMagra = porcentagemMassaMagra;
+        this.porcentagemMassaGorda = porcentagemMassaGorda;
+        this.peso = peso;
+        this.colesterolLDL = colesterolLDL;
+        this.colesterolHDL = colesterolHDL;
+        this.hipertenso = hipertenso;
+        this.diabetico = diabetico;
+        this.celiaco = celiaco;
+    }
+
     public Boolean getInativo() {
         return inativo;
     }
@@ -139,26 +178,6 @@ public class Paciente {
         this.celiaco = celiaco;
     }
 
-    public Paciente(Boolean inativo, String cpf, String nome, Date dataNascimento, Integer telefone, String email, Double altura, String objetivo, Integer porcentagemGordura, Integer porcentagemMassaMagra, Integer porcentagemMassaGorda, Double peso, Integer colesterolLDL, Integer colesterolHDL, Boolean hipertenso, Boolean diabetico, Boolean celiaco) {
-        this.inativo = inativo;
-        this.cpf = cpf;
-        this.nome = nome;
-        this.dataNascimento = dataNascimento;
-        this.telefone = telefone;
-        this.email = email;
-        this.altura = altura;
-        this.objetivo = objetivo;
-        this.porcentagemGordura = porcentagemGordura;
-        this.porcentagemMassaMagra = porcentagemMassaMagra;
-        this.porcentagemMassaGorda = porcentagemMassaGorda;
-        this.peso = peso;
-        this.colesterolLDL = colesterolLDL;
-        this.colesterolHDL = colesterolHDL;
-        this.hipertenso = hipertenso;
-        this.diabetico = diabetico;
-        this.celiaco = celiaco;
-    }
-
     public void ativarPaciente(){
         this.inativo = false;
     }
@@ -166,23 +185,4 @@ public class Paciente {
     public void inativarPaciente(){
         this.inativo = true;
     }
-
-    //    private Dieta dieta;
-    private Boolean inativo;
-    private String cpf;
-    private String nome;
-    private Date dataNascimento;
-    private Integer telefone;
-    private String email;
-    private Double altura;
-    private String objetivo;
-    private Integer porcentagemGordura;
-    private Integer porcentagemMassaMagra;
-    private Integer porcentagemMassaGorda;
-    private Double peso;
-    private Integer colesterolLDL;
-    private Integer colesterolHDL;
-    private Boolean hipertenso;
-    private Boolean diabetico;
-    private Boolean celiaco;
 }
