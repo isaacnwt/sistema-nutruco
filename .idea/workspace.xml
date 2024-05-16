@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="build: estrutura inicial com javafx">
+    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="style: renomeando nomes automaticos">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/domain/entities/paciente/Paciente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/domain/usecases/paciente/CadastrarPacienteUseCase.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/domain/usecases/utils/DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/PrimaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -98,7 +106,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715816466634</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="style: renomeando nomes automaticos">
+      <option name="closed" value="true" />
+      <created>1715820722239</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715820722240</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,6 +130,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="build: estrutura inicial com javafx" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: estrutura inicial com javafx" />
+    <MESSAGE value="style: renomeando nomes automaticos" />
+    <option name="LAST_COMMIT_MESSAGE" value="style: renomeando nomes automaticos" />
   </component>
 </project>
