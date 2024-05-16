@@ -162,7 +162,7 @@ public class Paciente {
     public void ativarPaciente(){
         this.inativo = false;
     }
-    
+
     public void inativarPaciente(){
         this.inativo = true;
     }
