@@ -9,7 +9,7 @@ public class Paciente {
     private String cpf;
     private String nome;
     private LocalDate dataNascimento;
-    private Integer telefone;
+    private Long telefone;
     private String email;
     private Double peso;
     private Double altura;
@@ -28,7 +28,7 @@ public class Paciente {
     private Boolean inativo;
 
 
-    public Paciente(String cpf, String nome, LocalDate dataNascimento, Integer telefone, String email, Double peso, Double altura, String objetivo) {
+    public Paciente(String cpf, String nome, LocalDate dataNascimento, Long telefone, String email, Double peso, Double altura, String objetivo) {
         this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -39,7 +39,7 @@ public class Paciente {
         this.objetivo = objetivo;
     }
 
-    public Paciente(String cpf, String nome, LocalDate dataNascimento, Integer telefone, String email, Double peso, Double altura, String objetivo, Integer porcentagemGordura, Integer porcentagemMassaMagra, Integer porcentagemMassaGorda, Integer colesterolLDL, Integer colesterolHDL, Boolean hipertenso, Boolean diabetico, Boolean celiaco) {
+    public Paciente(String cpf, String nome, LocalDate dataNascimento, Long telefone, String email, Double peso, Double altura, String objetivo, Integer porcentagemGordura, Integer porcentagemMassaMagra, Integer porcentagemMassaGorda, Integer colesterolLDL, Integer colesterolHDL, Boolean hipertenso, Boolean diabetico, Boolean celiaco) {
         this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -90,11 +90,11 @@ public class Paciente {
         this.dataNascimento = dataNascimento;
     }
 
-    public Integer getTelefone() {
+    public Long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(Long telefone) {
         this.telefone = telefone;
     }
 
