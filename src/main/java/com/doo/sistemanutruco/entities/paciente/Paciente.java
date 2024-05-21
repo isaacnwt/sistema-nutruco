@@ -2,12 +2,13 @@ package com.doo.sistemanutruco.entities.paciente;
 
 import com.doo.sistemanutruco.entities.dieta.Dieta;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class Paciente {
     private String cpf;
     private String nome;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
     private Integer telefone;
     private String email;
     private Double peso;
@@ -27,16 +28,18 @@ public class Paciente {
     private Boolean inativo;
 
 
-    public Paciente(String cpf, String nome, Date dataNascimento, Integer telefone, String email, Double peso, Double altura, String objetivo) {
+    public Paciente(String cpf, String nome, LocalDate dataNascimento, Integer telefone, String email, Double peso, Double altura, String objetivo) {
         this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.telefone = telefone;
         this.email = email;
         this.peso = peso;
+        this.altura = altura;
+        this.objetivo = objetivo;
     }
 
-    public Paciente(String cpf, String nome, Date dataNascimento, Integer telefone, String email, Double peso, Double altura, String objetivo, Integer porcentagemGordura, Integer porcentagemMassaMagra, Integer porcentagemMassaGorda, Integer colesterolLDL, Integer colesterolHDL, Boolean hipertenso, Boolean diabetico, Boolean celiaco) {
+    public Paciente(String cpf, String nome, LocalDate dataNascimento, Integer telefone, String email, Double peso, Double altura, String objetivo, Integer porcentagemGordura, Integer porcentagemMassaMagra, Integer porcentagemMassaGorda, Integer colesterolLDL, Integer colesterolHDL, Boolean hipertenso, Boolean diabetico, Boolean celiaco) {
         this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -79,11 +82,11 @@ public class Paciente {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
