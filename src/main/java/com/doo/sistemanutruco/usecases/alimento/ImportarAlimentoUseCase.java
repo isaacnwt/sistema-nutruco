@@ -1,4 +1,4 @@
-package com.doo.sistemanutruco.domain.usecases.alimento;
+package com.doo.sistemanutruco.usecases.alimento;
 
 public class ImportarAlimentoUseCase {
     private final AlimentoDAO alimentoDAO;

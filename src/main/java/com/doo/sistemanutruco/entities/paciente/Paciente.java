@@ -1,6 +1,6 @@
-package com.doo.sistemanutruco.domain.entities.paciente;
+package com.doo.sistemanutruco.entities.paciente;
 
-import com.doo.sistemanutruco.domain.entities.dieta.Dieta;
+import com.doo.sistemanutruco.entities.dieta.Dieta;
 
 import java.util.Date;
 

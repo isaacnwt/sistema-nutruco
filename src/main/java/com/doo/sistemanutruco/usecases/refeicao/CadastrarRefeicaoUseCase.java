@@ -1,4 +1,4 @@
-package com.doo.sistemanutruco.domain.usecases.refeicao;
+package com.doo.sistemanutruco.usecases.refeicao;
 
 public class CadastrarRefeicaoUseCase {
     private final RefeicaoDAO refeicaoDAO;

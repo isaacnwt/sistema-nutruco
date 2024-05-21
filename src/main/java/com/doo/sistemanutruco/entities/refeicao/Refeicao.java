@@ -1,6 +1,6 @@
-package com.doo.sistemanutruco.domain.entities.refeicao;
+package com.doo.sistemanutruco.entities.refeicao;
 
-import com.doo.sistemanutruco.domain.entities.alimento.Alimento;
+import com.doo.sistemanutruco.entities.alimento.Alimento;
 
 import java.util.List;
 

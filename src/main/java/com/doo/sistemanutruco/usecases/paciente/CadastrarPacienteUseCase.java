@@ -1,7 +1,7 @@
-package com.doo.sistemanutruco.domain.usecases.paciente;
+package com.doo.sistemanutruco.usecases.paciente;
 
-import com.doo.sistemanutruco.domain.entities.paciente.Paciente;
-import com.doo.sistemanutruco.domain.usecases.utils.EntityAlreadyExistsException;
+import com.doo.sistemanutruco.entities.paciente.Paciente;
+import com.doo.sistemanutruco.usecases.utils.EntityAlreadyExistsException;
 
 public class CadastrarPacienteUseCase {
 

@@ -1,4 +1,4 @@
-package com.doo.sistemanutruco.domain.entities.alimento;
+package com.doo.sistemanutruco.entities.alimento;
 
 public class Alimento {
     private String nome;

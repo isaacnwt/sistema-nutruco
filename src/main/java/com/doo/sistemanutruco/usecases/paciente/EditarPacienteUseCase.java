@@ -1,6 +1,6 @@
-package com.doo.sistemanutruco.domain.usecases.paciente;
+package com.doo.sistemanutruco.usecases.paciente;
 
-import com.doo.sistemanutruco.domain.entities.paciente.Paciente;
+import com.doo.sistemanutruco.entities.paciente.Paciente;
 
 public class EditarPacienteUseCase {
     private final PacienteDAO pacienteDAO;
