@@ -1,40 +1,53 @@
 package com.doo.sistemanutruco.domain.entities.paciente;
 
+import com.doo.sistemanutruco.domain.entities.dieta.Dieta;
+
 import java.util.Date;
 
 public class Paciente {
-    //    private Dieta dieta;
-    private Boolean inativo;
     private String cpf;
     private String nome;
     private Date dataNascimento;
     private Integer telefone;
     private String email;
+    private Double peso;
     private Double altura;
     private String objetivo;
+
     private Integer porcentagemGordura;
     private Integer porcentagemMassaMagra;
     private Integer porcentagemMassaGorda;
-    private Double peso;
     private Integer colesterolLDL;
     private Integer colesterolHDL;
     private Boolean hipertenso;
     private Boolean diabetico;
     private Boolean celiaco;
 
-    public Paciente(Boolean inativo, String cpf, String nome, Date dataNascimento, Integer telefone, String email, Double altura, String objetivo, Integer porcentagemGordura, Integer porcentagemMassaMagra, Integer porcentagemMassaGorda, Double peso, Integer colesterolLDL, Integer colesterolHDL, Boolean hipertenso, Boolean diabetico, Boolean celiaco) {
-        this.inativo = inativo;
+    private Dieta dieta;
+    private Boolean inativo;
+
+
+    public Paciente(String cpf, String nome, Date dataNascimento, Integer telefone, String email, Double peso, Double altura, String objetivo) {
         this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.telefone = telefone;
         this.email = email;
+        this.peso = peso;
+    }
+
+    public Paciente(String cpf, String nome, Date dataNascimento, Integer telefone, String email, Double peso, Double altura, String objetivo, Integer porcentagemGordura, Integer porcentagemMassaMagra, Integer porcentagemMassaGorda, Integer colesterolLDL, Integer colesterolHDL, Boolean hipertenso, Boolean diabetico, Boolean celiaco) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+        this.email = email;
+        this.peso = peso;
         this.altura = altura;
         this.objetivo = objetivo;
         this.porcentagemGordura = porcentagemGordura;
         this.porcentagemMassaMagra = porcentagemMassaMagra;
         this.porcentagemMassaGorda = porcentagemMassaGorda;
-        this.peso = peso;
         this.colesterolLDL = colesterolLDL;
         this.colesterolHDL = colesterolHDL;
         this.hipertenso = hipertenso;
@@ -42,12 +55,12 @@ public class Paciente {
         this.celiaco = celiaco;
     }
 
-    public Boolean getInativo() {
-        return inativo;
+    public void ativarPaciente(){
+        this.inativo = false;
     }
 
-    public void setInativo(Boolean inativo) {
-        this.inativo = inativo;
+    public void inativarPaciente(){
+        this.inativo = true;
     }
 
     public String getCpf() {
@@ -90,6 +103,14 @@ public class Paciente {
         this.email = email;
     }
 
+    public Double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Double peso) {
+        this.peso = peso;
+    }
+
     public Double getAltura() {
         return altura;
     }
@@ -128,14 +149,6 @@ public class Paciente {
 
     public void setPorcentagemMassaGorda(Integer porcentagemMassaGorda) {
         this.porcentagemMassaGorda = porcentagemMassaGorda;
-    }
-
-    public Double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(Double peso) {
-        this.peso = peso;
     }
 
     public Integer getColesterolLDL() {
@@ -178,11 +191,19 @@ public class Paciente {
         this.celiaco = celiaco;
     }
 
-    public void ativarPaciente(){
-        this.inativo = false;
+    public Dieta getDieta() {
+        return dieta;
     }
 
-    public void inativarPaciente(){
-        this.inativo = true;
+    public void setDieta(Dieta dieta) {
+        this.dieta = dieta;
+    }
+
+    public Boolean getInativo() {
+        return inativo;
+    }
+
+    public void setInativo(Boolean inativo) {
+        this.inativo = inativo;
     }
 }
