@@ -1,12 +1,14 @@
 package com.doo.sistemanutruco.entities.dieta;
 
+import com.doo.sistemanutruco.entities.dia.Dia;
+
 import java.util.List;
 
 public class Dieta {
     private Integer id;
     private String nome;
     private String objetivo;
-    private List<Object> dias;
+    private List<Dia> dias;
     private Boolean inativo;
     private Double calorias;
     private Double carboidratos;
@@ -16,7 +18,7 @@ public class Dieta {
     private Boolean lactose;
     private Double gorduras;
 
-    public Dieta(String nome, String objetivo, List<Object> dias, Boolean inativo, Double calorias, Double carboidratos, Double proteinas, Double sodio, Boolean gluten, Boolean lactose, Double gorduras) {
+    public Dieta(String nome, String objetivo, List<Dia> dias, Boolean inativo, Double calorias, Double carboidratos, Double proteinas, Double sodio, Boolean gluten, Boolean lactose, Double gorduras) {
         this.nome = nome;
         this.objetivo = objetivo;
         this.dias = dias;
@@ -54,11 +56,11 @@ public class Dieta {
         this.objetivo = objetivo;
     }
 
-    public List<Object> getDias() {
+    public List<Dia> getDias() {
         return dias;
     }
 
-    public void setDias(List<Object> dias) {
+    public void setDias(List<Dia> dias) {
         this.dias = dias;
     }
 
