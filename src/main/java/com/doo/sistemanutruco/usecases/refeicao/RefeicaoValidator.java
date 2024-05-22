@@ -2,8 +2,9 @@ package com.doo.sistemanutruco.usecases.refeicao;
 
 import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 import com.doo.sistemanutruco.usecases.utils.NullEntityException;
+import com.doo.sistemanutruco.usecases.utils.Validator;
 
-public class RefeicaoValidator {
+public class RefeicaoValidator implements Validator<Refeicao> {
 
     public void validar(Refeicao refeicao){
         if (refeicao == null){
