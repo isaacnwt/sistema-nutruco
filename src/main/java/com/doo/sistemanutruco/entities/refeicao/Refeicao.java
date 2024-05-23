@@ -5,6 +5,7 @@ import com.doo.sistemanutruco.entities.alimento.Alimento;
 import java.util.List;
 
 public class Refeicao {
+    private Integer id = null;
     private String nome;
     private String descricao;
     private String objetivo;
@@ -19,6 +20,14 @@ public class Refeicao {
         this.alimentos = alimentos;
         this.contemGluten = contemGluten;
         this.contemLactose = contemLactose;
+    }
+
+    public Integer getId(){
+        return id;
+    }
+
+    public void setId(Integer id){
+        this.id = id;
     }
 
     public String getNome() {
@@ -68,5 +77,16 @@ public class Refeicao {
     public void setContemLactose(Boolean contemLactose) {
         this.contemLactose = contemLactose;
     }
-
+    @Override
+    public String toString(){
+        return "Refeicao: {" +
+                "Id ='" + id + '\'' +
+                ", Nome =" + nome +
+                ", Descrição =" + descricao +
+                ", Objetivo =" + objetivo +
+                ", Alimentos =" + alimentos +
+                ", Glúten =" + contemGluten +
+                ", Lactose=" + contemLactose +
+                '}';
+    }
 }
