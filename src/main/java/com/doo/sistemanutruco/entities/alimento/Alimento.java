@@ -1,6 +1,7 @@
 package com.doo.sistemanutruco.entities.alimento;
 
 public class Alimento {
+    private Integer id = null;
     private String nome;
     private Double calorias;
     private Double carboidratos;
@@ -10,6 +11,13 @@ public class Alimento {
     private Boolean lactose;
     private Double gorduras;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public String getNome() {
         return nome;
     }
