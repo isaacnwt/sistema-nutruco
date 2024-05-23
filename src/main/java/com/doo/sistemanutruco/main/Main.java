@@ -1,8 +1,11 @@
 package com.doo.sistemanutruco.main;
 
 import com.doo.sistemanutruco.entities.paciente.Paciente;
+import com.doo.sistemanutruco.repository.memory.InMemoryAlimentoDAO;
 import com.doo.sistemanutruco.repository.memory.InMemoryDietaDAO;
 import com.doo.sistemanutruco.repository.memory.InMemoryPacienteDAO;
+import com.doo.sistemanutruco.usecases.alimento.AlimentoDAO;
+import com.doo.sistemanutruco.usecases.alimento.ImportarAlimentoUseCase;
 import com.doo.sistemanutruco.usecases.dieta.*;
 import com.doo.sistemanutruco.usecases.paciente.CadastrarPacienteUseCase;
 import com.doo.sistemanutruco.usecases.paciente.PacienteDAO;
@@ -18,6 +21,8 @@ public class Main {
     private static BuscarDietaUseCase buscarDietaUseCase;
     private static CadastrarDietaUseCase cadastrarDietaUseCase;
     private static ClonarDietaUseCase clonarDietaUseCase;
+    private static ImportarAlimentoUseCase importarAlimentoUseCase;
+
     public static void main(String[] args) {
         // Paciente UseCases
         PacienteDAO pacienteDAO = new InMemoryPacienteDAO();
@@ -34,6 +39,8 @@ public class Main {
         // Dieta UseCases
         inicializarDietaUseCases();
 
+        // Alimento UseCases
+        inicializarAlimentoUseCases();
     }
 
     private static void inicializarDietaUseCases(){
@@ -46,5 +53,8 @@ public class Main {
         // Adicionar os testes ao finalizar as implementações das outras classes
     }
 
+    private static void inicializarAlimentoUseCases(){
+        AlimentoDAO alimentoDAO = new InMemoryAlimentoDAO();
+        importarAlimentoUseCase = new ImportarAlimentoUseCase(alimentoDAO);
     }
 }
