@@ -209,4 +209,18 @@ public class Paciente {
     public void setInativo(Boolean inativo) {
         this.inativo = inativo;
     }
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "cpf='" + cpf + '\'' +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", telefone=" + telefone +
+                ", email='" + email + '\'' +
+                ", peso=" + peso +
+                ", altura=" + altura +
+                ", objetivo='" + objetivo + '\'' +
+                '}';
+    }
 }
