@@ -5,6 +5,6 @@ import com.doo.sistemanutruco.usecases.utils.DAO;
 
 import java.util.Optional;
 
-public interface RefeicaoDAO extends DAO<Refeicao, String> {
-    Optional<String> findByNome(String nome);
+public interface RefeicaoDAO extends DAO<Refeicao, Integer> {
+    Optional<Refeicao> findByNome(String nome);
 }
