@@ -10,7 +10,7 @@ public class CadastrarDietaUseCase {
         this.dietaDAO = dietaDAO;
     }
 
-    public String cadastrar(Dieta dieta){
+    public Integer cadastrar(Dieta dieta){
         DietaValidator dietaValidator = new DietaValidator();
         dietaValidator.validar(dieta);
 
