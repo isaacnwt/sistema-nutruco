@@ -21,10 +21,4 @@ public class BuscarDietaUseCase {
 
         return dietaDAO.findByNome(nome);
     }
-
-    public Optional<Dieta> findByDescricao(String descricao){
-        // Adicionar validações
-
-        return dietaDAO.findByDescricao(descricao);
-    }
 }

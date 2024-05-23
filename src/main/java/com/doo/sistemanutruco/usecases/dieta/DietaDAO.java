@@ -5,8 +5,6 @@ import com.doo.sistemanutruco.usecases.utils.DAO;
 
 import java.util.Optional;
 
-public interface DietaDAO extends DAO<Dieta, String> {
+public interface DietaDAO extends DAO<Dieta, Integer> {
     Optional<Dieta> findByNome(String name);
-
-    Optional<Dieta> findByDescricao(String descricao);
 }
