@@ -5,7 +5,7 @@ import com.doo.sistemanutruco.entities.dia.Dia;
 import java.util.List;
 
 public class Dieta {
-    private Integer id;
+    private Integer id = null;
     private String nome;
     private String objetivo;
     private List<Dia> dias;
