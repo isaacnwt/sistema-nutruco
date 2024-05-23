@@ -10,7 +10,7 @@ public class CadastrarRefeicaoUseCase {
         this.refeicaoDAO = refeicaoDAO;
     }
 
-    public String cadastrar(Refeicao refeicao){
+    public Integer cadastrar(Refeicao refeicao){
         RefeicaoValidator validator = new RefeicaoValidator();
         validator.validar(refeicao);
 
