@@ -142,4 +142,20 @@ public class Dieta {
                 this.lactose,
                 this.gorduras);
     }
+    @Override
+    public String toString(){
+        return "Dieta: {" +
+                "Id ='" + id + '\'' +
+                ", Nome =" + nome +
+                ", Objetivo =" + objetivo +
+                ", Inativo =" + inativo +
+                ", Calorias =" + calorias +
+                ", Carboidratos =" + carboidratos +
+                ", Proteinas =" + proteinas +
+                ", Sódio =" + sodio +
+                ", Glúten =" + gluten +
+                ", Lactose=" + lactose +
+                ", Gorduras =" + gorduras +
+                '}';
+    }
 }
