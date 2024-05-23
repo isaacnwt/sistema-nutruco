@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface PacienteDAO extends DAO<Paciente, String> {
     Optional<Paciente> findByCpf(String cpf);
-    List<Paciente> findByNome(String nome);
+    Optional<Paciente> findByNome(String nome);
 }

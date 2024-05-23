@@ -2,8 +2,9 @@ package com.doo.sistemanutruco.usecases.paciente;
 
 import com.doo.sistemanutruco.entities.paciente.Paciente;
 import com.doo.sistemanutruco.usecases.utils.NullEntityException;
+import com.doo.sistemanutruco.usecases.utils.Validator;
 
-public class PacienteValidator {
+public class PacienteValidator implements Validator<Paciente> {
     public void validar(Paciente paciente) {
         if (paciente == null)
             throw new NullEntityException("Paciente não pode ser null");

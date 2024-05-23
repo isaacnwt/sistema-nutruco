@@ -2,8 +2,9 @@ package com.doo.sistemanutruco.usecases.dieta;
 
 import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.usecases.utils.NullEntityException;
+import com.doo.sistemanutruco.usecases.utils.Validator;
 
-public class DietaValidator {
+public class DietaValidator implements Validator<Dieta> {
     public void validar(Dieta dieta) {
         if (dieta == null) {
             throw new NullEntityException("Dieta não pode ser nula");

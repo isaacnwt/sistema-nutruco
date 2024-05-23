@@ -16,7 +16,7 @@ public class BuscarPacienteUseCase {
         return pacienteDAO.findAll();
     }
 
-    public List<Paciente> findByNome(String nome){
+    public Optional<Paciente> findByNome(String nome){
         // Adicionar validações
 
         return pacienteDAO.findByNome(nome);
