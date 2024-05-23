@@ -128,4 +128,18 @@ public class Dieta {
         this.gorduras = gorduras;
     }
 
+    public Dieta clonarDieta(){
+        return new Dieta(
+                this.nome + " - Clone",
+                this.objetivo,
+                this.dias,
+                this.inativo,
+                this.calorias,
+                this.carboidratos,
+                this.proteinas,
+                this.sodio,
+                this.gluten,
+                this.lactose,
+                this.gorduras);
+    }
 }
