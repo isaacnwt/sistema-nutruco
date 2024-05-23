@@ -92,4 +92,19 @@ public class Alimento {
         this.lactose = lactose;
         this.gorduras = gorduras;
     }
+
+    @Override
+    public String toString(){
+        return "Alimento: {" +
+                "Id ='" + id + '\'' +
+                ", Nome =" + nome +
+                ", Calorias =" + calorias +
+                ", Carboidratos =" + carboidratos +
+                ", Proteinas =" + proteinas +
+                ", Sódio =" + sodio +
+                ", Glúten =" + gluten +
+                ", Lactose=" + lactose +
+                ", Gorduras =" + gorduras +
+                '}';
+    }
 }
