@@ -10,7 +10,8 @@ public class ExcluirDiaUseCase {
     }
 
     public boolean excluir(Dia dia) {
-        // Adicionar validações
+        DiaValidator diaValidator = new DiaValidator();
+        diaValidator.validar(dia);
 
         return diaDAO.delete(dia);
     }
