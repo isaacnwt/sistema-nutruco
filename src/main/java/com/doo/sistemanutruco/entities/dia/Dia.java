@@ -5,7 +5,7 @@ import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 import java.util.List;
 
 public class Dia {
-
+    private Integer id = null;
     private Refeicao cafeManha;
     private Refeicao lancheManha;
     private Refeicao almoco;
@@ -21,6 +21,14 @@ public class Dia {
         this.jantar = jantar;
         this.ceia = ceia;
         this.inativo = inativo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Refeicao getCafeManha() {

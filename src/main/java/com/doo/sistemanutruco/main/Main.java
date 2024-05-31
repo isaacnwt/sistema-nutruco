@@ -1,12 +1,13 @@
 package com.doo.sistemanutruco.main;
 
 import com.doo.sistemanutruco.entities.paciente.Paciente;
-import com.doo.sistemanutruco.repository.memory.InMemoryAlimentoDAO;
-import com.doo.sistemanutruco.repository.memory.InMemoryDietaDAO;
-import com.doo.sistemanutruco.repository.memory.InMemoryPacienteDAO;
-import com.doo.sistemanutruco.repository.memory.InMemoryRefeicaoDAO;
+import com.doo.sistemanutruco.repository.memory.*;
 import com.doo.sistemanutruco.usecases.alimento.AlimentoDAO;
 import com.doo.sistemanutruco.usecases.alimento.ImportarAlimentoUseCase;
+import com.doo.sistemanutruco.usecases.dia.CadastrarDiaUseCase;
+import com.doo.sistemanutruco.usecases.dia.DiaDAO;
+import com.doo.sistemanutruco.usecases.dia.EditarDiaUseCase;
+import com.doo.sistemanutruco.usecases.dia.ExcluirDiaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.*;
 import com.doo.sistemanutruco.usecases.paciente.CadastrarPacienteUseCase;
 import com.doo.sistemanutruco.usecases.paciente.PacienteDAO;
@@ -32,6 +33,10 @@ public class Main {
     private static EditarRefeicaoUseCase editarRefeicaoUseCase;
     private static ExcluirRefeicaoUseCase excluirRefeicaoUseCase;
 
+    private static CadastrarDiaUseCase cadastrarDiaUseCase;
+    private static EditarDiaUseCase editarDiaUseCase;
+    private static ExcluirDiaUseCase excluirDiaUseCase;
+
     public static void main(String[] args) {
         // Paciente UseCases
         PacienteDAO pacienteDAO = new InMemoryPacienteDAO();
@@ -53,6 +58,9 @@ public class Main {
 
         // Refeicao UseCases
         inicializarRefeicaoUseCases();
+
+        // Dia UseCases
+        inicializarDiaUseCases();
     }
 
     private static void inicializarDietaUseCases(){
@@ -77,5 +85,12 @@ public class Main {
         editarRefeicaoUseCase = new EditarRefeicaoUseCase(refeicaoDAO);
         excluirRefeicaoUseCase = new ExcluirRefeicaoUseCase(refeicaoDAO);
         // Adicionar os testes
+    }
+
+    private static void inicializarDiaUseCases(){
+        DiaDAO diaDAO = new InMemoryDiaDAO();
+        cadastrarDiaUseCase = new CadastrarDiaUseCase(diaDAO);
+        editarDiaUseCase = new EditarDiaUseCase(diaDAO);
+        excluirDiaUseCase = new ExcluirDiaUseCase(diaDAO);
     }
 }
