@@ -10,7 +10,8 @@ public class CadastrarDiaUseCase {
     }
 
     public Integer cadastrar(Dia dia) {
-        // Adicionar validações
+        DiaValidator diaValidator = new DiaValidator();
+        diaValidator.validar(dia);
 
         return diaDAO.create(dia);
     }
