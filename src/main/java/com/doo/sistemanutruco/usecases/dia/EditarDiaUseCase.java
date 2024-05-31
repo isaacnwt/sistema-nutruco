@@ -10,7 +10,8 @@ public class EditarDiaUseCase {
     }
 
     public boolean editar(Dia dia){
-        // Adicionar validações
+        DiaValidator diaValidator = new DiaValidator();
+        diaValidator.validar(dia);
 
         return diaDAO.update(dia);
     }
