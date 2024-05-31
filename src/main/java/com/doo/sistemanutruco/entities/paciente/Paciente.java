@@ -202,6 +202,9 @@ public class Paciente {
     public void setDieta(List<Dieta> dietas) {
         this.dietas = dietas;
     }
+    public void addDieta(Dieta dieta){
+        this.dietas.add(dieta);
+    }
 
     public Boolean getInativo() {
         return inativo;

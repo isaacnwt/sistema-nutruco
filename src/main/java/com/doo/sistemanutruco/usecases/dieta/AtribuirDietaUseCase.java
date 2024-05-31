@@ -10,7 +10,7 @@ public class AtribuirDietaUseCase {
     public AtribuirDietaUseCase(PacienteDAO pacienteDAO) {this.pacienteDAO = pacienteDAO;}
 
     public boolean atribuirDieta(Paciente paciente, Dieta dieta){
-        paciente.setDieta(dieta);
+        paciente.addDieta(dieta);
         return  pacienteDAO.update(paciente);
     }
 
