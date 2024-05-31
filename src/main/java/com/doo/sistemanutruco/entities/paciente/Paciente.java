@@ -195,12 +195,12 @@ public class Paciente {
         this.celiaco = celiaco;
     }
 
-    public Dieta getDieta() {
-        return dieta;
+    public List<Dieta> getDieta() {
+        return dietas;
     }
 
-    public void setDieta(Dieta dieta) {
-        this.dieta = dieta;
+    public void setDieta(List<Dieta> dietas) {
+        this.dietas = dietas;
     }
 
     public Boolean getInativo() {

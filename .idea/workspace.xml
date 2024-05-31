@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="style: renomeando nomes automaticos">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/memory/InMemoryPacienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/memory/InMemoryPacienteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/paciente/AtribuirDietaUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtribuirDietaUseCase.java" afterDir="false" />
+    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: paciente dieate alterado para list">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/paciente/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/paciente/Paciente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +132,7 @@
       <option name="presentableId" value="Default" />
       <updated>1715815598663</updated>
       <workItem from="1717168339890" duration="58000" />
-      <workItem from="1717171382836" duration="4061000" />
+      <workItem from="1717171382836" duration="4370000" />
     </task>
     <task id="LOCAL-00001" summary="build: estrutura inicial com javafx">
       <option name="closed" value="true" />
@@ -152,7 +150,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715820722240</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: atribuir dieta implementado">
+      <option name="closed" value="true" />
+      <created>1717187567981</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717187567981</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: paciente dieate alterado para list">
+      <option name="closed" value="true" />
+      <created>1717187654447</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717187654447</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,7 +186,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="build: estrutura inicial com javafx" />
     <MESSAGE value="style: renomeando nomes automaticos" />
-    <option name="LAST_COMMIT_MESSAGE" value="style: renomeando nomes automaticos" />
+    <MESSAGE value="feat: atribuir dieta implementado" />
+    <MESSAGE value="feat: paciente dieate alterado para list" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: paciente dieate alterado para list" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
