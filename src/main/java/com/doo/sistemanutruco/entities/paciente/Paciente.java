@@ -3,6 +3,7 @@ package com.doo.sistemanutruco.entities.paciente;
 import com.doo.sistemanutruco.entities.dieta.Dieta;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class Paciente {
@@ -24,7 +25,7 @@ public class Paciente {
     private Boolean diabetico;
     private Boolean celiaco;
 
-    private Dieta dieta;
+    private List<Dieta> dietas;
     private Boolean inativo;
 
 
@@ -194,12 +195,15 @@ public class Paciente {
         this.celiaco = celiaco;
     }
 
-    public Dieta getDieta() {
-        return dieta;
+    public List<Dieta> getDieta() {
+        return dietas;
     }
 
-    public void setDieta(Dieta dieta) {
-        this.dieta = dieta;
+    public void setDieta(List<Dieta> dietas) {
+        this.dietas = dietas;
+    }
+    public void addDieta(Dieta dieta){
+        this.dietas.add(dieta);
     }
 
     public Boolean getInativo() {
