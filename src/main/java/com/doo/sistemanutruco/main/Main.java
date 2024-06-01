@@ -9,8 +9,7 @@ import com.doo.sistemanutruco.usecases.dia.DiaDAO;
 import com.doo.sistemanutruco.usecases.dia.EditarDiaUseCase;
 import com.doo.sistemanutruco.usecases.dia.ExcluirDiaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.*;
-import com.doo.sistemanutruco.usecases.paciente.CadastrarPacienteUseCase;
-import com.doo.sistemanutruco.usecases.paciente.PacienteDAO;
+import com.doo.sistemanutruco.usecases.paciente.*;
 import com.doo.sistemanutruco.usecases.refeicao.CadastrarRefeicaoUseCase;
 import com.doo.sistemanutruco.usecases.refeicao.EditarRefeicaoUseCase;
 import com.doo.sistemanutruco.usecases.refeicao.ExcluirRefeicaoUseCase;
@@ -22,6 +21,9 @@ import java.util.Optional;
 public class Main {
 
     private static CadastrarPacienteUseCase cadastrarPacienteUseCase;
+    private static EditarPacienteUseCase editarPacienteUseCase;
+    private static BuscarPacienteUseCase buscarPacienteUseCase;
+    private static AtivarPacienteUseCase ativarPacienteUseCase;
 
     private static AtivarDietaUseCase ativarDietaUseCase;
     private static BuscarDietaUseCase buscarDietaUseCase;
@@ -39,16 +41,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Paciente UseCases
-        PacienteDAO pacienteDAO = new InMemoryPacienteDAO();
-        cadastrarPacienteUseCase = new CadastrarPacienteUseCase(pacienteDAO);
-
-        Paciente paciente1 = new Paciente("123", "teste", LocalDate.of(2000, 7, 2), 16999998888L,
-                "teste@email.com",90.0, 1.80, "ganhar massa");
-
-        cadastrarPacienteUseCase.cadastrar(paciente1);
-
-        Optional<Paciente> pacienteOptional = pacienteDAO.findByCpf("123");
-        pacienteOptional.ifPresent(System.out::println);
+        inicializarPacienteUseCases();
 
         // Dieta UseCases
         inicializarDietaUseCases();
@@ -61,6 +54,23 @@ public class Main {
 
         // Dia UseCases
         inicializarDiaUseCases();
+    }
+
+    private static void inicializarPacienteUseCases() {
+        PacienteDAO pacienteDAO = new InMemoryPacienteDAO();
+        cadastrarPacienteUseCase = new CadastrarPacienteUseCase(pacienteDAO);
+        editarPacienteUseCase = new EditarPacienteUseCase(pacienteDAO);
+        buscarPacienteUseCase = new BuscarPacienteUseCase(pacienteDAO);
+        ativarPacienteUseCase = new AtivarPacienteUseCase(pacienteDAO);
+
+        // Cadastrar Pacientes
+        Paciente paciente1 = new Paciente("123", "teste", LocalDate.of(2000, 7, 2),
+                16999998888L, "teste@email.com",90.0, 1.80, "ganhar massa");
+        Paciente paciente2 = new Paciente("456", "teste2", LocalDate.of(2000, 8, 12),
+                16999998888L, "teste2@email.com",80.0, 1.72, "emagrecer");
+
+        cadastrarPacienteUseCase.cadastrar(paciente1);
+        cadastrarPacienteUseCase.cadastrar(paciente2);
     }
 
     private static void inicializarDietaUseCases(){
