@@ -58,11 +58,11 @@ public class Paciente {
         this.celiaco = celiaco;
     }
 
-    public void ativarPaciente(){
+    public void ativar(){
         this.inativo = false;
     }
 
-    public void inativarPaciente(){
+    public void inativar(){
         this.inativo = true;
     }
 

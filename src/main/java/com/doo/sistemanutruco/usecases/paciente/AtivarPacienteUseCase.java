@@ -14,7 +14,7 @@ public class AtivarPacienteUseCase {
             throw new IllegalStateException("Paciente já ativo!");
         }
 
-        paciente.ativarPaciente();
+        paciente.ativar();
         return pacienteDAO.update(paciente);
     }
 
@@ -23,7 +23,7 @@ public class AtivarPacienteUseCase {
             throw new IllegalStateException("Paciente já inativo!");
         }
 
-        paciente.inativarPaciente();
+        paciente.inativar();
         return pacienteDAO.update(paciente);
     }
 }
