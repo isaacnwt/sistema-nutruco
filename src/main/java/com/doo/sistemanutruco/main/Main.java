@@ -16,7 +16,6 @@ import com.doo.sistemanutruco.usecases.refeicao.ExcluirRefeicaoUseCase;
 import com.doo.sistemanutruco.usecases.refeicao.RefeicaoDAO;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 public class Main {
 
@@ -67,10 +66,38 @@ public class Main {
         Paciente paciente1 = new Paciente("123", "teste", LocalDate.of(2000, 7, 2),
                 16999998888L, "teste@email.com",90.0, 1.80, "ganhar massa");
         Paciente paciente2 = new Paciente("456", "teste2", LocalDate.of(2000, 8, 12),
-                16999998888L, "teste2@email.com",80.0, 1.72, "emagrecer");
+                16999997777L, "teste2@email.com",80.0, 1.72, "emagrecer");
 
         cadastrarPacienteUseCase.cadastrar(paciente1);
         cadastrarPacienteUseCase.cadastrar(paciente2);
+
+        // Buscar Pacientes
+        buscarPacienteUseCase.findByCpf("123").ifPresent(System.out::println);
+        buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
+
+        // Editar Pacientes
+        Paciente paciente1Update = new Paciente("123", "teste update", LocalDate.of(2000, 7, 2),
+                16999990000L, "teste@email.com",90.0, 1.82, "ganhar massa");
+
+        if (editarPacienteUseCase.editar(paciente1Update)) {
+            System.out.println("Atualizado com sucesso");
+            buscarPacienteUseCase.findByCpf("123").ifPresent(System.out::println);
+        }
+        else System.out.println("Erro ao atualizar");
+
+        // Desativar/Ativar Paciente
+        if (ativarPacienteUseCase.inativar(paciente2)) {
+            System.out.println("Desativado com sucesso");
+            buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
+        }
+        else System.out.println("Erro ao desativar");
+
+        if (ativarPacienteUseCase.ativar(paciente2)) {
+            System.out.println("Ativado com sucesso");
+            buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
+        }
+        else System.out.println("Erro ao ativar");
+
     }
 
     private static void inicializarDietaUseCases(){

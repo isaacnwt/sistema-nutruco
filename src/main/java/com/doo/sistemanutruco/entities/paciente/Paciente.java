@@ -38,6 +38,7 @@ public class Paciente {
         this.peso = peso;
         this.altura = altura;
         this.objetivo = objetivo;
+        this.inativo = false;
     }
 
     public Paciente(String cpf, String nome, LocalDate dataNascimento, Long telefone, String email, Double peso, Double altura, String objetivo, Integer porcentagemGordura, Integer porcentagemMassaMagra, Integer porcentagemMassaGorda, Integer colesterolLDL, Integer colesterolHDL, Boolean hipertenso, Boolean diabetico, Boolean celiaco) {
@@ -57,6 +58,7 @@ public class Paciente {
         this.hipertenso = hipertenso;
         this.diabetico = diabetico;
         this.celiaco = celiaco;
+        this.inativo = false;
     }
 
     public void ativar(){
@@ -225,6 +227,7 @@ public class Paciente {
                 ", peso=" + peso +
                 ", altura=" + altura +
                 ", objetivo='" + objetivo + '\'' +
+                ", inativo=" + inativo +
                 '}';
     }
 }
