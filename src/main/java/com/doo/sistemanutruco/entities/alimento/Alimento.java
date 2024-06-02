@@ -7,8 +7,8 @@ public class Alimento {
     private Double carboidratos;
     private Double proteinas;
     private Double sodio;
-    private Boolean gluten;
-    private Boolean lactose;
+    private boolean gluten;
+    private boolean lactose;
     private Double gorduras;
 
     public Integer getId() {
@@ -58,19 +58,19 @@ public class Alimento {
         this.sodio = sodio;
     }
 
-    public Boolean getGluten() {
+    public boolean getGluten() {
         return gluten;
     }
 
-    public void setGluten(Boolean gluten) {
+    public void setGluten(boolean gluten) {
         this.gluten = gluten;
     }
 
-    public Boolean getLactose() {
+    public boolean getLactose() {
         return lactose;
     }
 
-    public void setLactose(Boolean lactose) {
+    public void setLactose(boolean lactose) {
         this.lactose = lactose;
     }
 
@@ -82,7 +82,7 @@ public class Alimento {
         this.gorduras = gorduras;
     }
 
-    public Alimento(String nome, Double calorias, Double carboidratos, Double proteinas, Double sodio, Boolean gluten, Boolean lactose, Double gorduras) {
+    public Alimento(String nome, Double calorias, Double carboidratos, Double proteinas, Double sodio, boolean gluten, boolean lactose, Double gorduras) {
         this.nome = nome;
         this.calorias = calorias;
         this.carboidratos = carboidratos;

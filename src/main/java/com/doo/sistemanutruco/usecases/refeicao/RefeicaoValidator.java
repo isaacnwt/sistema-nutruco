@@ -20,13 +20,7 @@ public class RefeicaoValidator implements Validator<Refeicao> {
             throw new IllegalArgumentException("Objetivo da refeição não pode ser nulo ou vazio");
         }
         if (refeicao.getAlimentos() == null || refeicao.getAlimentos().isEmpty()){
-            throw new IllegalArgumentException("Alimentos da refeição não podem ser nulos");
-        }
-        if (refeicao.getContemGluten() == null){
-            throw new IllegalArgumentException("Contém glúten da refeição não pode ser nulo");
-        }
-        if (refeicao.getContemLactose() == null){
-            throw new IllegalArgumentException("Contém lactose da refeição não pode ser nulo");
+            throw new IllegalArgumentException("Lista de alimentos da refeição não podem ser nula ou vazia");
         }
     }
 }
