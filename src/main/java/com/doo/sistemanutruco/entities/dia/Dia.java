@@ -2,89 +2,53 @@ package com.doo.sistemanutruco.entities.dia;
 
 import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 
+import java.time.DayOfWeek;
 import java.util.List;
 
 public class Dia {
-    private Integer id = null;
-    private Refeicao cafeManha;
-    private Refeicao lancheManha;
-    private Refeicao almoco;
-    private Refeicao lancheTarde;
-    private Refeicao jantar;
-    private Refeicao ceia;
-    private Boolean inativo;
-    public Dia(Refeicao cafeManha, Refeicao lancheManha, Refeicao almoco, Refeicao lancheTarde, Refeicao jantar, Refeicao ceia, Boolean inativo) {
-        this.cafeManha = cafeManha;
-        this.lancheManha = lancheManha;
-        this.almoco = almoco;
-        this.lancheTarde = lancheTarde;
-        this.jantar = jantar;
-        this.ceia = ceia;
-        this.inativo = inativo;
+    private DayOfWeek diaDaSemana;
+    private List<Refeicao> refeicoes;
+    private boolean inativo;
+
+    public Dia(DayOfWeek diaDaSemana, List<Refeicao> refeicoes) {
+        this.diaDaSemana = diaDaSemana;
+        this.refeicoes = refeicoes;
     }
 
-    public Integer getId() {
-        return id;
+    public void ativar(){
+        this.inativo = false;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void inativar(){
+        this.inativo = true;
     }
 
-    public Refeicao getCafeManha() {
-        return cafeManha;
+    public DayOfWeek getDiaDaSemana() {
+        return diaDaSemana;
     }
 
-    public void setCafeManha(Refeicao cafeManha) {
-        this.cafeManha = cafeManha;
+    public void setDiaDaSemana(DayOfWeek diaDaSemana) {
+        this.diaDaSemana = diaDaSemana;
     }
 
-    public Refeicao getLancheManha() {
-        return lancheManha;
+    public List<Refeicao> getRefeicoes() {
+        return refeicoes;
     }
 
-    public void setLancheManha(Refeicao lancheManha) {
-        this.lancheManha = lancheManha;
+    public void setRefeicoes(List<Refeicao> refeicoes) {
+        this.refeicoes = refeicoes;
     }
 
-    public Refeicao getAlmoco() {
-        return almoco;
-    }
-
-    public void setAlmoco(Refeicao almoco) {
-        this.almoco = almoco;
-    }
-
-    public Refeicao getLancheTarde() {
-        return lancheTarde;
-    }
-
-    public void setLancheTarde(Refeicao lancheTarde) {
-        this.lancheTarde = lancheTarde;
-    }
-
-    public Refeicao getJantar() {
-        return jantar;
-    }
-
-    public void setJantar(Refeicao jantar) {
-        this.jantar = jantar;
-    }
-
-    public Refeicao getCeia() {
-        return ceia;
-    }
-
-    public void setCeia(Refeicao ceia) {
-        this.ceia = ceia;
-    }
-
-    public Boolean getInativo() {
+    public boolean isInativo() {
         return inativo;
     }
 
-    public void setInativo(Boolean inativo) {
-        this.inativo = inativo;
+    @Override
+    public String toString() {
+        return "Dia{" +
+                "diaDaSemana=" + diaDaSemana +
+                ", refeicoes=" + refeicoes +
+                ", inativo=" + inativo +
+                '}';
     }
-
 }

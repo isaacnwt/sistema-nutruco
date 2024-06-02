@@ -8,22 +8,16 @@ public class DiaValidator implements Validator<Dia> {
     @Override
     public void validar(Dia dia) {
         if (dia == null) {
-            throw new NullEntityException("Dieta não pode ser nula");
+            throw new NullEntityException("Dia não pode ser nulo");
         }
-        if (dia.getCafeManha() == null) {
-            throw new NullEntityException("Cafe da manhã da dieta não pode ser nulo");
+        if (dia.getDiaDaSemana() == null) {
+            throw new IllegalArgumentException("Dia da semana do Dia não pode ser nulo");
         }
-        if (dia.getLancheManha() == null) {
-            throw new NullEntityException("Lanche da manhã da dieta não pode ser nulo");
+        if (dia.getRefeicoes() == null || dia.getRefeicoes().isEmpty()) {
+            throw new IllegalArgumentException("Lista de Refeições não pode ser nulo ou vazia");
         }
-        if (dia.getAlmoco() == null) {
-            throw new NullEntityException("Almoço da dieta não pode ser nulo");
-        }
-        if (dia.getLancheTarde() == null) {
-            throw new NullEntityException("Lanhce da tarde da dieta não pode ser nulo");
-        }
-        if (dia.getJantar() == null) {
-            throw new NullEntityException("Jantar da dieta não pode ser nulo");
+        if (dia.getRefeicoes().size() > 6) {
+            throw new IllegalArgumentException("Lista de Refeições pode conter no máximo 6 refeições");
         }
     }
 }
