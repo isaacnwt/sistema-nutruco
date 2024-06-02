@@ -138,7 +138,8 @@ public class Main {
         refeicoesSegunda.add(cafeDaManha);
         refeicoesSegunda.add(almoco);
         Dia segunda = new Dia(DayOfWeek.MONDAY, refeicoesSegunda);
-        System.out.println(segunda);
+        cadastrarDiaUseCase.cadastrar(segunda);
+        System.out.println(diaDAO.findAll().getFirst());
     }
 
     private static void inicializarRefeicaoUseCases(){
