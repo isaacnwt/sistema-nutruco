@@ -127,8 +127,16 @@ public class Main {
         almocoAlimentos.add(alimentos.get(6)); // Frango
         Refeicao almoco = new Refeicao("Almoço", "Refeição do meio-dia", "Para ganhar massa", almocoAlimentos);
 
+        List<Alimento> jantaAlimentos = new ArrayList<>();
+        jantaAlimentos.add(alimentos.get(0));// Arroz
+        jantaAlimentos.add(alimentos.get(1));// Feijão
+        jantaAlimentos.add(alimentos.get(5));// Banana
+        jantaAlimentos.add(alimentos.get(9));// Tomate
+        Refeicao jantar = new Refeicao("janta", "Refeição final do dia","Alimentação basica", jantaAlimentos);
+
         cadastrarRefeicaoUseCase.cadastrar(cafeDaManha);
         cadastrarRefeicaoUseCase.cadastrar(almoco);
+        cadastrarRefeicaoUseCase.cadastrar(jantar);
 
         for (Refeicao refeicao : refeicaoDAO.findAll())
             System.out.println(refeicao);
