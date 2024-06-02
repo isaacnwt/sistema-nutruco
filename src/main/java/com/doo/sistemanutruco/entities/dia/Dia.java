@@ -10,10 +10,26 @@ public class Dia {
     private DayOfWeek diaDaSemana;
     private List<Refeicao> refeicoes;
     private boolean inativo;
+    private double caloriasNoDia;
+    private double carboidratosNoDia;
+    private double proteinasNoDia;
+    private double sodioNoDia;
+    private double gordurasNoDia;
 
     public Dia(DayOfWeek diaDaSemana, List<Refeicao> refeicoes) {
         this.diaDaSemana = diaDaSemana;
         this.refeicoes = refeicoes;
+        calcularValoresNutricionais();
+    }
+
+    private void calcularValoresNutricionais() {
+        for (Refeicao refeicao : refeicoes) {
+            this.caloriasNoDia += refeicao.getCaloriasTotais();
+            this.carboidratosNoDia += refeicao.getCarboidratosTotais();
+            this.proteinasNoDia += refeicao.getProteinasTotais();
+            this.sodioNoDia += refeicao.getSodioTotal();
+            this.gordurasNoDia += refeicao.getGordurasTotais();
+        }
     }
 
     public void ativar(){
@@ -52,12 +68,58 @@ public class Dia {
         return inativo;
     }
 
+    public double getCaloriasNoDia() {
+        return caloriasNoDia;
+    }
+
+    public void setCaloriasNoDia(double caloriasNoDia) {
+        this.caloriasNoDia = caloriasNoDia;
+    }
+
+    public double getCarboidratosNoDia() {
+        return carboidratosNoDia;
+    }
+
+    public void setCarboidratosNoDia(double carboidratosNoDia) {
+        this.carboidratosNoDia = carboidratosNoDia;
+    }
+
+    public double getProteinasNoDia() {
+        return proteinasNoDia;
+    }
+
+    public void setProteinasNoDia(double proteinasNoDia) {
+        this.proteinasNoDia = proteinasNoDia;
+    }
+
+    public double getSodioNoDia() {
+        return sodioNoDia;
+    }
+
+    public void setSodioNoDia(double sodioNoDia) {
+        this.sodioNoDia = sodioNoDia;
+    }
+
+    public double getGordurasNoDia() {
+        return gordurasNoDia;
+    }
+
+    public void setGordurasNoDia(double gordurasNoDia) {
+        this.gordurasNoDia = gordurasNoDia;
+    }
+
     @Override
     public String toString() {
         return "Dia{" +
-                "diaDaSemana=" + diaDaSemana +
+                "id=" + id +
+                ", diaDaSemana=" + diaDaSemana +
                 ", refeicoes=" + refeicoes +
                 ", inativo=" + inativo +
+                ", caloriasNoDia=" + caloriasNoDia +
+                ", carboidratosNoDia=" + carboidratosNoDia +
+                ", proteinasNoDia=" + proteinasNoDia +
+                ", sodioNoDia=" + sodioNoDia +
+                ", gordurasNoDia=" + gordurasNoDia +
                 '}';
     }
 }
