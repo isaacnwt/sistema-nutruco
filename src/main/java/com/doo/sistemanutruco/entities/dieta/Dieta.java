@@ -1,6 +1,7 @@
 package com.doo.sistemanutruco.entities.dieta;
 
 import com.doo.sistemanutruco.entities.dia.Dia;
+import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 
 import java.util.List;
 
@@ -9,27 +10,38 @@ public class Dieta {
     private String nome;
     private String objetivo;
     private List<Dia> dias;
-    private Boolean inativo;
-    private Double calorias;
-    private Double carboidratos;
-    private Double proteinas;
-    private Double sodio;
-    private Boolean gluten;
-    private Boolean lactose;
-    private Double gorduras;
+    private boolean inativo;
+    private double caloriasDaDieta;
+    private double carboidratosDaDieta;
+    private double proteinasDaDieta;
+    private double sodioDaDieta;
+    private boolean dietaContemGluten;
+    private boolean dietaContemLactose;
+    private double gordurasDaDieta;
 
-    public Dieta(String nome, String objetivo, List<Dia> dias, Boolean inativo, Double calorias, Double carboidratos, Double proteinas, Double sodio, Boolean gluten, Boolean lactose, Double gorduras) {
+    public Dieta(String nome, String objetivo, List<Dia> dias) {
         this.nome = nome;
         this.objetivo = objetivo;
         this.dias = dias;
-        this.inativo = inativo;
-        this.calorias = calorias;
-        this.carboidratos = carboidratos;
-        this.proteinas = proteinas;
-        this.sodio = sodio;
-        this.gluten = gluten;
-        this.lactose = lactose;
-        this.gorduras = gorduras;
+        calcularValoresNutricionais();
+    }
+
+    private void calcularValoresNutricionais() {
+        for (Dia dia  : this.dias) {
+            this.caloriasDaDieta += dia.getCaloriasNoDia();
+            this.carboidratosDaDieta += dia.getCarboidratosNoDia();
+            this.proteinasDaDieta += dia.getProteinasNoDia();
+            this.sodioDaDieta += dia.getSodioNoDia();
+            this.gordurasDaDieta += dia.getGordurasNoDia();
+            var refeicoesComGlutem = dia.getRefeicoes().stream().filter(Refeicao::getContemGluten).toList();
+            var refeicoesComLactose = dia.getRefeicoes().stream().filter(Refeicao::getContemLactose).toList();
+            if (!refeicoesComGlutem.isEmpty()) this.dietaContemGluten = true;
+            if (!refeicoesComLactose.isEmpty()) this.dietaContemLactose = true;
+        }
+    }
+
+    public Dieta clonarDieta(){
+        return this;
     }
 
     public Integer getId() {
@@ -64,98 +76,85 @@ public class Dieta {
         this.dias = dias;
     }
 
-    public Boolean getInativo() {
+    public boolean getInativo() {
         return inativo;
     }
 
-    public void setInativo(Boolean inativo) {
+    public void setInativo(boolean inativo) {
         this.inativo = inativo;
     }
 
-    public Double getCalorias() {
-        return calorias;
+    public double getCaloriasDaDieta() {
+        return caloriasDaDieta;
     }
 
-    public void setCalorias(Double calorias) {
-        this.calorias = calorias;
+    public void setCaloriasDaDieta(double caloriasDaDieta) {
+        this.caloriasDaDieta = caloriasDaDieta;
     }
 
-    public Double getCarboidratos() {
-        return carboidratos;
+    public double getCarboidratosDaDieta() {
+        return carboidratosDaDieta;
     }
 
-    public void setCarboidratos(Double carboidratos) {
-        this.carboidratos = carboidratos;
+    public void setCarboidratosDaDieta(double carboidratosDaDieta) {
+        this.carboidratosDaDieta = carboidratosDaDieta;
     }
 
-    public Double getProteinas() {
-        return proteinas;
+    public double getProteinasDaDieta() {
+        return proteinasDaDieta;
     }
 
-    public void setProteinas(Double proteinas) {
-        this.proteinas = proteinas;
+    public void setProteinasDaDieta(double proteinasDaDieta) {
+        this.proteinasDaDieta = proteinasDaDieta;
     }
 
-    public Double getSodio() {
-        return sodio;
+    public double getSodioDaDieta() {
+        return sodioDaDieta;
     }
 
-    public void setSodio(Double sodio) {
-        this.sodio = sodio;
+    public void setSodioDaDieta(double sodioDaDieta) {
+        this.sodioDaDieta = sodioDaDieta;
     }
 
-    public Boolean getGluten() {
-        return gluten;
+    public boolean getDietaContemGluten() {
+        return dietaContemGluten;
     }
 
-    public void setGluten(Boolean gluten) {
-        this.gluten = gluten;
+    public void setDietaContemGluten(boolean dietaContemGluten) {
+        this.dietaContemGluten = dietaContemGluten;
     }
 
-    public Boolean getLactose() {
-        return lactose;
+    public boolean getDietaContemLactose() {
+        return dietaContemLactose;
     }
 
-    public void setLactose(Boolean lactose) {
-        this.lactose = lactose;
+    public void setDietaContemLactose(boolean dietaContemLactose) {
+        this.dietaContemLactose = dietaContemLactose;
     }
 
-    public Double getGorduras() {
-        return gorduras;
+    public double getGordurasDaDieta() {
+        return gordurasDaDieta;
     }
 
-    public void setGorduras(Double gorduras) {
-        this.gorduras = gorduras;
+    public void setGordurasDaDieta(double gordurasDaDieta) {
+        this.gordurasDaDieta = gordurasDaDieta;
     }
 
-    public Dieta clonarDieta(){
-        return new Dieta(
-                this.nome + " - Clone",
-                this.objetivo,
-                this.dias,
-                this.inativo,
-                this.calorias,
-                this.carboidratos,
-                this.proteinas,
-                this.sodio,
-                this.gluten,
-                this.lactose,
-                this.gorduras);
-    }
     @Override
-    public String toString(){
-        return "Dieta: {" +
-                "Id ='" + id + '\'' +
-                ", Nome =" + nome +
-                ", Objetivo =" + objetivo +
-                ", Inativo =" + inativo +
-                ", Calorias =" + calorias +
-                ", Carboidratos =" + carboidratos +
-                ", Proteinas =" + proteinas +
-                ", Sódio =" + sodio +
-                ", Glúten =" + gluten +
-                ", Lactose=" + lactose +
-                ", Gorduras =" + gorduras +
+    public String toString() {
+        return "Dieta{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", objetivo='" + objetivo + '\'' +
+                ", dias=" + dias +
+                ", inativo=" + inativo +
+                ", caloriasDaDieta=" + caloriasDaDieta +
+                ", carboidratosDaDieta=" + carboidratosDaDieta +
+                ", proteinasDaDieta=" + proteinasDaDieta +
+                ", sodioDaDieta=" + sodioDaDieta +
+                ", dietaContemGluten=" + dietaContemGluten +
+                ", dietaContemLactose=" + dietaContemLactose +
+                ", gordurasDaDieta=" + gordurasDaDieta +
                 '}';
     }
 }
