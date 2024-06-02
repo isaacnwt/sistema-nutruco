@@ -21,12 +21,12 @@ public class Paciente {
     private Integer porcentagemMassaGorda;
     private Integer colesterolLDL;
     private Integer colesterolHDL;
-    private Boolean hipertenso;
-    private Boolean diabetico;
-    private Boolean celiaco;
+    private boolean hipertenso;
+    private boolean diabetico;
+    private boolean celiaco;
 
     private List<Dieta> dietas;
-    private Boolean inativo;
+    private boolean inativo;
 
 
     public Paciente(String cpf, String nome, LocalDate dataNascimento, Long telefone, String email, Double peso, Double altura, String objetivo) {
@@ -38,10 +38,9 @@ public class Paciente {
         this.peso = peso;
         this.altura = altura;
         this.objetivo = objetivo;
-        this.inativo = false;
     }
 
-    public Paciente(String cpf, String nome, LocalDate dataNascimento, Long telefone, String email, Double peso, Double altura, String objetivo, Integer porcentagemGordura, Integer porcentagemMassaMagra, Integer porcentagemMassaGorda, Integer colesterolLDL, Integer colesterolHDL, Boolean hipertenso, Boolean diabetico, Boolean celiaco) {
+    public Paciente(String cpf, String nome, LocalDate dataNascimento, Long telefone, String email, Double peso, Double altura, String objetivo, Integer porcentagemGordura, Integer porcentagemMassaMagra, Integer porcentagemMassaGorda, Integer colesterolLDL, Integer colesterolHDL, boolean hipertenso, boolean diabetico, boolean celiaco) {
         this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -58,7 +57,6 @@ public class Paciente {
         this.hipertenso = hipertenso;
         this.diabetico = diabetico;
         this.celiaco = celiaco;
-        this.inativo = false;
     }
 
     public void ativar(){
@@ -173,27 +171,27 @@ public class Paciente {
         this.colesterolHDL = colesterolHDL;
     }
 
-    public Boolean getHipertenso() {
+    public boolean getHipertenso() {
         return hipertenso;
     }
 
-    public void setHipertenso(Boolean hipertenso) {
+    public void setHipertenso(boolean hipertenso) {
         this.hipertenso = hipertenso;
     }
 
-    public Boolean getDiabetico() {
+    public boolean getDiabetico() {
         return diabetico;
     }
 
-    public void setDiabetico(Boolean diabetico) {
+    public void setDiabetico(boolean diabetico) {
         this.diabetico = diabetico;
     }
 
-    public Boolean getCeliaco() {
+    public boolean getCeliaco() {
         return celiaco;
     }
 
-    public void setCeliaco(Boolean celiaco) {
+    public void setCeliaco(boolean celiaco) {
         this.celiaco = celiaco;
     }
 
@@ -208,11 +206,11 @@ public class Paciente {
         this.dietas.add(dieta);
     }
 
-    public Boolean getInativo() {
+    public boolean getInativo() {
         return inativo;
     }
 
-    public void setInativo(Boolean inativo) {
+    public void setInativo(boolean inativo) {
         this.inativo = inativo;
     }
 
