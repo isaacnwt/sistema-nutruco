@@ -110,16 +110,16 @@ public class Dia {
 
     @Override
     public String toString() {
-        return "Dia{" +
-                "id=" + id +
-                ", diaDaSemana=" + diaDaSemana +
-                ", refeicoes=" + refeicoes +
-                ", inativo=" + inativo +
-                ", caloriasNoDia=" + caloriasNoDia +
-                ", carboidratosNoDia=" + carboidratosNoDia +
-                ", proteinasNoDia=" + proteinasNoDia +
-                ", sodioNoDia=" + sodioNoDia +
-                ", gordurasNoDia=" + gordurasNoDia +
-                '}';
+        return "DIA\n" +
+                "id: " + id + "\n" +
+                "diaDaSemana: " + diaDaSemana + "\n" +
+                "refeicoes: " + refeicoes + "\n" +
+                "inativo: " + inativo + "\n" +
+                "caloriasNoDia: " + caloriasNoDia + "\n" +
+                "carboidratosNoDia: " + carboidratosNoDia + "\n" +
+                "proteinasNoDia: " + proteinasNoDia + "\n" +
+                "sodioNoDia: " + sodioNoDia + "\n" +
+                "gordurasNoDia: " + gordurasNoDia + "\n" ;
     }
+
 }

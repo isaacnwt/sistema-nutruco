@@ -136,19 +136,19 @@ public class Refeicao {
 
     @Override
     public String toString() {
-        return "Refeicao{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", objetivo='" + objetivo + '\'' +
-                ", alimentos=" + alimentos +
-                ", contemGluten=" + contemGluten +
-                ", contemLactose=" + contemLactose +
-                ", caloriasTotais=" + caloriasTotais +
-                ", carboidratosTotais=" + carboidratosTotais +
-                ", proteinasTotais=" + proteinasTotais +
-                ", sodioTotal=" + sodioTotal +
-                ", gordurasTotais=" + gordurasTotais +
-                '}';
+        return "REFEICAO\n" +
+                "id: " + id + "\n" +
+                "nome: '" + nome + '\'' + "\n" +
+                "descricao: '" + descricao + '\'' + "\n" +
+                "objetivo: '" + objetivo + '\'' + "\n" +
+                "alimentos: " + alimentos + "\n" +
+                "contemGluten: " + contemGluten + "\n" +
+                "contemLactose: " + contemLactose + "\n" +
+                "caloriasTotais: " + caloriasTotais + "\n" +
+                "carboidratosTotais: " + carboidratosTotais + "\n" +
+                "proteinasTotais: " + proteinasTotais + "\n" +
+                "sodioTotal: " + sodioTotal + "\n" +
+                "gordurasTotais: " + gordurasTotais + "\n" ;
     }
+
 }

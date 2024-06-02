@@ -216,16 +216,16 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente{" +
-                "cpf='" + cpf + '\'' +
-                ", nome='" + nome + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                ", telefone=" + telefone +
-                ", email='" + email + '\'' +
-                ", peso=" + peso +
-                ", altura=" + altura +
-                ", objetivo='" + objetivo + '\'' +
-                ", inativo=" + inativo +
-                '}';
+        return "PACIENTE\n" +
+                "cpf: '" + cpf + '\'' + "\n" +
+                "nome: '" + nome + '\'' + "\n" +
+                "dataNascimento: " + dataNascimento + "\n" +
+                "telefone: " + telefone + "\n" +
+                "email: '" + email + '\'' + "\n" +
+                "peso: " + peso + "\n" +
+                "altura: " + altura + "\n" +
+                "objetivo: '" + objetivo + '\'' + "\n" +
+                "inativo: " + inativo + "\n" ;
     }
+
 }
