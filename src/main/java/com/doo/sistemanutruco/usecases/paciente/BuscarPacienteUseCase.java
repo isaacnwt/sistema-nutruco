@@ -17,14 +17,14 @@ public class BuscarPacienteUseCase {
     }
 
     public Optional<Paciente> findByNome(String nome){
-        // Adicionar validações
-
+        if (nome == null || nome.isEmpty())
+            throw new IllegalArgumentException("Nome do paciente é obrigatório");
         return pacienteDAO.findByNome(nome);
     }
 
     public Optional<Paciente> findByCpf(String cpf){
-        // Adicionar validações
-
+        if (cpf == null || cpf.isEmpty())
+            throw new IllegalArgumentException("Cpf do paciente é obrigatório");
         return pacienteDAO.findByCpf(cpf);
     }
 }

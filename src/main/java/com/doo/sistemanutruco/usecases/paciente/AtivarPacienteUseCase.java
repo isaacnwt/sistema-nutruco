@@ -10,19 +10,15 @@ public class AtivarPacienteUseCase {
     }
 
     public boolean ativar(Paciente paciente){
-        if (!paciente.getInativo()){
+        if (!paciente.getInativo())
             throw new IllegalStateException("Paciente já ativo!");
-        }
-
         paciente.ativar();
         return pacienteDAO.update(paciente);
     }
 
     public boolean inativar(Paciente paciente){
-        if (paciente.getInativo()){
+        if (paciente.getInativo())
             throw new IllegalStateException("Paciente já inativo!");
-        }
-
         paciente.inativar();
         return pacienteDAO.update(paciente);
     }
