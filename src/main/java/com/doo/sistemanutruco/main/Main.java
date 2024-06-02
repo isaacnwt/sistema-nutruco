@@ -2,6 +2,7 @@ package com.doo.sistemanutruco.main;
 
 import com.doo.sistemanutruco.entities.alimento.Alimento;
 import com.doo.sistemanutruco.entities.paciente.Paciente;
+import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 import com.doo.sistemanutruco.repository.memory.*;
 import com.doo.sistemanutruco.usecases.alimento.AlimentoDAO;
 import com.doo.sistemanutruco.usecases.alimento.ImportarAlimentosUseCase;
@@ -17,6 +18,8 @@ import com.doo.sistemanutruco.usecases.refeicao.ExcluirRefeicaoUseCase;
 import com.doo.sistemanutruco.usecases.refeicao.RefeicaoDAO;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -41,11 +44,11 @@ public class Main {
     private static ClonarDietaUseCase clonarDietaUseCase;
 
     public static void main(String[] args) {
-        System.out.println("\nPaciente Use Cases:\n");
-        inicializarPacienteUseCases();
-
-        System.out.println("\nAlimento Use Cases:\n");
-        inicializarAlimentoUseCases();
+//        System.out.println("\nPaciente Use Cases:\n");
+//        inicializarPacienteUseCases();
+//
+//        System.out.println("\nAlimento Use Cases:\n");
+//        inicializarAlimentoUseCases();
 
         System.out.println("\nRefeicao Use Cases:\n");
         inicializarRefeicaoUseCases();
@@ -116,7 +119,31 @@ public class Main {
         cadastrarRefeicaoUseCase = new CadastrarRefeicaoUseCase(refeicaoDAO);
         editarRefeicaoUseCase = new EditarRefeicaoUseCase(refeicaoDAO);
         excluirRefeicaoUseCase = new ExcluirRefeicaoUseCase(refeicaoDAO);
-        // Adicionar os testes
+
+        // Importando alimentos
+        AlimentoDAO alimentoDAO = new InMemoryAlimentoDAO();
+        importarAlimentoUseCase = new ImportarAlimentosUseCase(alimentoDAO);
+        importarAlimentoUseCase.importarAlimentosCSV("src/main/resources/com/doo/sistemanutruco/docs/alimentos.csv");
+        List<Alimento> alimentos = alimentoDAO.findAll();
+
+        // Cadastrar Refeicao
+        List<Alimento> cafeDaManhaAlimentos = new ArrayList<>();
+        cafeDaManhaAlimentos.add(alimentos.get(3)); // Pão
+        cafeDaManhaAlimentos.add(alimentos.get(7)); // Queijo
+        cafeDaManhaAlimentos.add(alimentos.get(8)); // Ovo
+        Refeicao cafeDaManha = new Refeicao("Café da Manhã", "Primeira refeição do dia", "Energia para o dia", cafeDaManhaAlimentos);
+
+        List<Alimento> almocoAlimentos = new ArrayList<>();
+        almocoAlimentos.add(alimentos.get(0)); // Arroz
+        almocoAlimentos.add(alimentos.get(1)); // Feijão
+        almocoAlimentos.add(alimentos.get(6)); // Frango
+        Refeicao almoco = new Refeicao("Almoço", "Refeição do meio-dia", "Para ganhar massa", almocoAlimentos);
+
+        cadastrarRefeicaoUseCase.cadastrar(cafeDaManha);
+        cadastrarRefeicaoUseCase.cadastrar(almoco);
+
+        for (Refeicao refeicao : refeicaoDAO.findAll())
+            System.out.println(refeicao);
     }
 
     private static void inicializarDiaUseCases(){
