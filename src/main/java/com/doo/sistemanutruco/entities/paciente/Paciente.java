@@ -216,16 +216,25 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "PACIENTE\n" +
-                "cpf: '" + cpf + '\'' + "\n" +
-                "nome: '" + nome + '\'' + "\n" +
-                "dataNascimento: " + dataNascimento + "\n" +
-                "telefone: " + telefone + "\n" +
-                "email: '" + email + '\'' + "\n" +
-                "peso: " + peso + "\n" +
-                "altura: " + altura + "\n" +
-                "objetivo: '" + objetivo + '\'' + "\n" +
-                "inativo: " + inativo + "\n" ;
+        return "Paciente{" +
+                "cpf='" + cpf + '\'' +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", telefone=" + telefone +
+                ", email='" + email + '\'' +
+                ", peso=" + peso +
+                ", altura=" + altura +
+                ", objetivo='" + objetivo + '\'' +
+                ", porcentagemGordura=" + porcentagemGordura +
+                ", porcentagemMassaMagra=" + porcentagemMassaMagra +
+                ", porcentagemMassaGorda=" + porcentagemMassaGorda +
+                ", colesterolLDL=" + colesterolLDL +
+                ", colesterolHDL=" + colesterolHDL +
+                ", hipertenso=" + hipertenso +
+                ", diabetico=" + diabetico +
+                ", celiaco=" + celiaco +
+                ", dietas=" + dietas +
+                ", inativo=" + inativo +
+                '}';
     }
-
 }

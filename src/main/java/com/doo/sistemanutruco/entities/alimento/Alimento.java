@@ -95,16 +95,16 @@ public class Alimento {
 
     @Override
     public String toString() {
-        return "ALIMENTO\n" +
-                "id: " + id + "\n" +
-                "nome: '" + nome + '\'' + "\n" +
-                "calorias: " + calorias + "\n" +
-                "carboidratos: " + carboidratos + "\n" +
-                "proteinas: " + proteinas + "\n" +
-                "sodio: " + sodio + "\n" +
-                "gluten: " + gluten + "\n" +
-                "lactose: " + lactose + "\n" +
-                "gorduras: " + gorduras + "\n" ;
+        return "Alimento{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", calorias=" + calorias +
+                ", carboidratos=" + carboidratos +
+                ", proteinas=" + proteinas +
+                ", sodio=" + sodio +
+                ", gluten=" + gluten +
+                ", lactose=" + lactose +
+                ", gorduras=" + gorduras +
+                '}';
     }
-
 }
