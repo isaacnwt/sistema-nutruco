@@ -6,6 +6,7 @@ import java.time.DayOfWeek;
 import java.util.List;
 
 public class Dia {
+    private Integer id = null;
     private DayOfWeek diaDaSemana;
     private List<Refeicao> refeicoes;
     private boolean inativo;
@@ -21,6 +22,14 @@ public class Dia {
 
     public void inativar(){
         this.inativo = true;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public DayOfWeek getDiaDaSemana() {
