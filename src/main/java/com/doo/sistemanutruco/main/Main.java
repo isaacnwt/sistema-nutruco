@@ -2,6 +2,7 @@ package com.doo.sistemanutruco.main;
 
 import com.doo.sistemanutruco.entities.alimento.Alimento;
 import com.doo.sistemanutruco.entities.dia.Dia;
+import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.entities.paciente.Paciente;
 import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 import com.doo.sistemanutruco.repository.memory.*;
@@ -102,10 +103,12 @@ public class Main {
         AlimentoDAO alimentoDAO = new InMemoryAlimentoDAO();
         RefeicaoDAO refeicaoDAO = new InMemoryRefeicaoDAO();
         DiaDAO diaDAO = new InMemoryDiaDAO();
+        DietaDAO dietaDAO = new InMemoryDietaDAO();
 
         importarAlimentoUseCase = new ImportarAlimentosUseCase(alimentoDAO);
         cadastrarRefeicaoUseCase = new CadastrarRefeicaoUseCase(refeicaoDAO);
         cadastrarDiaUseCase = new CadastrarDiaUseCase(diaDAO);
+        cadastrarDietaUseCase = new CadastrarDietaUseCase(dietaDAO);
 
         // CDU003 – Importar alimentos
         importarAlimentoUseCase.importarAlimentosCSV("src/main/resources/com/doo/sistemanutruco/docs/alimentos.csv");
@@ -128,10 +131,10 @@ public class Main {
         Refeicao almoco = new Refeicao("Almoço", "Refeição do meio-dia", "Para ganhar massa", almocoAlimentos);
 
         List<Alimento> jantaAlimentos = new ArrayList<>();
-        jantaAlimentos.add(alimentos.get(0));// Arroz
-        jantaAlimentos.add(alimentos.get(1));// Feijão
-        jantaAlimentos.add(alimentos.get(5));// Banana
-        jantaAlimentos.add(alimentos.get(9));// Tomate
+        jantaAlimentos.add(alimentos.get(0)); // Arroz
+        jantaAlimentos.add(alimentos.get(1)); // Feijão
+        jantaAlimentos.add(alimentos.get(5)); // Banana
+        jantaAlimentos.add(alimentos.get(9)); // Tomate
         Refeicao jantar = new Refeicao("janta", "Refeição final do dia","Alimentação basica", jantaAlimentos);
 
         cadastrarRefeicaoUseCase.cadastrar(cafeDaManha);
@@ -148,6 +151,11 @@ public class Main {
         Dia segunda = new Dia(DayOfWeek.MONDAY, refeicoesSegunda);
         cadastrarDiaUseCase.cadastrar(segunda);
         System.out.println(diaDAO.findAll().getFirst());
+
+        // CDU004 – Cadastrar dieta
+        Dieta dieta1 = new Dieta("dieta1","ficar saudável", List.of(segunda));
+        cadastrarDietaUseCase.cadastrar(dieta1);
+        System.out.println(dietaDAO.findAll().getFirst());
     }
 
     private static void inicializarRefeicaoUseCases(){
