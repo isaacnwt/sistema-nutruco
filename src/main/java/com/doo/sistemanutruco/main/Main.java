@@ -25,10 +25,6 @@ public class Main {
     private static BuscarPacienteUseCase buscarPacienteUseCase;
     private static AtivarPacienteUseCase ativarPacienteUseCase;
 
-    private static AtivarDietaUseCase ativarDietaUseCase;
-    private static BuscarDietaUseCase buscarDietaUseCase;
-    private static CadastrarDietaUseCase cadastrarDietaUseCase;
-    private static ClonarDietaUseCase clonarDietaUseCase;
     private static ImportarAlimentosUseCase importarAlimentoUseCase;
 
     private static CadastrarRefeicaoUseCase cadastrarRefeicaoUseCase;
@@ -39,12 +35,14 @@ public class Main {
     private static EditarDiaUseCase editarDiaUseCase;
     private static ExcluirDiaUseCase excluirDiaUseCase;
 
+    private static AtivarDietaUseCase ativarDietaUseCase;
+    private static BuscarDietaUseCase buscarDietaUseCase;
+    private static CadastrarDietaUseCase cadastrarDietaUseCase;
+    private static ClonarDietaUseCase clonarDietaUseCase;
+
     public static void main(String[] args) {
         System.out.println("\nPaciente Use Cases:\n");
         inicializarPacienteUseCases();
-
-        System.out.println("\nDieta Use Cases:\n");
-        inicializarDietaUseCases();
 
         System.out.println("\nAlimento Use Cases:\n");
         inicializarAlimentoUseCases();
@@ -54,6 +52,9 @@ public class Main {
 
         System.out.println("\nDia Use Cases:\n");
         inicializarDiaUseCases();
+
+        System.out.println("\nDieta Use Cases:\n");
+        inicializarDietaUseCases();
     }
 
     private static void inicializarPacienteUseCases() {
@@ -101,16 +102,6 @@ public class Main {
 
     }
 
-    private static void inicializarDietaUseCases(){
-        DietaDAO dietaDAO = new InMemoryDietaDAO();
-        ativarDietaUseCase = new AtivarDietaUseCase(dietaDAO);
-        buscarDietaUseCase = new BuscarDietaUseCase(dietaDAO);
-        cadastrarDietaUseCase = new CadastrarDietaUseCase(dietaDAO);
-        clonarDietaUseCase = new ClonarDietaUseCase(dietaDAO);
-
-        // Adicionar os testes ao finalizar as implementações das outras classes
-    }
-
     private static void inicializarAlimentoUseCases(){
         AlimentoDAO alimentoDAO = new InMemoryAlimentoDAO();
         importarAlimentoUseCase = new ImportarAlimentosUseCase(alimentoDAO);
@@ -133,5 +124,15 @@ public class Main {
         cadastrarDiaUseCase = new CadastrarDiaUseCase(diaDAO);
         editarDiaUseCase = new EditarDiaUseCase(diaDAO);
         excluirDiaUseCase = new ExcluirDiaUseCase(diaDAO);
+    }
+
+    private static void inicializarDietaUseCases(){
+        DietaDAO dietaDAO = new InMemoryDietaDAO();
+        ativarDietaUseCase = new AtivarDietaUseCase(dietaDAO);
+        buscarDietaUseCase = new BuscarDietaUseCase(dietaDAO);
+        cadastrarDietaUseCase = new CadastrarDietaUseCase(dietaDAO);
+        clonarDietaUseCase = new ClonarDietaUseCase(dietaDAO);
+
+        // Adicionar os testes ao finalizar as implementações das outras classes
     }
 }
