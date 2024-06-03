@@ -208,6 +208,13 @@ public class Paciente {
         this.dietas.add(dieta);
     }
 
+    public boolean desatribuirDieta(Dieta dieta){
+        if (dietas.contains(dieta)) {
+            return dietas.remove(dieta);
+        }
+        return false;
+    }
+
     public boolean getInativo() {
         return inativo;
     }
