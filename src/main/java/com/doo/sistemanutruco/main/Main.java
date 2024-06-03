@@ -131,9 +131,18 @@ public class Main {
         buscarPacienteUseCase.findByCpf("123").ifPresent(System.out::println);
         buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
         System.out.println("--------------");
+
+        // CDU002 - Editar Paciente
+        System.out.println("Editar Paciente");
+        paciente1.setNome("Teste 1 - Editado");
+        paciente1.setAltura(1.68);
+        editarPacienteUseCase.editar(paciente1);
+        buscarPacienteUseCase.findByCpf("123").ifPresent(System.out::println);
+        System.out.println("--------------");
     }
 
     private static void inicializarTestesAlimento(){
+        System.out.println("Alimento Use Cases:\n");
         // CDU003 – Importar alimentos
         System.out.println("Importar Alimentos");
         importarAlimentoUseCase.importarAlimentosCSV("src/main/resources/com/doo/sistemanutruco/docs/alimentos.csv");
@@ -145,7 +154,7 @@ public class Main {
     }
 
     private static void inicializarTestesRefeicao(){
-        System.out.println("Alimento Use Cases:\n");
+        System.out.println("Refeicao Use Cases:\n");
         List<Alimento> alimentos = inMemoryAlimentoDAO.findAll();
         // CDU0012 – Cadastrar Refeição
         System.out.println("Cadastrar Refeição");
