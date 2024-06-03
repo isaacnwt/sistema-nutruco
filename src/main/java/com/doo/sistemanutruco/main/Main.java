@@ -221,5 +221,12 @@ public class Main {
         ativarDietaUseCase.ativar(dietaEncontrada);
         System.out.println("Dieta: " + dietaEncontrada.getNome() + ", inativo: " + dietaEncontrada.getInativo());
         System.out.println("--------------");
+
+        // CDU0018 - Atribuir dieta
+        System.out.println("Atribuir dieta");
+        Paciente paciente = inMemoryPacienteDAO.findByCpf("123").get();
+        atribuirDietaUseCase.atribuirDieta(paciente, dietaEncontrada);
+        System.out.println(paciente);
+        System.out.println("--------------");
     }
 }
