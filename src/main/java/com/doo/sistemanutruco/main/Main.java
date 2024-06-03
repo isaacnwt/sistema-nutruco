@@ -48,20 +48,60 @@ public class Main {
     private static ClonarDietaUseCase clonarDietaUseCase;
 
     public static void main(String[] args) {
+        // Inicialização dos UseCases
+        PacienteDAO pacienteDAO = new InMemoryPacienteDAO();
+        AlimentoDAO alimentoDAO = new InMemoryAlimentoDAO();
+        RefeicaoDAO refeicaoDAO = new InMemoryRefeicaoDAO();
+        DiaDAO diaDAO = new InMemoryDiaDAO();
+        DietaDAO dietaDAO = new InMemoryDietaDAO();
+        inicializarPacienteUseCases(pacienteDAO);
+        inicializarAlimentoUseCases(alimentoDAO);
+        inicializarRefeicaoUseCases(refeicaoDAO);
+        inicializarDiaUseCases(diaDAO);
+        inicializarDietaUseCases(dietaDAO);
+
+
         System.out.println("Paciente Use Cases:\n");
-        inicializarPacienteUseCases();
+        inicializarTestesPaciente();
 
         System.out.println("Criar Alimentos, Refeicoes e Dia Use Cases:\n");
-        inicializarUseCasesDeCriacao();
+        inicializarTestesDeCriacao(alimentoDAO, refeicaoDAO, diaDAO, dietaDAO);
+
+        System.out.println("Dieta Use Cases:\n");
+        inicializarTestesDieta(dietaDAO);
     }
 
-    private static void inicializarPacienteUseCases() {
-        PacienteDAO pacienteDAO = new InMemoryPacienteDAO();
+    private static void inicializarPacienteUseCases(PacienteDAO pacienteDAO) {
         cadastrarPacienteUseCase = new CadastrarPacienteUseCase(pacienteDAO);
         editarPacienteUseCase = new EditarPacienteUseCase(pacienteDAO);
         buscarPacienteUseCase = new BuscarPacienteUseCase(pacienteDAO);
         ativarPacienteUseCase = new AtivarPacienteUseCase(pacienteDAO);
+    }
 
+    private static void inicializarAlimentoUseCases(AlimentoDAO alimentoDAO){
+        importarAlimentoUseCase = new ImportarAlimentosUseCase(alimentoDAO);
+    }
+
+    private static void inicializarRefeicaoUseCases(RefeicaoDAO refeicaoDAO){
+        cadastrarRefeicaoUseCase = new CadastrarRefeicaoUseCase(refeicaoDAO);
+        editarRefeicaoUseCase = new EditarRefeicaoUseCase(refeicaoDAO);
+        excluirRefeicaoUseCase = new ExcluirRefeicaoUseCase(refeicaoDAO);
+    }
+
+    private static void inicializarDiaUseCases(DiaDAO diaDAO){
+        cadastrarDiaUseCase = new CadastrarDiaUseCase(diaDAO);
+        editarDiaUseCase = new EditarDiaUseCase(diaDAO);
+        excluirDiaUseCase = new ExcluirDiaUseCase(diaDAO);
+    }
+
+    private static void inicializarDietaUseCases(DietaDAO dietaDAO){
+        ativarDietaUseCase = new AtivarDietaUseCase(dietaDAO);
+        buscarDietaUseCase = new BuscarDietaUseCase(dietaDAO);
+        cadastrarDietaUseCase = new CadastrarDietaUseCase(dietaDAO);
+        clonarDietaUseCase = new ClonarDietaUseCase(dietaDAO);
+    }
+
+    private static void inicializarTestesPaciente(){
         // CDU001 – Cadastrar paciente
         System.out.println("Cadastrar Paciente/Buscar Paciente");
         Paciente paciente1 = new Paciente("123", "teste", LocalDate.of(2000, 7, 2),
@@ -105,22 +145,9 @@ public class Main {
         }
         else System.out.println("Erro ao ativar");
         System.out.println("--------------");
-
     }
 
-    private static void inicializarUseCasesDeCriacao(){
-        AlimentoDAO alimentoDAO = new InMemoryAlimentoDAO();
-        RefeicaoDAO refeicaoDAO = new InMemoryRefeicaoDAO();
-        DiaDAO diaDAO = new InMemoryDiaDAO();
-        DietaDAO dietaDAO = new InMemoryDietaDAO();
-
-        importarAlimentoUseCase = new ImportarAlimentosUseCase(alimentoDAO);
-        cadastrarRefeicaoUseCase = new CadastrarRefeicaoUseCase(refeicaoDAO);
-        cadastrarDiaUseCase = new CadastrarDiaUseCase(diaDAO);
-        cadastrarDietaUseCase = new CadastrarDietaUseCase(dietaDAO);
-        clonarDietaUseCase = new ClonarDietaUseCase(dietaDAO);
-        ativarDietaUseCase = new AtivarDietaUseCase(dietaDAO);
-
+    private static void inicializarTestesDeCriacao(AlimentoDAO alimentoDAO, RefeicaoDAO refeicaoDAO, DiaDAO diaDAO, DietaDAO dietaDAO){
         // CDU003 – Importar alimentos
         System.out.println("Importar Alimentos");
         importarAlimentoUseCase.importarAlimentosCSV("src/main/resources/com/doo/sistemanutruco/docs/alimentos.csv");
@@ -175,10 +202,14 @@ public class Main {
         cadastrarDietaUseCase.cadastrar(dieta1);
         System.out.println(dietaDAO.findAll().get(0));
         System.out.println("--------------");
+    }
+
+    private static void inicializarTestesDieta(DietaDAO dietaDAO){
+        Dieta dieta1 = dietaDAO.findOne(1).get(); // dieta1
 
         // CDU005 - Clonar dieta
         System.out.println("Clonar Dieta");
-        Optional<Dieta> dietaClonada = clonarDietaUseCase.clonarDieta(dieta1);
+        Dieta dietaClonada = clonarDietaUseCase.clonarDieta(dieta1).get();
         System.out.println(dietaClonada);
         System.out.println("--------------");
 
@@ -193,28 +224,5 @@ public class Main {
         ativarDietaUseCase.ativar(dieta1);
         System.out.println("Dieta: " + dieta1.getNome() + ", inativo: " + dieta1.getInativo());
         System.out.println("--------------");
-
-    }
-
-    private static void inicializarRefeicaoUseCases(){
-        RefeicaoDAO refeicaoDAO = new InMemoryRefeicaoDAO();
-        cadastrarRefeicaoUseCase = new CadastrarRefeicaoUseCase(refeicaoDAO);
-        editarRefeicaoUseCase = new EditarRefeicaoUseCase(refeicaoDAO);
-        excluirRefeicaoUseCase = new ExcluirRefeicaoUseCase(refeicaoDAO);
-    }
-
-    private static void inicializarDiaUseCases(){
-        DiaDAO diaDAO = new InMemoryDiaDAO();
-        cadastrarDiaUseCase = new CadastrarDiaUseCase(diaDAO);
-        editarDiaUseCase = new EditarDiaUseCase(diaDAO);
-        excluirDiaUseCase = new ExcluirDiaUseCase(diaDAO);
-    }
-
-    private static void inicializarDietaUseCases(){
-        DietaDAO dietaDAO = new InMemoryDietaDAO();
-        ativarDietaUseCase = new AtivarDietaUseCase(dietaDAO);
-        buscarDietaUseCase = new BuscarDietaUseCase(dietaDAO);
-        cadastrarDietaUseCase = new CadastrarDietaUseCase(dietaDAO);
-        clonarDietaUseCase = new ClonarDietaUseCase(dietaDAO);
     }
 }
