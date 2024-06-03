@@ -187,7 +187,23 @@ public class Main {
             System.out.println(refeicao);
         System.out.println("--------------");
 
-        // TODO - [RF013] Editar Refeição
+        // [RF013] Editar Refeição
+        System.out.println("Editar Refeição");
+        Refeicao refeicao = inMemoryRefeicaoDAO.findAll().getFirst();
+        List<Alimento> alimentosDaRefeicao = refeicao.getAlimentos();
+        alimentosDaRefeicao.add(inMemoryAlimentoDAO.findAll().get(6));
+
+        refeicao.setAlimentos(alimentosDaRefeicao);
+        refeicao.setNome("Jantar");
+        refeicao.setObjetivo("Alimentação nutritiva");
+
+        if (editarRefeicaoUseCase.editar(refeicao)) {
+            System.out.println("Atualizado com sucesso");
+            inMemoryRefeicaoDAO.findByNome("Jantar").ifPresent(System.out::println);
+        }
+        else System.out.println("Erro ao atualizar");
+        System.out.println("--------------");
+
         // TODO - [RF014] Excluir Refeição
     }
 
