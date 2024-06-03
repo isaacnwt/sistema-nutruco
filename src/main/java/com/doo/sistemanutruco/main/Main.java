@@ -121,6 +121,7 @@ public class Main {
         cadastrarRefeicaoUseCase = new CadastrarRefeicaoUseCase(refeicaoDAO);
         cadastrarDiaUseCase = new CadastrarDiaUseCase(diaDAO);
         cadastrarDietaUseCase = new CadastrarDietaUseCase(dietaDAO);
+        clonarDietaUseCase = new ClonarDietaUseCase(dietaDAO);
 
         // CDU003 – Importar alimentos
         System.out.println("CDU003 - Importar Alimentos");
@@ -175,6 +176,12 @@ public class Main {
         Dieta dieta1 = new Dieta("dieta1","ficar saudável", List.of(segunda));
         cadastrarDietaUseCase.cadastrar(dieta1);
         System.out.println(dietaDAO.findAll().get(0));
+        System.out.println("--------------");
+
+        // CDU008 - Clonar dieta
+        System.out.println("CDU008 - Clonar Dieta");
+        Optional<Dieta> dietaClonada = clonarDietaUseCase.clonarDieta(dieta1);
+        System.out.println(dietaClonada);
         System.out.println("--------------");
     }
 
