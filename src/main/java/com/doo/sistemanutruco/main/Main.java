@@ -192,7 +192,10 @@ public class Main {
         System.out.println("Cadastrar Dia");
         Dia segunda = new Dia(DayOfWeek.MONDAY, inMemoryRefeicaoDAO.findAll());
         cadastrarDiaUseCase.cadastrar(segunda);
-        System.out.println(inMemoryDiaDAO.findAll().get(0));
+        Dia terca = new Dia(DayOfWeek.TUESDAY, inMemoryRefeicaoDAO.findAll());
+        cadastrarDiaUseCase.cadastrar(terca);
+        for (Dia diaInMemory : inMemoryDiaDAO.findAll())
+            System.out.println(diaInMemory);
         System.out.println("--------------");
 
         // CDU0011 – Editar Dia
@@ -202,6 +205,14 @@ public class Main {
         inMemoryDiaDAO.update(dia);
         System.out.println(dia);
         System.out.println("--------------");
+
+        // CDU0013 - Excluir dia
+        System.out.println("Excluir Dia");
+        inMemoryDiaDAO.deleteByKey(2); // Terça
+        for (Dia diaInMemory : inMemoryDiaDAO.findAll())
+            System.out.println(diaInMemory);
+        System.out.println("--------------");
+
     }
 
     private static void inicializarTestesDieta() {
