@@ -119,6 +119,7 @@ public class Main {
         cadastrarDiaUseCase = new CadastrarDiaUseCase(diaDAO);
         cadastrarDietaUseCase = new CadastrarDietaUseCase(dietaDAO);
         clonarDietaUseCase = new ClonarDietaUseCase(dietaDAO);
+        ativarDietaUseCase = new AtivarDietaUseCase(dietaDAO);
 
         // CDU003 – Importar alimentos
         System.out.println("Importar Alimentos");
@@ -180,6 +181,19 @@ public class Main {
         Optional<Dieta> dietaClonada = clonarDietaUseCase.clonarDieta(dieta1);
         System.out.println(dietaClonada);
         System.out.println("--------------");
+
+        // CDU006 - Inativar dieta
+        System.out.println("Inativar Dieta");
+        ativarDietaUseCase.inativar(dieta1);
+        System.out.println("Dieta: " + dieta1.getNome() + ", inativo: " + dieta1.getInativo());
+        System.out.println("--------------");
+
+        // CDU00XX - Ativar dieta
+        System.out.println("Ativar Dieta");
+        ativarDietaUseCase.ativar(dieta1);
+        System.out.println("Dieta: " + dieta1.getNome() + ", inativo: " + dieta1.getInativo());
+        System.out.println("--------------");
+
     }
 
     private static void inicializarRefeicaoUseCases(){
@@ -202,7 +216,5 @@ public class Main {
         buscarDietaUseCase = new BuscarDietaUseCase(dietaDAO);
         cadastrarDietaUseCase = new CadastrarDietaUseCase(dietaDAO);
         clonarDietaUseCase = new ClonarDietaUseCase(dietaDAO);
-
-        // Adicionar os testes ao finalizar as implementações das outras classes
     }
 }
