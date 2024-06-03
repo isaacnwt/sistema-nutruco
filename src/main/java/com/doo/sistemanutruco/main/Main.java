@@ -194,6 +194,14 @@ public class Main {
         cadastrarDiaUseCase.cadastrar(segunda);
         System.out.println(inMemoryDiaDAO.findAll().get(0));
         System.out.println("--------------");
+
+        // CDU0011 – Editar Dia
+        System.out.println("Editar Dia");
+        Dia dia = inMemoryDiaDAO.findAll().get(0);
+        dia.setRefeicoes(new ArrayList<Refeicao>());
+        inMemoryDiaDAO.update(dia);
+        System.out.println(dia);
+        System.out.println("--------------");
     }
 
     private static void inicializarTestesDieta() {
