@@ -47,6 +47,14 @@ public class Dieta {
                 this.dias);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dieta dieta = (Dieta) o;
+        return id == dieta.id;
+    }
+
     public Integer getId() {
         return id;
     }
