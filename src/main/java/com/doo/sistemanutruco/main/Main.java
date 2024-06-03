@@ -228,5 +228,11 @@ public class Main {
         atribuirDietaUseCase.atribuirDieta(paciente, dietaEncontrada);
         System.out.println(paciente);
         System.out.println("--------------");
+
+        // CDU0019 - Desatribuir dieta
+        System.out.println("Desatribuir dieta");
+        atribuirDietaUseCase.desatribuirDieta(paciente, dietaEncontrada);
+        System.out.println(paciente);
+        System.out.println("--------------");
     }
 }
