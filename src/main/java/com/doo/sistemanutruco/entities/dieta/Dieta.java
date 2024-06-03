@@ -41,7 +41,10 @@ public class Dieta {
     }
 
     public Dieta clonarDieta(){
-        return this;
+        return new Dieta(
+                this.nome + " - Clone",
+                this.objetivo,
+                this.dias);
     }
 
     public Integer getId() {

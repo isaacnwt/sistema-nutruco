@@ -11,12 +11,10 @@ public class ClonarDietaUseCase {
         this.dietaDAO = dietaDAO;
     }
 
-    public Dieta clonarDieta(Dieta dieta){
+    public Optional<Dieta> clonarDieta(Dieta dieta){
         DietaValidator dietaValidator = new DietaValidator();
         dietaValidator.validar(dieta);
 
-        Optional<Dieta> dietaBase = dietaDAO.findByNome(dieta.getNome());
-        Dieta dietaOriginal = dietaBase.get();
-        return dietaOriginal.clonarDieta();
+        return dietaDAO.clone(dieta);
     }
 }

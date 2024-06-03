@@ -59,4 +59,11 @@ public class InMemoryDietaDAO implements DietaDAO {
                 .filter(dieta -> dieta.getNome().equals(nome))
                 .findAny();
     }
+
+    @Override
+    public Optional<Dieta> clone(Dieta dieta){
+        Dieta dietaBaseClonada = dieta.clonarDieta();
+        Integer dietaClonadaId = create(dietaBaseClonada);
+        return findOne(dietaClonadaId);
+    }
 }
