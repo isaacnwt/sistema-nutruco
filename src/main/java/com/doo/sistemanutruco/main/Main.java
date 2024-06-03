@@ -113,12 +113,12 @@ public class Main {
         buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
         System.out.println("--------------");
 
-        // CDU002 – Editar paciente
+        // CDU002 - Editar Paciente
         System.out.println("Editar Paciente");
-        Paciente paciente1Update = new Paciente("123", "teste update", LocalDate.of(2000, 7, 2),
-                16999990000L, "teste@email.com",90.0, 1.82, "ganhar massa");
+        paciente1.setNome("Teste 1 - Editado");
+        paciente1.setAltura(1.68);
 
-        if (editarPacienteUseCase.editar(paciente1Update)) {
+        if (editarPacienteUseCase.editar(paciente1)) {
             System.out.println("Atualizado com sucesso");
             buscarPacienteUseCase.findByCpf("123").ifPresent(System.out::println);
         }
@@ -140,14 +140,6 @@ public class Main {
             buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
         }
         else System.out.println("Erro ao ativar");
-        System.out.println("--------------");
-
-        // CDU002 - Editar Paciente
-        System.out.println("Editar Paciente");
-        paciente1.setNome("Teste 1 - Editado");
-        paciente1.setAltura(1.68);
-        editarPacienteUseCase.editar(paciente1);
-        buscarPacienteUseCase.findByCpf("123").ifPresent(System.out::println);
         System.out.println("--------------");
     }
 
@@ -194,6 +186,9 @@ public class Main {
         for (Refeicao refeicao : inMemoryRefeicaoDAO.findAll())
             System.out.println(refeicao);
         System.out.println("--------------");
+
+        // TODO - [RF013] Editar Refeição
+        // TODO - [RF014] Excluir Refeição
     }
 
     private static void inicializarTestesDia(){
