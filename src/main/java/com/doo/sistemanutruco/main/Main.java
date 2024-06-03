@@ -6,10 +6,8 @@ import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.entities.paciente.Paciente;
 import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 import com.doo.sistemanutruco.repository.memory.*;
-import com.doo.sistemanutruco.usecases.alimento.AlimentoDAO;
 import com.doo.sistemanutruco.usecases.alimento.ImportarAlimentosUseCase;
 import com.doo.sistemanutruco.usecases.dia.CadastrarDiaUseCase;
-import com.doo.sistemanutruco.usecases.dia.DiaDAO;
 import com.doo.sistemanutruco.usecases.dia.EditarDiaUseCase;
 import com.doo.sistemanutruco.usecases.dia.ExcluirDiaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.*;
@@ -17,7 +15,6 @@ import com.doo.sistemanutruco.usecases.paciente.*;
 import com.doo.sistemanutruco.usecases.refeicao.CadastrarRefeicaoUseCase;
 import com.doo.sistemanutruco.usecases.refeicao.EditarRefeicaoUseCase;
 import com.doo.sistemanutruco.usecases.refeicao.ExcluirRefeicaoUseCase;
-import com.doo.sistemanutruco.usecases.refeicao.RefeicaoDAO;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -69,11 +66,7 @@ public class Main {
 
     private static void inicializacao() {
         inicializarInMemory();
-        inicializarPacienteUseCases();
-        inicializarAlimentoUseCases();
-        inicializarRefeicaoUseCases();
-        inicializarDiaUseCases();
-        inicializarDietaUseCases();
+        inicializarUseCases();
     }
 
     private static void inicializarInMemory(){
@@ -84,30 +77,18 @@ public class Main {
         inMemoryDietaDAO = new InMemoryDietaDAO();
     }
 
-    private static void inicializarPacienteUseCases() {
+    private static void inicializarUseCases() {
         cadastrarPacienteUseCase = new CadastrarPacienteUseCase(inMemoryPacienteDAO);
         editarPacienteUseCase = new EditarPacienteUseCase(inMemoryPacienteDAO);
         buscarPacienteUseCase = new BuscarPacienteUseCase(inMemoryPacienteDAO);
         ativarPacienteUseCase = new AtivarPacienteUseCase(inMemoryPacienteDAO);
-    }
-
-    private static void inicializarAlimentoUseCases(){
         importarAlimentoUseCase = new ImportarAlimentosUseCase(inMemoryAlimentoDAO);
-    }
-
-    private static void inicializarRefeicaoUseCases(){
         cadastrarRefeicaoUseCase = new CadastrarRefeicaoUseCase(inMemoryRefeicaoDAO);
         editarRefeicaoUseCase = new EditarRefeicaoUseCase(inMemoryRefeicaoDAO);
         excluirRefeicaoUseCase = new ExcluirRefeicaoUseCase(inMemoryRefeicaoDAO);
-    }
-
-    private static void inicializarDiaUseCases(){
         cadastrarDiaUseCase = new CadastrarDiaUseCase(inMemoryDiaDAO);
         editarDiaUseCase = new EditarDiaUseCase(inMemoryDiaDAO);
         excluirDiaUseCase = new ExcluirDiaUseCase(inMemoryDiaDAO);
-    }
-
-    private static void inicializarDietaUseCases(){
         ativarDietaUseCase = new AtivarDietaUseCase(inMemoryDietaDAO);
         buscarDietaUseCase = new BuscarDietaUseCase(inMemoryDietaDAO);
         cadastrarDietaUseCase = new CadastrarDietaUseCase(inMemoryDietaDAO);
