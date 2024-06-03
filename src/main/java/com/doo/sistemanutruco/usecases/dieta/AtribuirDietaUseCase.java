@@ -14,4 +14,9 @@ public class AtribuirDietaUseCase {
         return  pacienteDAO.update(paciente);
     }
 
+    public boolean desatribuirDieta(Paciente paciente, Dieta dieta) {
+        paciente.desatribuirDieta(dieta);
+        return pacienteDAO.update(paciente);
+    }
+
 }
