@@ -201,14 +201,16 @@ public class Main {
         // CDU0011 – Editar Dia
         System.out.println("Editar Dia");
         Dia dia = inMemoryDiaDAO.findAll().get(0);
-        dia.setRefeicoes(new ArrayList<Refeicao>());
-        inMemoryDiaDAO.update(dia);
+        List<Refeicao> novaListaRefeicao = new ArrayList<>();
+        novaListaRefeicao.add(inMemoryRefeicaoDAO.findAll().get(1));
+        dia.setRefeicoes(novaListaRefeicao);
+        editarDiaUseCase.editar(dia);
         System.out.println(dia);
         System.out.println("--------------");
 
         // CDU0013 - Excluir dia
         System.out.println("Excluir Dia");
-        inMemoryDiaDAO.deleteByKey(2); // Terça
+        excluirDiaUseCase.excluir(dia);
         for (Dia diaInMemory : inMemoryDiaDAO.findAll())
             System.out.println(diaInMemory);
         System.out.println("--------------");
