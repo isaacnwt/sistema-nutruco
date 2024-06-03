@@ -205,7 +205,11 @@ public class Main {
     }
 
     private static void inicializarTestesDieta(DietaDAO dietaDAO){
-        Dieta dieta1 = dietaDAO.findOne(1).get(); // dieta1
+        // CDU00X - Buscar dieta
+        System.out.println("Buscar Dieta");
+        Dieta dieta1 = buscarDietaUseCase.findByNome("dieta1").get();
+        System.out.println(dieta1);
+        System.out.println("--------------");
 
         // CDU005 - Clonar dieta
         System.out.println("Clonar Dieta");
