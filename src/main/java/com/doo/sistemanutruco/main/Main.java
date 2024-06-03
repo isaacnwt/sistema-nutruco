@@ -113,6 +113,35 @@ public class Main {
         buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
         System.out.println("--------------");
 
+        // CDU002 – Editar paciente
+        System.out.println("Editar Paciente");
+        Paciente paciente1Update = new Paciente("123", "teste update", LocalDate.of(2000, 7, 2),
+                16999990000L, "teste@email.com",90.0, 1.82, "ganhar massa");
+
+        if (editarPacienteUseCase.editar(paciente1Update)) {
+            System.out.println("Atualizado com sucesso");
+            buscarPacienteUseCase.findByCpf("123").ifPresent(System.out::println);
+        }
+        else System.out.println("Erro ao atualizar");
+        System.out.println("--------------");
+
+        // [RF003]/[RF004] Inativar/Ativar Paciente
+        System.out.println("Inativar Paciente");
+        if (ativarPacienteUseCase.inativar(paciente2)) {
+            System.out.println("Desativado com sucesso");
+            buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
+        }
+        else System.out.println("Erro ao desativar");
+        System.out.println("--------------");
+
+        System.out.println("Ativar Paciente");
+        if (ativarPacienteUseCase.ativar(paciente2)) {
+            System.out.println("Ativado com sucesso");
+            buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
+        }
+        else System.out.println("Erro ao ativar");
+        System.out.println("--------------");
+
         // CDU002 - Editar Paciente
         System.out.println("Editar Paciente");
         paciente1.setNome("Teste 1 - Editado");
@@ -182,14 +211,16 @@ public class Main {
         // CDU0011 – Editar Dia
         System.out.println("Editar Dia");
         Dia dia = inMemoryDiaDAO.findAll().get(0);
-        dia.setRefeicoes(new ArrayList<Refeicao>());
-        inMemoryDiaDAO.update(dia);
+        List<Refeicao> novaListaRefeicao = new ArrayList<>();
+        novaListaRefeicao.add(inMemoryRefeicaoDAO.findAll().get(1));
+        dia.setRefeicoes(novaListaRefeicao);
+        editarDiaUseCase.editar(dia);
         System.out.println(dia);
         System.out.println("--------------");
 
         // CDU0013 - Excluir dia
         System.out.println("Excluir Dia");
-        inMemoryDiaDAO.deleteByKey(2); // Terça
+        excluirDiaUseCase.excluir(dia);
         for (Dia diaInMemory : inMemoryDiaDAO.findAll())
             System.out.println(diaInMemory);
         System.out.println("--------------");
