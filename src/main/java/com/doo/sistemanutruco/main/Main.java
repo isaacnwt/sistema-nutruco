@@ -110,7 +110,7 @@ public class Main {
 
         // CDU0013 – Buscar Paciente
         buscarPacienteUseCase.findByCpf("123").ifPresent(System.out::println);
-        buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
+        buscarPacienteUseCase.findByNome("teste2").ifPresent(System.out::println);
         System.out.println("--------------");
 
         // CDU002 - Editar Paciente
@@ -129,7 +129,8 @@ public class Main {
         System.out.println("Inativar Paciente");
         if (ativarPacienteUseCase.inativar(paciente2)) {
             System.out.println("Desativado com sucesso");
-            buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
+            buscarPacienteUseCase.findByCpf("456").ifPresent(paciente ->
+                    System.out.println("Paciente: "+paciente.getNome()+", Inativo: "+paciente.getInativo()));
         }
         else System.out.println("Erro ao desativar");
         System.out.println("--------------");
@@ -137,7 +138,8 @@ public class Main {
         System.out.println("Ativar Paciente");
         if (ativarPacienteUseCase.ativar(paciente2)) {
             System.out.println("Ativado com sucesso");
-            buscarPacienteUseCase.findByCpf("456").ifPresent(System.out::println);
+            buscarPacienteUseCase.findByCpf("456").ifPresent(paciente ->
+                    System.out.println("Paciente: "+paciente.getNome()+", Inativo: "+paciente.getInativo()));
         }
         else System.out.println("Erro ao ativar");
         System.out.println("--------------");
