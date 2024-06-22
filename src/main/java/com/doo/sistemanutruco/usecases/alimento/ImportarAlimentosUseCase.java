@@ -5,6 +5,7 @@ import com.doo.sistemanutruco.entities.alimento.Alimento;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 public class ImportarAlimentosUseCase {
     private final AlimentoDAO alimentoDAO;
@@ -46,5 +47,9 @@ public class ImportarAlimentosUseCase {
         Double gorduras = Double.parseDouble(valores[7]);
 
         return new Alimento(nome, calorias, carboidratos, proteinas, sodio, gluten, lactose, gorduras);
+    }
+
+    public List<Alimento> getAllAlimentos() {
+        return alimentoDAO.findAll();
     }
 }

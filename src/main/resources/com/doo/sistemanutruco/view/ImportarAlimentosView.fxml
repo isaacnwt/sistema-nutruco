@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
@@ -24,4 +25,55 @@
     </HBox>
     <Button text="Importar" onAction="#handleImportarButtonAction"/>
     <Label fx:id="statusLabel" text="" style="-fx-text-fill: red;"/>
+
+    <Label text="Alimentos Importados" style="-fx-font-size: 14pt;"/>
+    <TableView fx:id="alimentosTableView" prefWidth="600" prefHeight="400">
+        <columns>
+            <TableColumn text="ID" fx:id="idColumn" prefWidth="50">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Nome" fx:id="nomeColumn" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nome"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Calorias" fx:id="caloriasColumn" prefWidth="80">
+                <cellValueFactory>
+                    <PropertyValueFactory property="calorias"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Carboidratos" fx:id="carboidratosColumn" prefWidth="80">
+                <cellValueFactory>
+                    <PropertyValueFactory property="carboidratos"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Proteínas" fx:id="proteinasColumn" prefWidth="80">
+                <cellValueFactory>
+                    <PropertyValueFactory property="proteinas"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Sódio" fx:id="sodioColumn" prefWidth="80">
+                <cellValueFactory>
+                    <PropertyValueFactory property="sodio"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Gorduras" fx:id="gordurasColumn" prefWidth="80">
+                <cellValueFactory>
+                    <PropertyValueFactory property="gorduras"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Glúten" fx:id="glutenColumn" prefWidth="80">
+                <cellValueFactory>
+                    <PropertyValueFactory property="gluten"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Lactose" fx:id="lactoseColumn" prefWidth="80">
+                <cellValueFactory>
+                    <PropertyValueFactory property="lactose"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
 </VBox>

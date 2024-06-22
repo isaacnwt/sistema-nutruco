@@ -2,14 +2,36 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.doo.sistemanutruco.controller.GestaoRefeicoesController"
       alignment="CENTER"
       spacing="10.0"
-      style="-fx-padding: 20;">
-    <Button text="Cadastrar Refeição" onAction="#handleCadastrarRefeicao"/>
-    <Button text="Editar Refeição" onAction="#handleEditarRefeicao"/>
-    <Button text="Excluir Refeição" onAction="#handleExcluirRefeicao"/>
+      style="-fx-padding: 20;"
+      prefWidth="400" prefHeight="400">
+    <Label text="Gestão de Refeições" style="-fx-font-size: 16pt;"/>
+    <TableView fx:id="refeicoesTableView" prefWidth="350" prefHeight="200">
+        <columns>
+            <TableColumn text="Nome" fx:id="nomeColumn" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nome"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Descrição" fx:id="descricaoColumn" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="descricao"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Objetivo" fx:id="objetivoColumn" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="objetivo"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+    <Button text="Cadastrar Refeição" onAction="#handleCadastrarRefeicao" prefWidth="350"/>
+    <Button text="Editar Refeição" onAction="#handleEditarRefeicao" prefWidth="350"/>
+    <Button text="Excluir Refeição" onAction="#handleExcluirRefeicao" prefWidth="350"/>
 </VBox>

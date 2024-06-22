@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <VBox xmlns="http://javafx.com/javafx"
@@ -17,8 +18,16 @@
     <TextField fx:id="objetivoTextField" promptText="Objetivo" prefWidth="500"/>
 
     <Label text="Alimentos Disponíveis"/>
-    <ComboBox fx:id="alimentosComboBox" promptText="Selecione um alimento" prefWidth="500"/>
-    <Button text="Adicionar Alimento" onAction="#handleAdicionarAlimento" prefWidth="500"/>
+    <HBox spacing="10">
+        <ComboBox fx:id="alimentosComboBox" promptText="Selecione um alimento" prefWidth="400"/>
+        <Button onAction="#handleAdicionarAlimento">
+            <graphic>
+                <ImageView fitHeight="20" fitWidth="20">
+                    <Image url="@../image/plus-symbol-button.png"/>
+                </ImageView>
+            </graphic>
+        </Button>
+    </HBox>
 
     <Label text="Alimentos na Refeição"/>
     <TableView fx:id="alimentosTableView" prefWidth="500" prefHeight="200">
