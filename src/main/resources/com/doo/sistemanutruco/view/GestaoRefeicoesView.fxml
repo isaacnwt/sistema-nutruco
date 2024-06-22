@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.doo.sistemanutruco.controller.GestaoRefeicoesController"
+      alignment="CENTER"
+      spacing="10.0"
+      style="-fx-padding: 20;">
+    <Button text="Cadastrar Refeição" onAction="#handleCadastrarRefeicao"/>
+    <Button text="Editar Refeição" onAction="#handleEditarRefeicao"/>
+    <Button text="Excluir Refeição" onAction="#handleExcluirRefeicao"/>
+</VBox>

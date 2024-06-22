@@ -17,7 +17,7 @@ public class MainController {
 
     @FXML
     private void handleRefeicoes() {
-        showAlert("Refeições");
+        loadWindow("/com/doo/sistemanutruco/view/GestaoRefeicoesView.fxml", "Gestão de Refeições");
     }
 
     @FXML

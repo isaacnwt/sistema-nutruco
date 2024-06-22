@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: integracao de alimentos com o sqlite">
+    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: view e controller cadastro de refeicao">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/CadastroRefeicaoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/GestaoRefeicoesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteRefeicaoDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/CadastroRefeicaoView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/GestaoRefeicoesView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/ImportarAlimentosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/ImportarAlimentosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/ImportarAlimentosView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/ImportarAlimentosView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/refeicao/Refeicao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/refeicao/Refeicao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/AbstractTemplateSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/AbstractTemplateSqlDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/refeicao/CadastrarRefeicaoUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/refeicao/CadastrarRefeicaoUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,7 +336,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719083360907</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="feat: selecionando arquivo via file explorer">
+      <option name="closed" value="true" />
+      <created>1719084385709</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1719084385709</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -343,7 +359,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="build: estrutura inicial com javafx" />
     <MESSAGE value="style: renomeando nomes automaticos" />
     <MESSAGE value="test: cadastrar Pacientes" />
     <MESSAGE value="test: Pacientes UseCases" />
@@ -367,6 +382,19 @@
     <MESSAGE value="feat: integracao inicial com javafx" />
     <MESSAGE value="feat: tela com menu inicial" />
     <MESSAGE value="feat: integracao de alimentos com o sqlite" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: integracao de alimentos com o sqlite" />
+    <MESSAGE value="feat: selecionando arquivo via file explorer" />
+    <MESSAGE value="feat: view e controller cadastro de refeicao" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: view e controller cadastro de refeicao" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteRefeicaoDAO.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
