@@ -1,23 +1,12 @@
 package com.doo.sistemanutruco;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import com.doo.sistemanutruco.repository.util.DatabaseBuilder;
+import com.doo.sistemanutruco.main.loader.WindowAlimentosManager;
 
-import java.io.IOException;
-
-public class App extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
-    }
-
+public class App {
     public static void main(String[] args) {
-        launch();
+        DatabaseBuilder dbBuilder = new DatabaseBuilder();
+        dbBuilder.buildDatabaseIfMissing();
+        WindowAlimentosManager.main(args);
     }
 }

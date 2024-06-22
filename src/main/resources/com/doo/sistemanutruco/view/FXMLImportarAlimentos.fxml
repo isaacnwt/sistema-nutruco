@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.doo.sistemanutruco.controller.CtrlImportarAlimentos"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label layoutX="20.0" layoutY="20.0" text="Importar Alimentos CSV"/>
+    <TextField fx:id="pathTextField" layoutX="20.0" layoutY="50.0" promptText="Caminho do arquivo CSV"/>
+    <Button layoutX="20.0" layoutY="90.0" text="Importar" onAction="#handleImportarButtonAction"/>
+    <Label fx:id="statusLabel" layoutX="20.0" layoutY="130.0"/>
+</AnchorPane>

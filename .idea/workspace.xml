@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: paciente dieate alterado para list">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/paciente/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/paciente/Paciente.java" afterDir="false" />
+    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: integracao inicial com javafx">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/CtrlImportarAlimentos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/ConnectionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/DatabaseBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/view/loader/WindowAlimentosManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/fxml/FXMLImportarAlimentos.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/PrimaryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,25 +28,31 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;BrenoNLps&quot;
+    &quot;assignee&quot;: &quot;isaacnwt&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/isaacnwt/sistema-nutruco.git&quot;,
-    &quot;accountId&quot;: &quot;24cc7a4e-1b1d-41ed-96fd-8e374c946c1c&quot;
+    &quot;accountId&quot;: &quot;d5c685ea-f5b5-4c3a-90cc-d09823ec8fb2&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -53,7 +69,9 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2gWa4WxPiRxadB2G7tezKQokItr" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -63,25 +81,34 @@
     "Application.App.executor": "Run",
     "Application.HelloApplication.executor": "Run",
     "Application.Main.executor": "Run",
+    "Maven.sistema-nutruco [clean,install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Desktop/Cursos/nutriBem-master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
+    "last_opened_file_path": "/home/isaacnwt/ADS/DOO/sistema-nutruco/src/main/java/com/doo/sistemanutruco/view/fxml",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/view/fxml" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/main" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.doo.sistemanutruco.App" />
       <module name="sistema-nutruco" />
@@ -110,18 +137,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -131,8 +150,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715815598663</updated>
-      <workItem from="1717168339890" duration="58000" />
-      <workItem from="1717171382836" duration="4370000" />
     </task>
     <task id="LOCAL-00001" summary="build: estrutura inicial com javafx">
       <option name="closed" value="true" />
@@ -150,27 +167,152 @@
       <option name="project" value="LOCAL" />
       <updated>1715820722240</updated>
     </task>
-    <task id="LOCAL-00003" summary="feat: atribuir dieta implementado">
+    <task id="LOCAL-00003" summary="test: cadastrar Pacientes">
       <option name="closed" value="true" />
-      <created>1717187567981</created>
+      <created>1717277199006</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1717187567981</updated>
+      <updated>1717277199006</updated>
     </task>
-    <task id="LOCAL-00004" summary="feat: paciente dieate alterado para list">
+    <task id="LOCAL-00004" summary="test: Pacientes UseCases">
       <option name="closed" value="true" />
-      <created>1717187654447</created>
+      <created>1717281368639</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1717187654447</updated>
+      <updated>1717281368639</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refactor: validacoes BuscarPacienteUseCase">
+      <option name="closed" value="true" />
+      <created>1717287142702</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717287142703</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: ImportarAlimentosUseCase">
+      <option name="closed" value="true" />
+      <created>1717297557277</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717297557277</updated>
+    </task>
+    <task id="LOCAL-00007" summary="style: reorganizacao dos testes conforme as etapas do dominio">
+      <option name="closed" value="true" />
+      <created>1717298172678</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1717298172681</updated>
+    </task>
+    <task id="LOCAL-00008" summary="refactor: criacao e validacao de Refeicao">
+      <option name="closed" value="true" />
+      <created>1717301171708</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717301171709</updated>
+    </task>
+    <task id="LOCAL-00009" summary="test: CadastrarRefeicaoUseCase">
+      <option name="closed" value="true" />
+      <created>1717301200279</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1717301200279</updated>
+    </task>
+    <task id="LOCAL-00010" summary="refactor: atributos boolean de Paciente">
+      <option name="closed" value="true" />
+      <created>1717301540610</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1717301540610</updated>
+    </task>
+    <task id="LOCAL-00011" summary="refactor: modelo e validador de Dia">
+      <option name="closed" value="true" />
+      <created>1717301949868</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1717301949869</updated>
+    </task>
+    <task id="LOCAL-00012" summary="test: CadastrarDiaUseCase">
+      <option name="closed" value="true" />
+      <created>1717303006361</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1717303006362</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: contabilizando valores nutricionais no dia">
+      <option name="closed" value="true" />
+      <created>1717303423512</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1717303423512</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix: CadastrarDiaUseCase test">
+      <option name="closed" value="true" />
+      <created>1717304309465</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1717304309465</updated>
+    </task>
+    <task id="LOCAL-00015" summary="refactor: toString amigavel nos modelos">
+      <option name="closed" value="true" />
+      <created>1717304345830</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1717304345830</updated>
+    </task>
+    <task id="LOCAL-00016" summary="chore: arquivo alimentos.csv adicionado">
+      <option name="closed" value="true" />
+      <created>1717357250035</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1717357250035</updated>
+    </task>
+    <task id="LOCAL-00017" summary="style: agrupamento da inicializacao dos usecases">
+      <option name="closed" value="true" />
+      <created>1717441680078</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1717441680078</updated>
+    </task>
+    <task id="LOCAL-00018" summary="refactor: remocao teste duplicado">
+      <option name="closed" value="true" />
+      <created>1717443483165</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1717443483166</updated>
+    </task>
+    <task id="LOCAL-00019" summary="test: editar refeicao use case">
+      <option name="closed" value="true" />
+      <created>1717444763115</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1717444763116</updated>
+    </task>
+    <task id="LOCAL-00020" summary="refactor: teste ativar/desativar paciente">
+      <option name="closed" value="true" />
+      <created>1717467644776</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1717467644777</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -186,19 +328,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="build: estrutura inicial com javafx" />
     <MESSAGE value="style: renomeando nomes automaticos" />
-    <MESSAGE value="feat: atribuir dieta implementado" />
-    <MESSAGE value="feat: paciente dieate alterado para list" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: paciente dieate alterado para list" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/main/Main.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="test: cadastrar Pacientes" />
+    <MESSAGE value="test: Pacientes UseCases" />
+    <MESSAGE value="refactor: validacoes BuscarPacienteUseCase" />
+    <MESSAGE value="feat: ImportarAlimentosUseCase" />
+    <MESSAGE value="style: reorganizacao dos testes conforme as etapas do dominio" />
+    <MESSAGE value="refactor: criacao e validacao de Refeicao" />
+    <MESSAGE value="test: CadastrarRefeicaoUseCase" />
+    <MESSAGE value="refactor: atributos boolean de Paciente" />
+    <MESSAGE value="refactor: modelo e validador de Dia" />
+    <MESSAGE value="test: CadastrarDiaUseCase" />
+    <MESSAGE value="feat: contabilizando valores nutricionais no dia" />
+    <MESSAGE value="fix: CadastrarDiaUseCase test" />
+    <MESSAGE value="refactor: toString amigavel" />
+    <MESSAGE value="refactor: toString amigavel nos modelos" />
+    <MESSAGE value="chore: arquivo alimentos.csv adicionado" />
+    <MESSAGE value="style: agrupamento da inicializacao dos usecases" />
+    <MESSAGE value="refactor: remocao teste duplicado" />
+    <MESSAGE value="test: editar refeicao use case" />
+    <MESSAGE value="refactor: teste ativar/desativar paciente" />
+    <MESSAGE value="feat: integracao inicial com javafx" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: integracao inicial com javafx" />
   </component>
 </project>
