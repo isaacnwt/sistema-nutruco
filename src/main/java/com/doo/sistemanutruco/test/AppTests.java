@@ -1,4 +1,4 @@
-package com.doo.sistemanutruco.main;
+package com.doo.sistemanutruco.test;
 
 import com.doo.sistemanutruco.entities.alimento.Alimento;
 import com.doo.sistemanutruco.entities.dia.Dia;
@@ -21,7 +21,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class AppTests {
 
     private static InMemoryPacienteDAO inMemoryPacienteDAO;
     private static InMemoryAlimentoDAO inMemoryAlimentoDAO;

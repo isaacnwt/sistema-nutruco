@@ -1,7 +1,6 @@
 package com.doo.sistemanutruco.controller;
 
 import com.doo.sistemanutruco.repository.memory.InMemoryAlimentoDAO;
-import com.doo.sistemanutruco.usecases.alimento.AlimentoDAO;
 import com.doo.sistemanutruco.usecases.alimento.ImportarAlimentosUseCase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -9,7 +8,7 @@ import javafx.scene.control.TextField;
 
 import java.io.File;
 
-public class CtrlImportarAlimentos {
+public class ImportarAlimentosController {
     @FXML
     private TextField pathTextField;
 
@@ -18,9 +17,8 @@ public class CtrlImportarAlimentos {
 
     private ImportarAlimentosUseCase importarAlimentosUseCase;
 
-    public CtrlImportarAlimentos() {
-        AlimentoDAO alimentoDAO = new InMemoryAlimentoDAO();
-        this.importarAlimentosUseCase = new ImportarAlimentosUseCase(alimentoDAO);
+    public ImportarAlimentosController() {
+        this.importarAlimentosUseCase = new ImportarAlimentosUseCase(new InMemoryAlimentoDAO());
     }
 
     @FXML

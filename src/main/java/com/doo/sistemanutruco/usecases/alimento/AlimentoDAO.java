@@ -1,7 +1,7 @@
 package com.doo.sistemanutruco.usecases.alimento;
 
 import com.doo.sistemanutruco.entities.alimento.Alimento;
-import com.doo.sistemanutruco.usecases.utils.DAO;
+import com.doo.sistemanutruco.repository.util.DAO;
 
 import java.util.Optional;
 

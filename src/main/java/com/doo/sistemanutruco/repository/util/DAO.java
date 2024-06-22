@@ -1,4 +1,4 @@
-package com.doo.sistemanutruco.usecases.utils;
+package com.doo.sistemanutruco.repository.util;
 
 import java.util.List;
 import java.util.Optional;
