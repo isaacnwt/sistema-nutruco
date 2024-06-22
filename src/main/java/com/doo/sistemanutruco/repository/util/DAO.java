@@ -15,4 +15,6 @@ public interface DAO <T, K>{
     boolean deleteByKey(K key);
 
     boolean delete(T type);
+
+    List<T> selectBy(String field, Object value);
 }

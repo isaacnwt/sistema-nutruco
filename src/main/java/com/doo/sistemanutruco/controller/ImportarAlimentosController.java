@@ -1,6 +1,6 @@
 package com.doo.sistemanutruco.controller;
 
-import com.doo.sistemanutruco.repository.memory.InMemoryAlimentoDAO;
+import com.doo.sistemanutruco.repository.sqlite.SqliteAlimentoDAO;
 import com.doo.sistemanutruco.usecases.alimento.ImportarAlimentosUseCase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -18,7 +18,7 @@ public class ImportarAlimentosController {
     private ImportarAlimentosUseCase importarAlimentosUseCase;
 
     public ImportarAlimentosController() {
-        this.importarAlimentosUseCase = new ImportarAlimentosUseCase(new InMemoryAlimentoDAO());
+        this.importarAlimentosUseCase = new ImportarAlimentosUseCase(new SqliteAlimentoDAO());
     }
 
     @FXML

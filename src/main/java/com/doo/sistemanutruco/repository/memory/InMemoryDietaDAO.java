@@ -54,6 +54,11 @@ public class InMemoryDietaDAO implements DietaDAO {
     }
 
     @Override
+    public List<Dieta> selectBy(String field, Object value) {
+        return List.of();
+    }
+
+    @Override
     public Optional<Dieta> findByNome(String nome) {
         return db.values().stream()
                 .filter(dieta -> dieta.getNome().equals(nome))

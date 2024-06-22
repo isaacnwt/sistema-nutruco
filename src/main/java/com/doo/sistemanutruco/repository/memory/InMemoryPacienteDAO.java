@@ -65,5 +65,10 @@ public class InMemoryPacienteDAO implements PacienteDAO {
         return deleteByKey(paciente.getCpf());
     }
 
+    @Override
+    public List<Paciente> selectBy(String field, Object value) {
+        return List.of();
+    }
+
 
 }

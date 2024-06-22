@@ -82,6 +82,9 @@ public class Alimento {
         this.gorduras = gorduras;
     }
 
+    public Alimento() {
+    }
+
     public Alimento(String nome, Double calorias, Double carboidratos, Double proteinas, Double sodio, boolean gluten, boolean lactose, Double gorduras) {
         this.nome = nome;
         this.calorias = calorias;

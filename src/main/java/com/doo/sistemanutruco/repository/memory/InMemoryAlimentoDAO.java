@@ -58,6 +58,11 @@ public class InMemoryAlimentoDAO implements AlimentoDAO {
     public boolean delete(Alimento alimento) {
         return deleteByKey(alimento.getId());
     }
+
+    @Override
+    public List<Alimento> selectBy(String field, Object value) {
+        return List.of();
+    }
 }
 
 

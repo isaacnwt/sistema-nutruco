@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: integracao inicial com javafx">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/MainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/MainView.fxml" afterDir="false" />
+    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: tela com menu inicial">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteAlimentoDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/AbstractTemplateSqlDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/CtrlImportarAlimentos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/ImportarAlimentosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/test/AppTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/main/loader/WindowAlimentosManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/loaders/WindowMainManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/alimento/Alimento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/alimento/Alimento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/FXMLImportarAlimentos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/ImportarAlimentosView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,7 +316,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719079266848</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feat: tela com menu inicial">
+      <option name="closed" value="true" />
+      <created>1719081352467</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1719081352467</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -355,6 +361,7 @@
     <MESSAGE value="test: editar refeicao use case" />
     <MESSAGE value="refactor: teste ativar/desativar paciente" />
     <MESSAGE value="feat: integracao inicial com javafx" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: integracao inicial com javafx" />
+    <MESSAGE value="feat: tela com menu inicial" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: tela com menu inicial" />
   </component>
 </project>

@@ -3,6 +3,7 @@ module com.doo.sistemanutruco {
     requires javafx.fxml;
     requires java.sql;
     requires org.xerial.sqlitejdbc;
+    requires org.jetbrains.annotations;
 
     exports com.doo.sistemanutruco;
 
