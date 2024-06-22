@@ -51,4 +51,9 @@ public class InMemoryDiaDAO implements DiaDAO {
     public boolean delete(Dia dia) {
         return deleteByKey(dia.getId());
     }
+
+    @Override
+    public List<Dia> selectBy(String field, Object value) {
+        return List.of();
+    }
 }

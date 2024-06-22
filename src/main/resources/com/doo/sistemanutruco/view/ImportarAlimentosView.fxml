@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.doo.sistemanutruco.controller.ImportarAlimentosController"
+      alignment="CENTER"
+      spacing="10.0"
+      style="-fx-padding: 20;">
+    <Label text="Importar Alimentos CSV" style="-fx-font-size: 16pt;"/>
+    <HBox spacing="10.0" alignment="CENTER">
+        <TextField fx:id="pathTextField" promptText="Caminho do arquivo CSV" prefWidth="400"/>
+        <Button onAction="#handleSelecionarArquivo">
+            <graphic>
+                <ImageView fitHeight="20" fitWidth="20">
+                    <Image url="@../image/folder.png"/>
+                </ImageView>
+            </graphic>
+        </Button>
+    </HBox>
+    <Button text="Importar" onAction="#handleImportarButtonAction"/>
+    <Label fx:id="statusLabel" text="" style="-fx-text-fill: red;"/>
+</VBox>

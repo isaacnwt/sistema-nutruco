@@ -1,4 +1,4 @@
-package com.doo.sistemanutruco.usecases.utils;
+package com.doo.sistemanutruco.repository.util;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,4 +15,6 @@ public interface DAO <T, K>{
     boolean deleteByKey(K key);
 
     boolean delete(T type);
+
+    List<T> selectBy(String field, Object value);
 }

@@ -53,6 +53,11 @@ public class InMemoryRefeicaoDAO implements RefeicaoDAO {
     }
 
     @Override
+    public List<Refeicao> selectBy(String field, Object value) {
+        return List.of();
+    }
+
+    @Override
     public Optional<Refeicao> findByNome(String nome) {
         return db.values().stream()
                 .filter(refeicao -> refeicao.getNome().equals(nome))
