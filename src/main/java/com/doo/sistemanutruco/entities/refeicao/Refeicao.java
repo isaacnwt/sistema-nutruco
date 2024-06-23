@@ -18,6 +18,9 @@ public class Refeicao {
     private double sodioTotal;
     private double gordurasTotais;
 
+    public Refeicao() {
+    }
+
     public Refeicao(String nome, String descricao, String objetivo, List<Alimento> alimentos) {
         this.nome = nome;
         this.descricao = descricao;

@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: integracao de alimentos com o sqlite">
+    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: view e controller cadastro de refeicao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/GestaoRefeicoesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/GestaoRefeicoesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/ImportarAlimentosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/ImportarAlimentosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/alimento/ImportarAlimentosUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/alimento/ImportarAlimentosUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/CadastroRefeicaoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/CadastroRefeicaoView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/GestaoRefeicoesView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/GestaoRefeicoesView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/ImportarAlimentosView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/ImportarAlimentosView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,24 +72,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Maven.sistema-nutruco [clean,install].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/isaacnwt/ADS/DOO/sistema-nutruco/src/main/java/com/doo/sistemanutruco/view/fxml",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.sistema-nutruco [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/isaacnwt/ADS/DOO/sistema-nutruco/src/main/java/com/doo/sistemanutruco/view/fxml&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/view/fxml" />
@@ -328,7 +332,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719083360907</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="feat: selecionando arquivo via file explorer">
+      <option name="closed" value="true" />
+      <created>1719084385709</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1719084385709</updated>
+    </task>
+    <task id="LOCAL-00025" summary="feat: view e controller cadastro de refeicao">
+      <option name="closed" value="true" />
+      <created>1719095383345</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1719095383345</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -343,7 +363,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="build: estrutura inicial com javafx" />
     <MESSAGE value="style: renomeando nomes automaticos" />
     <MESSAGE value="test: cadastrar Pacientes" />
     <MESSAGE value="test: Pacientes UseCases" />
@@ -367,6 +386,8 @@
     <MESSAGE value="feat: integracao inicial com javafx" />
     <MESSAGE value="feat: tela com menu inicial" />
     <MESSAGE value="feat: integracao de alimentos com o sqlite" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: integracao de alimentos com o sqlite" />
+    <MESSAGE value="feat: selecionando arquivo via file explorer" />
+    <MESSAGE value="feat: view e controller cadastro de refeicao" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: view e controller cadastro de refeicao" />
   </component>
 </project>
