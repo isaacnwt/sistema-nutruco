@@ -31,8 +31,8 @@ public class MainController {
     }
 
     @FXML
-    private void handleUsuarios() {
-        showAlert("Usuários");
+    private void handlePacientes() {
+        loadWindow("/com/doo/sistemanutruco/view/GestaoPacientesView.fxml", "Gestão de Pacientes");
     }
 
     private void showAlert(String category) {

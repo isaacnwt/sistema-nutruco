@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: view e controller cadastro de refeicao">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/CadastroPacienteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/GestaoPacientesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqlitePacienteDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/CadastroPacienteView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/GestaoPacientesView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/AbstractTemplateSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/AbstractTemplateSqlDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/DatabaseBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/DatabaseBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/MainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +77,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.App.executor": "Run",
+    "Application.App.executor": "Debug",
     "Application.HelloApplication.executor": "Run",
     "Application.Main.executor": "Run",
     "Maven.sistema-nutruco [clean,install].executor": "Run",
@@ -85,6 +94,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.doo.sistemanutruco.repository.sqlite" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/view/fxml" />
     </key>
@@ -383,5 +395,16 @@
     <MESSAGE value="feat: selecionando arquivo via file explorer" />
     <MESSAGE value="feat: view e controller cadastro de refeicao" />
     <option name="LAST_COMMIT_MESSAGE" value="feat: view e controller cadastro de refeicao" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/paciente/CadastrarPacienteUseCase.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

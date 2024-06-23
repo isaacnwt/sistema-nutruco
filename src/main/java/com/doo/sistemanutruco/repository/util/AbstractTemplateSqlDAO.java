@@ -32,15 +32,13 @@ public abstract class AbstractTemplateSqlDAO<T, K> implements DAO<T, K> {
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             setEntityToPreparedStatement(entity, stmt);
             stmt.executeUpdate();
-            ResultSet generatedKeys = stmt.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                return (K) generatedKeys.getObject(1);
-            }
+            return getEntityKey(entity);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
+
 
     @Override
     public boolean update(T entity) {

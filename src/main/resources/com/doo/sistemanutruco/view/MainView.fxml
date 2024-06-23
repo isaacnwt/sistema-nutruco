@@ -14,5 +14,5 @@
     <Button text="Refeições" onAction="#handleRefeicoes"/>
     <Button text="Dias" onAction="#handleDias"/>
     <Button text="Dietas" onAction="#handleDietas"/>
-    <Button text="Usuários" onAction="#handleUsuarios"/>
+    <Button text="Pacientes" onAction="#handlePacientes"/>
 </VBox>
