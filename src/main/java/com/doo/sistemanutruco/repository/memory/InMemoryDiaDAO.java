@@ -1,6 +1,7 @@
 package com.doo.sistemanutruco.repository.memory;
 
 import com.doo.sistemanutruco.entities.dia.Dia;
+import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 import com.doo.sistemanutruco.usecases.dia.DiaDAO;
 
 import java.util.*;
@@ -54,6 +55,16 @@ public class InMemoryDiaDAO implements DiaDAO {
 
     @Override
     public List<Dia> selectBy(String field, Object value) {
+        return List.of();
+    }
+
+    @Override
+    public void atribuirRefeicaoADia(Dia dia, Refeicao refeicao) {
+
+    }
+
+    @Override
+    public List<Dia> findByDietaId(Integer dietaId) {
         return List.of();
     }
 }

@@ -1,67 +1,83 @@
 package com.doo.sistemanutruco.controller;
 
+import com.doo.sistemanutruco.entities.alimento.Alimento;
+import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.entities.paciente.Paciente;
+import com.doo.sistemanutruco.repository.sqlite.SqliteDiaDAO;
+import com.doo.sistemanutruco.repository.sqlite.SqliteDietaDAO;
 import com.doo.sistemanutruco.repository.sqlite.SqlitePacienteDAO;
+import com.doo.sistemanutruco.repository.sqlite.SqliteRefeicaoDAO;
+import com.doo.sistemanutruco.usecases.dieta.AtribuirDietaUseCase;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.util.StringConverter;
 
-import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class AtribuirDietaController {
 
     @FXML
-    private TableView<Paciente> pacientesTableView;
+    private ComboBox<Paciente> pacientesComboBox;
 
     @FXML
-    private TableColumn<Paciente, String> cpfColumn;
+    private TextField nomeDietaTextField;
 
     @FXML
-    private TableColumn<Paciente, String> nomeColumn;
+    private TextField objetivoDietaTextField;
 
-    private ObservableList<Paciente> pacientes;
+    @FXML
+    private DatePicker dataInicioDatePicker;
+
+    @FXML
+    private DatePicker dataFimDatePicker;
+
+    @FXML
+    private Label statusLabel;
+
+    private final AtribuirDietaUseCase atribuirDietaUseCase;
 
     public AtribuirDietaController() {
+        this.atribuirDietaUseCase = new AtribuirDietaUseCase(
+                new SqlitePacienteDAO(), new SqliteDietaDAO(), new SqliteDiaDAO(), new SqliteRefeicaoDAO());
     }
 
     @FXML
     public void initialize() {
-        SqlitePacienteDAO pacienteDAO = new SqlitePacienteDAO();
-        List<Paciente> pacientesList = pacienteDAO.findAll();
+        List<Paciente> pacientes = new SqlitePacienteDAO().findAll();
+        pacientesComboBox.setItems(FXCollections.observableArrayList(pacientes));
+        pacientesComboBox.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(Paciente paciente) {
+                return paciente != null ? paciente.getNome() : "";
+            }
 
-        pacientes = FXCollections.observableArrayList(pacientesList);
-        pacientesTableView.setItems(pacientes);
-
-        cpfColumn.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-        nomeColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
+            @Override
+            public Paciente fromString(String string) {
+                return pacientes.stream()
+                        .filter(paciente -> paciente.getNome().equals(string))
+                        .findFirst()
+                        .orElse(null);
+            }
+        });
     }
 
     @FXML
     private void handleAtribuirDieta() {
-        Paciente selectedPaciente = pacientesTableView.getSelectionModel().getSelectedItem();
-        if (selectedPaciente != null) {
-            // Implementar a navegação para a tela de atribuição de dieta ao paciente selecionado
-        }
-    }
-
-    private void loadWindow(String path, String title) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-            Parent parent = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle(title);
-            stage.setScene(new Scene(parent));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+            Paciente paciente = pacientesComboBox.getValue();
+            String nomeDieta = nomeDietaTextField.getText();
+            String objetivoDieta = objetivoDietaTextField.getText();
+            LocalDate dataInicio = dataInicioDatePicker.getValue();
+            LocalDate dataFim = dataFimDatePicker.getValue();
+
+            Dieta dieta = new Dieta(nomeDieta, objetivoDieta, List.of(), dataInicio, dataFim);
+            atribuirDietaUseCase.atribuirDieta(paciente, dieta);
+
+            statusLabel.setText("Dieta atribuída com sucesso!");
+        } catch (Exception e) {
+            statusLabel.setText(e.getMessage());
         }
     }
 }

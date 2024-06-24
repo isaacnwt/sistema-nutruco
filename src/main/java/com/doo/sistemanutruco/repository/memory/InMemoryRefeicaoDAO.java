@@ -63,4 +63,9 @@ public class InMemoryRefeicaoDAO implements RefeicaoDAO {
                 .filter(refeicao -> refeicao.getNome().equals(nome))
                 .findAny();
     }
+
+    @Override
+    public List<Refeicao> findByDiaId(Integer id) {
+        return List.of();
+    }
 }

@@ -13,7 +13,7 @@ public class AtivarDietaUseCase {
         DietaValidator dietaValidator = new DietaValidator();
         dietaValidator.validar(dieta);
 
-        if (!dieta.getInativo()){
+        if (!dieta.isInativo()){
             throw new IllegalStateException("Dieta já ativa!");
         }
         dieta.setInativo(false);
@@ -24,7 +24,7 @@ public class AtivarDietaUseCase {
         DietaValidator dietaValidator = new DietaValidator();
         dietaValidator.validar(dieta);
 
-        if (dieta.getInativo()){
+        if (dieta.isInativo()){
             throw new IllegalStateException("Dieta já inativa!");
         }
         // Adicionar validação se a dieta estiver em uso (CDU006 - Fluxo Alt 1)

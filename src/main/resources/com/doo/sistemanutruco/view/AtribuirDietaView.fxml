@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
@@ -10,21 +9,34 @@
       alignment="CENTER"
       spacing="10.0"
       style="-fx-padding: 20;"
-      prefWidth="400" prefHeight="400">
+      prefWidth="600" prefHeight="400">
     <Label text="Atribuir Dieta" style="-fx-font-size: 16pt;"/>
-    <TableView fx:id="pacientesTableView" prefWidth="350" prefHeight="200">
-        <columns>
-            <TableColumn text="CPF" fx:id="cpfColumn" prefWidth="100">
-                <cellValueFactory>
-                    <PropertyValueFactory property="cpf"/>
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn text="Nome" fx:id="nomeColumn" prefWidth="150">
-                <cellValueFactory>
-                    <PropertyValueFactory property="nome"/>
-                </cellValueFactory>
-            </TableColumn>
-        </columns>
-    </TableView>
-    <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="350"/>
+
+    <HBox spacing="10">
+        <Label text="Paciente:"/>
+        <ComboBox fx:id="pacientesComboBox" promptText="Selecione um paciente" prefWidth="400"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Nome da Dieta:"/>
+        <TextField fx:id="nomeDietaTextField" promptText="Nome da Dieta" prefWidth="400"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Objetivo da Dieta:"/>
+        <TextField fx:id="objetivoDietaTextField" promptText="Objetivo da Dieta" prefWidth="400"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Data de Início:"/>
+        <DatePicker fx:id="dataInicioDatePicker" promptText="Data de Início" prefWidth="200"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Data de Fim:"/>
+        <DatePicker fx:id="dataFimDatePicker" promptText="Data de Fim" prefWidth="200"/>
+    </HBox>
+
+    <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="200"/>
+    <Label fx:id="statusLabel" text="" style="-fx-text-fill: red;"/>
 </VBox>

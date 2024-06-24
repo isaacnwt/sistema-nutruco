@@ -1,7 +1,8 @@
 package com.doo.sistemanutruco.controller;
 
-import com.doo.sistemanutruco.entities.refeicao.Refeicao;
+
 import com.doo.sistemanutruco.entities.alimento.Alimento;
+import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 import com.doo.sistemanutruco.repository.sqlite.SqliteAlimentoDAO;
 import com.doo.sistemanutruco.repository.sqlite.SqliteRefeicaoDAO;
 import com.doo.sistemanutruco.usecases.refeicao.CadastrarRefeicaoUseCase;
@@ -69,8 +70,7 @@ public class CadastroRefeicaoController {
 
     @FXML
     public void initialize() {
-        SqliteAlimentoDAO alimentoDAO = new SqliteAlimentoDAO();
-        List<Alimento> alimentos = alimentoDAO.findAll();
+        List<Alimento> alimentos = new SqliteAlimentoDAO().findAll();
 
         alimentosDisponiveis = FXCollections.observableArrayList(alimentos);
         alimentosSelecionados = FXCollections.observableArrayList();
@@ -113,13 +113,13 @@ public class CadastroRefeicaoController {
 
     @FXML
     private void handleSalvarRefeicao() {
-        String nome = nomeTextField.getText();
-        String descricao = descricaoTextField.getText();
-        String objetivo = objetivoTextField.getText();
-
-        Refeicao refeicao = new Refeicao(nome, descricao, objetivo, alimentosSelecionados);
-
         try {
+            String nome = nomeTextField.getText();
+            String descricao = descricaoTextField.getText();
+            String objetivo = objetivoTextField.getText();
+
+            Refeicao refeicao = new Refeicao(nome, descricao, objetivo, alimentosSelecionados);
+
             cadastrarRefeicaoUseCase.cadastrar(refeicao);
             statusLabel.setText("Refeição cadastrada com sucesso!");
         } catch (Exception e) {
