@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class GestaoPacientesController {
+public class AtribuirDietaController {
 
     @FXML
     private TableView<Paciente> pacientesTableView;
@@ -29,7 +29,7 @@ public class GestaoPacientesController {
 
     private ObservableList<Paciente> pacientes;
 
-    public GestaoPacientesController() {
+    public AtribuirDietaController() {
     }
 
     @FXML
@@ -45,18 +45,11 @@ public class GestaoPacientesController {
     }
 
     @FXML
-    private void handleCadastrarPaciente() {
-        loadWindow("/com/doo/sistemanutruco/view/CadastroPacienteView.fxml", "Cadastrar Paciente");
-    }
-
-    @FXML
-    private void handleEditarPaciente() {
-        // Implementar a navegação para a tela de edição de paciente
-    }
-
-    @FXML
-    private void handleDesativarPaciente() {
-        // Implementar a desativação de um paciente selecionado
+    private void handleAtribuirDieta() {
+        Paciente selectedPaciente = pacientesTableView.getSelectionModel().getSelectedItem();
+        if (selectedPaciente != null) {
+            // Implementar a navegação para a tela de atribuição de dieta ao paciente selecionado
+        }
     }
 
     private void loadWindow(String path, String title) {

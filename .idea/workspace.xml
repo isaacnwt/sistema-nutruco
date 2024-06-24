@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: view e controller cadastro de refeicao">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/CadastroPacienteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/GestaoPacientesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqlitePacienteDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/CadastroPacienteView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/GestaoPacientesView.fxml" afterDir="false" />
+    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: cadastrar paciente view e controller">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/AtribuirDietaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/AtribuirDietaView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/GestaoPacientesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/GestaoPacientesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/AbstractTemplateSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/AbstractTemplateSqlDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/DatabaseBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/DatabaseBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/GestaoPacientesView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/GestaoPacientesView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/MainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +74,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.App.executor": "Debug",
+    "Application.App.executor": "Run",
     "Application.HelloApplication.executor": "Run",
     "Application.Main.executor": "Run",
     "Maven.sistema-nutruco [clean,install].executor": "Run",
@@ -354,7 +351,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719095383345</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="feat: cadastrar paciente view e controller">
+      <option name="closed" value="true" />
+      <created>1719183051067</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1719183051067</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -369,7 +374,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="style: renomeando nomes automaticos" />
     <MESSAGE value="test: cadastrar Pacientes" />
     <MESSAGE value="test: Pacientes UseCases" />
     <MESSAGE value="refactor: validacoes BuscarPacienteUseCase" />
@@ -394,7 +398,8 @@
     <MESSAGE value="feat: integracao de alimentos com o sqlite" />
     <MESSAGE value="feat: selecionando arquivo via file explorer" />
     <MESSAGE value="feat: view e controller cadastro de refeicao" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: view e controller cadastro de refeicao" />
+    <MESSAGE value="feat: cadastrar paciente view e controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: cadastrar paciente view e controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
