@@ -19,6 +19,9 @@ public class AtribuirDietaUseCase {
     }
 
     public Integer atribuirDieta(Paciente paciente, Dieta dieta) {
+        DietaValidator dietaValidator = new DietaValidator();
+        dietaValidator.validar(dieta);
+
         pacienteDAO.findByCpf(paciente.getCpf()).orElseThrow(() -> new EntityNotFoundException("Paciente não cadastrado"));
 
         List<Dieta> dietasDoPaciente = dietaDAO.findByPaciente(paciente);
