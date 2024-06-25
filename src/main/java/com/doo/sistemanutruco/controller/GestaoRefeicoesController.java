@@ -58,7 +58,27 @@ public class GestaoRefeicoesController {
 
     @FXML
     private void handleEditarRefeicao() {
-        // Implementar a navegação para a tela de edição de refeição
+        Refeicao selectedRefeicao = refeicoesTableView.getSelectionModel().getSelectedItem();
+        if (selectedRefeicao != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doo/sistemanutruco/view/EditarRefeicaoView.fxml"));
+                Parent parent = loader.load();
+
+                EditarRefeicaoController controller = loader.getController();
+                controller.setRefeicao(selectedRefeicao);
+                controller.setGestaoRefeicoesController(this);
+                controller.initialize();
+
+                Stage stage = new Stage();
+                stage.setTitle("Editar Refeição");
+                stage.setScene(new Scene(parent));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            showAlert("Selecione uma refeição", "Por favor, selecione uma refeição para editar.");
+        }
     }
 
     @FXML

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.doo.sistemanutruco.controller.EditarRefeicaoController" spacing="10" style="-fx-padding: 20;">
+    <Label text="Editar Refeição" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="10">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT"/>
+            <ColumnConstraints halignment="LEFT"/>
+        </columnConstraints>
+
+        <Label text="Nome:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="nomeTextField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Descrição:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="descricaoTextField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Objetivo:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="objetivoTextField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Alimentos:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="alimentosComboBox" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Button text="Adicionar Alimento" onAction="#handleAdicionarAlimento" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+
+        <TableView fx:id="alimentosTableView" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="3">
+            <columns>
+                <TableColumn fx:id="nomeColumn" text="Nome" prefWidth="150">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="nome"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="caloriasColumn" text="Calorias" prefWidth="80">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="calorias"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="carboidratosColumn" text="Carboidratos" prefWidth="100">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="carboidratos"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="proteinasColumn" text="Proteínas" prefWidth="100">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="proteinas"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="sodioColumn" text="Sódio" prefWidth="80">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="sodio"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="gordurasColumn" text="Gorduras" prefWidth="100">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="gorduras"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="glutenColumn" text="Glúten" prefWidth="80">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="gluten"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="lactoseColumn" text="Lactose" prefWidth="80">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="lactose"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+
+        <Button text="Remover Alimento" onAction="#handleRemoverAlimento" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+
+        <Label fx:id="statusLabel" textFill="red" GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
+    </GridPane>
+
+    <Button text="Salvar" onAction="#handleSalvarRefeicao"/>
+</VBox>
