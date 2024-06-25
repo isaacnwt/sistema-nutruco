@@ -15,8 +15,5 @@ public class DietaValidator implements Validator<Dieta> {
         if (dieta.getObjetivo() == null || dieta.getObjetivo().isEmpty()) {
             throw new IllegalArgumentException("Objetivo da dieta não pode ser nulo ou vazio");
         }
-        if (dieta.getDias() == null || dieta.getDias().isEmpty()) {
-            throw new IllegalArgumentException("Dias da dieta não podem ser nulos");
-        }
     }
 }

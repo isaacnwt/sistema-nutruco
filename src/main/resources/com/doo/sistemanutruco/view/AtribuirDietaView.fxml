@@ -9,34 +9,50 @@
       alignment="CENTER"
       spacing="10.0"
       style="-fx-padding: 20;"
-      prefWidth="600" prefHeight="400">
+      prefWidth="800" prefHeight="600">
     <Label text="Atribuir Dieta" style="-fx-font-size: 16pt;"/>
 
-    <HBox spacing="10">
-        <Label text="Paciente:"/>
-        <ComboBox fx:id="pacientesComboBox" promptText="Selecione um paciente" prefWidth="400"/>
-    </HBox>
+    <GridPane hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+        </columnConstraints>
 
-    <HBox spacing="10">
-        <Label text="Nome da Dieta:"/>
-        <TextField fx:id="nomeDietaTextField" promptText="Nome da Dieta" prefWidth="400"/>
-    </HBox>
+        <rowConstraints>
+            <RowConstraints vgrow="NEVER"/>
+            <RowConstraints vgrow="NEVER"/>
+            <RowConstraints vgrow="NEVER"/>
+            <RowConstraints vgrow="NEVER"/>
+        </rowConstraints>
 
-    <HBox spacing="10">
-        <Label text="Objetivo da Dieta:"/>
-        <TextField fx:id="objetivoDietaTextField" promptText="Objetivo da Dieta" prefWidth="400"/>
-    </HBox>
+        <Label text="Paciente:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="pacientesComboBox" promptText="Selecione um paciente" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
 
-    <HBox spacing="10">
-        <Label text="Data de Início:"/>
-        <DatePicker fx:id="dataInicioDatePicker" promptText="Data de Início" prefWidth="200"/>
-    </HBox>
+        <Label text="Nome da Dieta:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="nomeDietaTextField" promptText="Nome da Dieta" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-    <HBox spacing="10">
-        <Label text="Data de Fim:"/>
-        <DatePicker fx:id="dataFimDatePicker" promptText="Data de Fim" prefWidth="200"/>
-    </HBox>
+        <Label text="Objetivo da Dieta:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+        <TextField fx:id="objetivoDietaTextField" promptText="Objetivo da Dieta" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
 
-    <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="200"/>
+        <Label text="Data de Início:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="dataInicioDatePicker" promptText="Data de Início" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Data de Fim:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+        <DatePicker fx:id="dataFimDatePicker" promptText="Data de Fim" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+        <Label text="Refeições:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="refeicoesComboBox" promptText="Selecione uma refeição" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
+        <Button text="Adicionar Refeição" onAction="#handleAdicionarRefeicao" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+
+        <TableView fx:id="refeicoesTableView" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="4" prefHeight="200">
+            <columns>
+                <TableColumn text="Nome" fx:id="nomeColumn"/>
+            </columns>
+        </TableView>
+    </GridPane>
+
+    <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="150"/>
     <Label fx:id="statusLabel" text="" style="-fx-text-fill: red;"/>
 </VBox>

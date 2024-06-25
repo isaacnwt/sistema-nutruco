@@ -1,29 +1,27 @@
 package com.doo.sistemanutruco.repository.sqlite;
 
-import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.entities.dia.Dia;
+import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.entities.paciente.Paciente;
 import com.doo.sistemanutruco.repository.util.AbstractTemplateSqlDAO;
 import com.doo.sistemanutruco.repository.util.ConnectionFactory;
 import com.doo.sistemanutruco.usecases.dieta.DietaDAO;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> implements DietaDAO {
 
     @Override
     protected String createSaveSql() {
-        return "INSERT INTO Dieta (nome, objetivo, dataInicio, dataFim, inativo, caloriasDaDieta, carboidratosDaDieta, proteinasDaDieta, sodioDaDieta, dietaContemGluten, dietaContemLactose, gordurasDaDieta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        return "INSERT INTO Dieta (nome, objetivo, inativo, calorias, carboidratos, proteinas, sodio, contemGluten, contemLactose, gorduras) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     @Override
     protected String createUpdateSql() {
-        return "UPDATE Dieta SET nome = ?, objetivo = ?, dataInicio = ?, dataFim = ?, inativo = ?, caloriasDaDieta = ?, carboidratosDaDieta = ?, proteinasDaDieta = ?, sodioDaDieta = ?, dietaContemGluten = ?, dietaContemLactose = ?, gordurasDaDieta = ? WHERE id = ?";
+        return "UPDATE Dieta SET nome = ?, objetivo = ?, inativo = ?, calorias = ?, carboidratos = ?, proteinas = ?, sodio = ?, contemGluten = ?, contemLactose = ?, gorduras = ? WHERE id = ?";
     }
 
     @Override
@@ -50,18 +48,16 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
     protected void setEntityToPreparedStatement(Dieta entity, PreparedStatement stmt) throws SQLException {
         stmt.setString(1, entity.getNome());
         stmt.setString(2, entity.getObjetivo());
-        stmt.setDate(3, Date.valueOf(entity.getDataInicio()));
-        stmt.setDate(4, Date.valueOf(entity.getDataFim()));
-        stmt.setBoolean(5, entity.isInativo());
-        stmt.setDouble(6, entity.getCaloriasDaDieta());
-        stmt.setDouble(7, entity.getCarboidratosDaDieta());
-        stmt.setDouble(8, entity.getProteinasDaDieta());
-        stmt.setDouble(9, entity.getSodioDaDieta());
-        stmt.setBoolean(10, entity.isDietaContemGluten());
-        stmt.setBoolean(11, entity.isDietaContemLactose());
-        stmt.setDouble(12, entity.getGordurasDaDieta());
+        stmt.setBoolean(3, entity.isInativo());
+        stmt.setDouble(4, entity.getCaloriasDaDieta());
+        stmt.setDouble(5, entity.getCarboidratosDaDieta());
+        stmt.setDouble(6, entity.getProteinasDaDieta());
+        stmt.setDouble(7, entity.getSodioDaDieta());
+        stmt.setBoolean(8, entity.isDietaContemGluten());
+        stmt.setBoolean(9, entity.isDietaContemLactose());
+        stmt.setDouble(10, entity.getGordurasDaDieta());
         if (entity.getId() != null) {
-            stmt.setInt(13, entity.getId());
+            stmt.setInt(11, entity.getId());
         }
     }
 
@@ -72,37 +68,27 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
 
     @Override
     protected void setFilterToPreparedStatement(Object filter, PreparedStatement stmt) throws SQLException {
-        stmt.setString(1, filter.toString());
+        if (filter instanceof String) {
+            stmt.setString(1, (String) filter);
+        } else if (filter instanceof Integer) {
+            stmt.setInt(1, (Integer) filter);
+        }
     }
 
     @Override
     protected Dieta getEntityFromResultSet(ResultSet rs) throws SQLException {
-        Integer id = rs.getInt("id");
-        String nome = rs.getString("nome");
-        String objetivo = rs.getString("objetivo");
-        LocalDate dataInicio = rs.getDate("dataInicio").toLocalDate();
-        LocalDate dataFim = rs.getDate("dataFim").toLocalDate();
-        boolean inativo = rs.getBoolean("inativo");
-        double caloriasDaDieta = rs.getDouble("caloriasDaDieta");
-        double carboidratosDaDieta = rs.getDouble("carboidratosDaDieta");
-        double proteinasDaDieta = rs.getDouble("proteinasDaDieta");
-        double sodioDaDieta = rs.getDouble("sodioDaDieta");
-        boolean dietaContemGluten = rs.getBoolean("dietaContemGluten");
-        boolean dietaContemLactose = rs.getBoolean("dietaContemLactose");
-        double gordurasDaDieta = rs.getDouble("gordurasDaDieta");
-        List<Dia> dias = new SqliteDiaDAO().findByDietaId(id);
-
-        Dieta dieta = new Dieta(nome, objetivo, dias, dataInicio, dataFim);
-        dieta.setId(id);
-        dieta.setInativo(inativo);
-        dieta.setCaloriasDaDieta(caloriasDaDieta);
-        dieta.setCarboidratosDaDieta(carboidratosDaDieta);
-        dieta.setProteinasDaDieta(proteinasDaDieta);
-        dieta.setSodioDaDieta(sodioDaDieta);
-        dieta.setDietaContemGluten(dietaContemGluten);
-        dieta.setDietaContemLactose(dietaContemLactose);
-        dieta.setGordurasDaDieta(gordurasDaDieta);
-
+        Dieta dieta = new Dieta();
+        dieta.setId(rs.getInt("id"));
+        dieta.setNome(rs.getString("nome"));
+        dieta.setObjetivo(rs.getString("objetivo"));
+        dieta.setInativo(rs.getBoolean("inativo"));
+        dieta.setCaloriasDaDieta(rs.getDouble("calorias"));
+        dieta.setCarboidratosDaDieta(rs.getDouble("carboidratos"));
+        dieta.setProteinasDaDieta(rs.getDouble("proteinas"));
+        dieta.setSodioDaDieta(rs.getDouble("sodio"));
+        dieta.setDietaContemGluten(rs.getBoolean("contemGluten"));
+        dieta.setDietaContemLactose(rs.getBoolean("contemLactose"));
+        dieta.setGordurasDaDieta(rs.getDouble("gorduras"));
         return dieta;
     }
 
@@ -112,16 +98,37 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
     }
 
     @Override
-    public List<Dieta> findByPaciente(Paciente paciente) {
-        String sql = createSelectBySql("pacienteCpf");
-        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
-            setFilterToPreparedStatement(paciente.getCpf(), stmt);
-            ResultSet rs = stmt.executeQuery();
-            List<Dieta> resultList = new ArrayList<>();
-            while (rs.next()) {
-                resultList.add(getEntityFromResultSet(rs));
+    public Integer create(Dieta dieta) {
+        super.create(dieta);
+        Integer dietaId = getLastInsertId();
+        dieta.setId(dietaId);
+        return dietaId;
+    }
+
+    private Integer getLastInsertId() {
+        String sql = "SELECT last_insert_rowid()";
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
             }
-            return resultList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Dieta> findByPaciente(Paciente paciente) {
+        String sql = "SELECT d.* FROM Dieta d JOIN PacienteDieta pd ON d.id = pd.dietaId WHERE pd.pacienteCpf = ?";
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+            stmt.setString(1, paciente.getCpf());
+            ResultSet rs = stmt.executeQuery();
+            List<Dieta> dietas = new ArrayList<>();
+            while (rs.next()) {
+                dietas.add(getEntityFromResultSet(rs));
+            }
+            return dietas;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -134,9 +141,10 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, dieta.getId());
             stmt.setInt(2, dia.getId());
-            stmt.executeUpdate();
+            stmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 }

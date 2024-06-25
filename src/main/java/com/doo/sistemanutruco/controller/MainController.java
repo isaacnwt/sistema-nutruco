@@ -21,6 +21,11 @@ public class MainController {
     }
 
     @FXML
+    private void handleGestaoRefeicoes() {
+        loadWindow("/com/doo/sistemanutruco/view/GestaoRefeicoesView.fxml", "Gestão de Refeições");
+    }
+
+    @FXML
     private void handleImportarAlimentos() {
         loadWindow("/com/doo/sistemanutruco/view/ImportarAlimentosView.fxml", "Importar Alimentos");
     }

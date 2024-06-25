@@ -10,5 +10,6 @@ import java.util.Optional;
 
 public interface DietaDAO extends DAO<Dieta, Integer> {
     List<Dieta> findByPaciente(Paciente paciente);
+
     void atribuirDiaADieta(Dieta dieta, Dia dia);
 }

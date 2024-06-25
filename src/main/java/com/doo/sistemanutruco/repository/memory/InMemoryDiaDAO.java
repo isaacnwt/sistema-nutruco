@@ -62,9 +62,4 @@ public class InMemoryDiaDAO implements DiaDAO {
     public void atribuirRefeicaoADia(Dia dia, Refeicao refeicao) {
 
     }
-
-    @Override
-    public List<Dia> findByDietaId(Integer dietaId) {
-        return List.of();
-    }
 }

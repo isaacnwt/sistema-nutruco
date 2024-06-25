@@ -16,6 +16,9 @@ public class Dia {
     private double sodioNoDia;
     private double gordurasNoDia;
 
+    public Dia() {
+    }
+
     public Dia(DayOfWeek diaDaSemana, List<Refeicao> refeicoes) {
         this.diaDaSemana = diaDaSemana;
         this.refeicoes = refeicoes;
@@ -62,6 +65,10 @@ public class Dia {
 
     public void setRefeicoes(List<Refeicao> refeicoes) {
         this.refeicoes = refeicoes;
+    }
+
+    public void setInativo(boolean inativo) {
+        this.inativo = inativo;
     }
 
     public boolean isInativo() {

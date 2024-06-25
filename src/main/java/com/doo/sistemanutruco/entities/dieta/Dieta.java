@@ -22,6 +22,9 @@ public class Dieta {
     private LocalDate dataInicio;
     private LocalDate dataFim;
 
+    public Dieta() {
+    }
+
     public Dieta(String nome, String objetivo, List<Dia> dias, LocalDate dataInicio, LocalDate dataFim) {
         this.nome = nome;
         this.objetivo = objetivo;

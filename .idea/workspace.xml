@@ -4,29 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="refactor: preparacao para atribuicao de dieta">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDiaDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDietaDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/utils/EntityNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/RefeicaoView.fxml" afterDir="false" />
+    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: views e daos relacionados a criacao de dieta">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/refeicao/CadastrarRefeicoesUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/AtribuirDietaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/AtribuirDietaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/CadastroRefeicaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/CadastroRefeicaoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/dia/Dia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/dia/Dia.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/dieta/Dieta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/dieta/Dieta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/memory/InMemoryDiaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/memory/InMemoryDiaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/memory/InMemoryDietaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/memory/InMemoryDietaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/memory/InMemoryRefeicaoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/memory/InMemoryRefeicaoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteRefeicaoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteRefeicaoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/test/AppTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/test/AppTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDiaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDiaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDietaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDietaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dia/CadastrarDiaUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dia/CadastrarDiaUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dia/DiaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dia/DiaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtivarDietaUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtivarDietaUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtribuirDietaUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtribuirDietaUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/BuscarDietaUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/CadastrarDietaUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/ClonarDietaUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/ClonarDietaUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/DietaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/DietaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/refeicao/RefeicaoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/refeicao/RefeicaoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/DietaValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/DietaValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/AtribuirDietaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/AtribuirDietaView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/MainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +34,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -107,6 +101,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.doo.sistemanutruco.usecases.refeicao" />
       <recent name="com.doo.sistemanutruco.repository.sqlite" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -385,7 +380,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719265713477</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="feat: views e daos relacionados a criacao de dieta">
+      <option name="closed" value="true" />
+      <created>1719269744913</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1719269744913</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -400,7 +403,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test: Pacientes UseCases" />
     <MESSAGE value="refactor: validacoes BuscarPacienteUseCase" />
     <MESSAGE value="feat: ImportarAlimentosUseCase" />
     <MESSAGE value="style: reorganizacao dos testes conforme as etapas do dominio" />
@@ -425,7 +427,8 @@
     <MESSAGE value="feat: view e controller cadastro de refeicao" />
     <MESSAGE value="feat: cadastrar paciente view e controller" />
     <MESSAGE value="refactor: preparacao para atribuicao de dieta" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: preparacao para atribuicao de dieta" />
+    <MESSAGE value="feat: views e daos relacionados a criacao de dieta" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: views e daos relacionados a criacao de dieta" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -6,22 +6,22 @@ import com.doo.sistemanutruco.repository.util.AbstractTemplateSqlDAO;
 import com.doo.sistemanutruco.repository.util.ConnectionFactory;
 import com.doo.sistemanutruco.usecases.dia.DiaDAO;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class SqliteDiaDAO extends AbstractTemplateSqlDAO<Dia, Integer> implements DiaDAO {
 
     @Override
     protected String createSaveSql() {
-        return "INSERT INTO Dia (diaDaSemana, inativo, caloriasNoDia, carboidratosNoDia, proteinasNoDia, sodioNoDia, gordurasNoDia) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        return "INSERT INTO Dia (diaDaSemana, inativo, calorias, carboidratos, proteinas, sodio, gorduras) VALUES (?, ?, ?, ?, ?, ?, ?)";
     }
 
     @Override
     protected String createUpdateSql() {
-        return "UPDATE Dia SET diaDaSemana = ?, inativo = ?, caloriasNoDia = ?, carboidratosNoDia = ?, proteinasNoDia = ?, sodioNoDia = ?, gordurasNoDia = ? WHERE id = ?";
+        return "UPDATE Dia SET diaDaSemana = ?, inativo = ?, calorias = ?, carboidratos = ?, proteinas = ?, sodio = ?, gorduras = ? WHERE id = ?";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class SqliteDiaDAO extends AbstractTemplateSqlDAO<Dia, Integer> implement
 
     @Override
     protected void setEntityToPreparedStatement(Dia entity, PreparedStatement stmt) throws SQLException {
-        stmt.setString(1, entity.getDiaDaSemana().toString());
+        stmt.setString(1, entity.getDiaDaSemana().name());
         stmt.setBoolean(2, entity.isInativo());
         stmt.setDouble(3, entity.getCaloriasNoDia());
         stmt.setDouble(4, entity.getCarboidratosNoDia());
@@ -65,28 +65,24 @@ public class SqliteDiaDAO extends AbstractTemplateSqlDAO<Dia, Integer> implement
 
     @Override
     protected void setFilterToPreparedStatement(Object filter, PreparedStatement stmt) throws SQLException {
-        stmt.setString(1, filter.toString());
+        if (filter instanceof String) {
+            stmt.setString(1, (String) filter);
+        } else if (filter instanceof Integer) {
+            stmt.setInt(1, (Integer) filter);
+        }
     }
 
     @Override
     protected Dia getEntityFromResultSet(ResultSet rs) throws SQLException {
-        Integer id = rs.getInt("id");
-        DayOfWeek diaDaSemana = DayOfWeek.valueOf(rs.getString("diaDaSemana"));
-        double caloriasNoDia = rs.getDouble("caloriasNoDia");
-        double carboidratosNoDia = rs.getDouble("carboidratosNoDia");
-        double proteinasNoDia = rs.getDouble("proteinasNoDia");
-        double sodioNoDia = rs.getDouble("sodioNoDia");
-        double gordurasNoDia = rs.getDouble("gordurasNoDia");
-        List<Refeicao> refeicoes = new SqliteRefeicaoDAO().findByDiaId(id);
-
-        Dia dia = new Dia(diaDaSemana, refeicoes);
-        dia.setId(id);
-        dia.setCaloriasNoDia(caloriasNoDia);
-        dia.setCarboidratosNoDia(carboidratosNoDia);
-        dia.setProteinasNoDia(proteinasNoDia);
-        dia.setSodioNoDia(sodioNoDia);
-        dia.setGordurasNoDia(gordurasNoDia);
-
+        Dia dia = new Dia();
+        dia.setId(rs.getInt("id"));
+        dia.setDiaDaSemana(DayOfWeek.valueOf(rs.getString("diaDaSemana")));
+        dia.setInativo(rs.getBoolean("inativo"));
+        dia.setCaloriasNoDia(rs.getDouble("calorias"));
+        dia.setCarboidratosNoDia(rs.getDouble("carboidratos"));
+        dia.setProteinasNoDia(rs.getDouble("proteinas"));
+        dia.setSodioNoDia(rs.getDouble("sodio"));
+        dia.setGordurasNoDia(rs.getDouble("gorduras"));
         return dia;
     }
 
@@ -101,26 +97,10 @@ public class SqliteDiaDAO extends AbstractTemplateSqlDAO<Dia, Integer> implement
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, dia.getId());
             stmt.setInt(2, refeicao.getId());
-            stmt.executeUpdate();
+            stmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public List<Dia> findByDietaId(Integer dietaId) {
-        String sql = createSelectBySql("dietaId");
-        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
-            setFilterToPreparedStatement(dietaId, stmt);
-            ResultSet rs = stmt.executeQuery();
-            List<Dia> resultList = new ArrayList<>();
-            while (rs.next()) {
-                resultList.add(getEntityFromResultSet(rs));
-            }
-            return resultList;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return Collections.emptyList();
-    }
 }
