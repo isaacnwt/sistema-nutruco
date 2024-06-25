@@ -26,6 +26,8 @@ public class GestaoPacientesController {
 
     @FXML
     private TableColumn<Paciente, String> nomeColumn;
+    @FXML
+    private TableColumn<Paciente, String> statusAtivoColumn;
 
     private ObservableList<Paciente> pacientes;
 
@@ -37,6 +39,7 @@ public class GestaoPacientesController {
         loadPacientes();
         cpfColumn.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         nomeColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        statusAtivoColumn.setCellValueFactory(new PropertyValueFactory<>("inativo"));
     }
 
     private void loadPacientes() {

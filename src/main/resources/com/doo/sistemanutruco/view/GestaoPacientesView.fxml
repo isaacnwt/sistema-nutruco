@@ -24,6 +24,11 @@
                     <PropertyValueFactory property="nome"/>
                 </cellValueFactory>
             </TableColumn>
+            <TableColumn text="Inativo" fx:id="statusAtivoColumn" prefWidth="150">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nome"/>
+                </cellValueFactory>
+            </TableColumn>
         </columns>
     </TableView>
     <Button text="Cadastrar Paciente" onAction="#handleCadastrarPaciente" prefWidth="350"/>
