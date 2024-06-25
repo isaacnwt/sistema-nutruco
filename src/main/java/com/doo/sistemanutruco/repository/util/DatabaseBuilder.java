@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseBuilder {
+    public DatabaseBuilder() {
+        buildTables();
+    }
 
     public void buildDatabaseIfMissing() {
         if (!isDatabaseAvailable()) {
