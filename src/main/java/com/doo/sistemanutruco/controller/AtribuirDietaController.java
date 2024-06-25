@@ -1,5 +1,6 @@
 package com.doo.sistemanutruco.controller;
 
+import com.doo.sistemanutruco.entities.dia.Dia;
 import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.entities.paciente.Paciente;
 import com.doo.sistemanutruco.entities.refeicao.Refeicao;
@@ -16,9 +17,13 @@ import javafx.scene.control.*;
 import javafx.util.StringConverter;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static java.util.Arrays.stream;
 
 public class AtribuirDietaController {
 
@@ -115,20 +120,25 @@ public class AtribuirDietaController {
     private void handleAtribuirDieta() {
         try {
             Paciente paciente = pacientesComboBox.getValue();
-            String nomeDieta = nomeDietaTextField.getText();
-            String objetivoDieta = objetivoDietaTextField.getText();
-            LocalDate dataInicio = dataInicioDatePicker.getValue();
-            LocalDate dataFim = dataFimDatePicker.getValue();
-
-            Dieta dieta = new Dieta(nomeDieta, objetivoDieta, new ArrayList<>(), dataInicio, dataFim);
+            Dieta dieta = getDieta();
 
             atribuirDietaUseCase.atribuirDieta(paciente, dieta);
             cadastrarDiaUseCase.cadastrarDiasDaDieta(dieta);
-            cadastrarRefeicoesUseCase.cadastrarRefeicoesDosDias(dieta, refeicoesSelecionadas);
+            cadastrarRefeicoesUseCase.cadastrarRefeicoesDosDias(dieta.getDias());
 
             statusLabel.setText("Dieta atribuída com sucesso!");
         } catch (Exception e) {
             statusLabel.setText(e.getMessage());
         }
+    }
+
+    private Dieta getDieta() {
+        String nomeDieta = nomeDietaTextField.getText();
+        String objetivoDieta = objetivoDietaTextField.getText();
+        LocalDate dataInicio = dataInicioDatePicker.getValue();
+        LocalDate dataFim = dataFimDatePicker.getValue();
+        List<Dia> dias = stream(DayOfWeek.values()).map(diaDaSemana -> new Dia(diaDaSemana, refeicoesSelecionadas)).toList();
+
+        return new Dieta(nomeDieta, objetivoDieta, dias, dataInicio, dataFim);
     }
 }

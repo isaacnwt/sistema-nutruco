@@ -57,10 +57,12 @@ public class SqliteRefeicaoDAO extends AbstractTemplateSqlDAO<Refeicao, Integer>
         stmt.setDouble(8, entity.getProteinasTotais());
         stmt.setDouble(9, entity.getSodioTotal());
         stmt.setDouble(10, entity.getGordurasTotais());
+
         if (entity.getId() != null) {
             stmt.setInt(11, entity.getId());
         }
     }
+
 
     @Override
     protected void setKeyToPreparedStatement(Integer key, PreparedStatement stmt) throws SQLException {

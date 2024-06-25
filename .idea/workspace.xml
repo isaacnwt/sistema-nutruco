@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: views e daos relacionados a criacao de dieta">
+    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="refactor: validacao dieta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtribuirDietaUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtribuirDietaUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/DietaValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/DietaValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/AtribuirDietaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/AtribuirDietaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/refeicao/CadastrarRefeicoesUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/refeicao/CadastrarRefeicoesUseCase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +70,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.App.executor": "Run",
+    "Application.App.executor": "Debug",
     "Application.HelloApplication.executor": "Run",
     "Application.Main.executor": "Run",
     "Maven.sistema-nutruco [clean,install].executor": "Run",
@@ -383,7 +383,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719275345066</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="refactor: validacao dieta">
+      <option name="closed" value="true" />
+      <created>1719284903541</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1719284903541</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -398,7 +406,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: validacoes BuscarPacienteUseCase" />
     <MESSAGE value="feat: ImportarAlimentosUseCase" />
     <MESSAGE value="style: reorganizacao dos testes conforme as etapas do dominio" />
     <MESSAGE value="refactor: criacao e validacao de Refeicao" />
@@ -423,7 +430,8 @@
     <MESSAGE value="feat: cadastrar paciente view e controller" />
     <MESSAGE value="refactor: preparacao para atribuicao de dieta" />
     <MESSAGE value="feat: views e daos relacionados a criacao de dieta" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: views e daos relacionados a criacao de dieta" />
+    <MESSAGE value="refactor: validacao dieta" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: validacao dieta" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -432,15 +440,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/paciente/CadastrarPacienteUseCase.java</url>
           <line>20</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dia/CadastrarDiaUseCase.java</url>
-          <line>20</line>
-          <properties class="com.doo.sistemanutruco.usecases.dia.CadastrarDiaUseCase" method="cadastrarDiasDaDieta">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

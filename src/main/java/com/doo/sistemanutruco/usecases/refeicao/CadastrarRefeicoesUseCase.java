@@ -1,7 +1,6 @@
 package com.doo.sistemanutruco.usecases.refeicao;
 
 import com.doo.sistemanutruco.entities.dia.Dia;
-import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 import com.doo.sistemanutruco.usecases.dia.DiaDAO;
 
@@ -17,9 +16,9 @@ public class CadastrarRefeicoesUseCase {
         this.diaDAO = diaDAO;
     }
 
-    public void cadastrarRefeicoesDosDias(Dieta dieta, List<Refeicao> refeicoes) {
-        for (Dia dia : dieta.getDias()) {
-            for (Refeicao refeicao : refeicoes) {
+    public void cadastrarRefeicoesDosDias(List<Dia> dias) {
+        for (Dia dia : dias) {
+            for (Refeicao refeicao : dia.getRefeicoes()) {
                 Integer refeicaoId = refeicaoDAO.create(refeicao);
                 refeicao.setId(refeicaoId);
                 diaDAO.atribuirRefeicaoADia(dia, refeicao);

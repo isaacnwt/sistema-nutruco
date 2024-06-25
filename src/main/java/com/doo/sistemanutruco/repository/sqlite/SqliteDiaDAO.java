@@ -118,10 +118,12 @@ public class SqliteDiaDAO extends AbstractTemplateSqlDAO<Dia, Integer> implement
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, dia.getId());
             stmt.setInt(2, refeicao.getId());
-            stmt.execute();
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException("Erro ao atribuir a refeição ao dia: " + e.getMessage(), e);
         }
     }
+
 
 }
