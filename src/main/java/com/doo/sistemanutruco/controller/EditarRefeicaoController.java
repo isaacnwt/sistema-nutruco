@@ -117,15 +117,12 @@ public class EditarRefeicaoController {
                 alimentosSelecionados = FXCollections.observableArrayList();
             }
 
-            // Limpa a lista antes de adicionar os alimentos da refeição
             alimentosSelecionados.clear();
 
-            // Verifica se a lista de alimentos da refeição não é nula antes de adicionar
             if (refeicao.getAlimentos() != null) {
                 alimentosSelecionados.addAll(refeicao.getAlimentos());
             }
 
-            // Define a tabela com os alimentos selecionados
             alimentosTableView.setItems(alimentosSelecionados);
         }
     }

@@ -92,6 +92,10 @@ public class SqliteRefeicaoDAO extends AbstractTemplateSqlDAO<Refeicao, Integer>
         refeicao.setProteinasTotais(rs.getDouble("proteinas"));
         refeicao.setSodioTotal(rs.getDouble("sodio"));
         refeicao.setGordurasTotais(rs.getDouble("gorduras"));
+
+        List<Alimento> alimentos = loadAlimentosByRefeicaoId(refeicao.getId());
+        refeicao.setAlimentos(alimentos);
+
         return refeicao;
     }
 
@@ -179,5 +183,24 @@ public class SqliteRefeicaoDAO extends AbstractTemplateSqlDAO<Refeicao, Integer>
             e.printStackTrace();
         }
         return null;
+    }
+    private List<Alimento> loadAlimentosByRefeicaoId(Integer refeicaoId) {
+        String sql = "SELECT a.* FROM Alimento a INNER JOIN RefeicaoAlimento ra ON a.id = ra.alimentoId WHERE ra.refeicaoId = ?";
+        List<Alimento> alimentos = new ArrayList<>();
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+            stmt.setInt(1, refeicaoId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Alimento alimento = new Alimento();
+                alimento.setId(rs.getInt("id"));
+                alimento.setNome(rs.getString("nome"));
+                alimento.setCalorias(rs.getDouble("calorias"));
+                // Configurar outras propriedades de Alimento, se necessário...
+                alimentos.add(alimento);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return alimentos;
     }
 }
