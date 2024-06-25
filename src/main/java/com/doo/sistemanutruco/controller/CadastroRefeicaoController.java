@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import java.util.List;
@@ -126,11 +127,29 @@ public class CadastroRefeicaoController {
             Refeicao refeicao = new Refeicao(nome, descricao, objetivo, alimentosSelecionados);
 
             cadastrarRefeicaoUseCase.cadastrar(refeicao);
-            statusLabel.setText("Refeição cadastrada com sucesso!");
+            showAlert("Refeição Cadastrada!", "Refeição cadastrada com sucesso!");
             gestaoRefeicoesController.refreshTable();
-
+            close();
         } catch (Exception e) {
             statusLabel.setText(e.getMessage());
         }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void handleCancelar() {
+        close();
+    }
+
+    private void close(){
+        Stage stage = (Stage) nomeTextField.getScene().getWindow();
+        stage.close();
     }
 }
