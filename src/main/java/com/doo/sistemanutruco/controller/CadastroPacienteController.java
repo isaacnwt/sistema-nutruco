@@ -5,6 +5,7 @@ import com.doo.sistemanutruco.usecases.paciente.CadastrarPacienteUseCase;
 import com.doo.sistemanutruco.repository.sqlite.SqlitePacienteDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.time.LocalDate;
 
@@ -80,11 +81,31 @@ public class CadastroPacienteController {
 
             cadastrarPacienteUseCase.cadastrar(paciente);
             gestaoPacientesController.refreshTable();
-            statusLabel.setText("Paciente cadastrado com sucesso!");
+            showAlert("Paciente Cadastrado!","Paciente cadastrado com sucesso!");
+            close();
         } catch (NumberFormatException e) {
             statusLabel.setText("Erro: Um dos campos numéricos possui valor inválido.");
         } catch (Exception e) {
             statusLabel.setText("Erro ao cadastrar paciente: " + e.getMessage());
         }
+    }
+
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void handleCancelar() {
+        close();
+    }
+
+    private void close(){
+        Stage stage = (Stage) nomeTextField.getScene().getWindow();
+        stage.close();
     }
 }

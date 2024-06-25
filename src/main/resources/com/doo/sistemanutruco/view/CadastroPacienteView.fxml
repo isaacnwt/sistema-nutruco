@@ -93,6 +93,7 @@
 
     <HBox spacing="20">
         <Button text="Salvar" onAction="#handleSalvarPaciente" prefWidth="100"/>
+        <Button text="Cancelar" onAction="#handleCancelar" prefWidth="100"/>
     </HBox>
 
     <Label fx:id="statusLabel" text="" style="-fx-text-fill: red;"/>
