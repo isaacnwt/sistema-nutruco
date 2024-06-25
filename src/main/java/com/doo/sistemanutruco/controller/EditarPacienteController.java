@@ -5,6 +5,7 @@ import com.doo.sistemanutruco.repository.sqlite.SqlitePacienteDAO;
 import com.doo.sistemanutruco.usecases.paciente.EditarPacienteUseCase;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class EditarPacienteController {
 
@@ -100,11 +101,30 @@ public class EditarPacienteController {
 
             editarPacienteUseCase.editar(paciente);
             gestaoPacientesController.refreshTable();
-            statusLabel.setText("Paciente atualizado com sucesso!");
+            showAlert("Paciente Atualizado!","Paciente atualizado com sucesso!");
+            close();
         } catch (NumberFormatException e) {
             statusLabel.setText("Erro: Um dos campos numéricos possui valor inválido.");
         } catch (Exception e) {
             statusLabel.setText("Erro ao atualizar paciente: " + e.getMessage());
         }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void handleCancelar() {
+        close();
+    }
+
+    private void close(){
+        Stage stage = (Stage) nomeTextField.getScene().getWindow();
+        stage.close();
     }
 }

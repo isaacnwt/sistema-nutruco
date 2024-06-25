@@ -67,5 +67,6 @@
     </GridPane>
 
     <Button text="Salvar" onAction="#handleSalvarPaciente"/>
+    <Button text="Cancelar" onAction="#handleCancelar"/>
     <Label fx:id="statusLabel" textFill="red"/>
 </VBox>
