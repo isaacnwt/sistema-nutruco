@@ -46,9 +46,14 @@ public class CadastroPacienteController {
     private Label statusLabel;
 
     private final CadastrarPacienteUseCase cadastrarPacienteUseCase;
+    private GestaoPacientesController gestaoPacientesController;
 
     public CadastroPacienteController() {
         this.cadastrarPacienteUseCase = new CadastrarPacienteUseCase(new SqlitePacienteDAO());
+    }
+
+    public void setGestaoPacientesController(GestaoPacientesController gestaoPacientesController) {
+        this.gestaoPacientesController = gestaoPacientesController;
     }
 
     @FXML
@@ -74,6 +79,7 @@ public class CadastroPacienteController {
             Paciente paciente = new Paciente(cpf, nome, dataNascimento, telefone, email, peso, altura, objetivo, porcentagemGordura, porcentagemMassaMagra, porcentagemMassaGorda, colesterolLDL, colesterolHDL, hipertenso, diabetico, celiaco);
 
             cadastrarPacienteUseCase.cadastrar(paciente);
+            gestaoPacientesController.refreshTable();
             statusLabel.setText("Paciente cadastrado com sucesso!");
         } catch (NumberFormatException e) {
             statusLabel.setText("Erro: Um dos campos numéricos possui valor inválido.");

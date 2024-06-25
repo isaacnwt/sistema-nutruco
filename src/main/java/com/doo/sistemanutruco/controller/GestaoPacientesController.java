@@ -34,24 +34,29 @@ public class GestaoPacientesController {
 
     @FXML
     public void initialize() {
-        SqlitePacienteDAO pacienteDAO = new SqlitePacienteDAO();
-        List<Paciente> pacientesList = pacienteDAO.findAll();
-
-        pacientes = FXCollections.observableArrayList(pacientesList);
-        pacientesTableView.setItems(pacientes);
-
+        loadPacientes();
         cpfColumn.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         nomeColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
     }
 
+    private void loadPacientes() {
+        SqlitePacienteDAO pacienteDAO = new SqlitePacienteDAO();
+        List<Paciente> pacientesList = pacienteDAO.findAll();
+        pacientes = FXCollections.observableArrayList(pacientesList);
+        pacientesTableView.setItems(pacientes);
+    }
+
     @FXML
     private void handleCadastrarPaciente() {
-        loadWindow("/com/doo/sistemanutruco/view/CadastroPacienteView.fxml", "Cadastrar Paciente");
+        openCadastroPacienteView();
     }
 
     @FXML
     private void handleEditarPaciente() {
-        // Implementar a navegação para a tela de edição de paciente
+        Paciente selectedPaciente = pacientesTableView.getSelectionModel().getSelectedItem();
+        if (selectedPaciente != null) {
+            openEditarPacienteView(selectedPaciente);
+        }
     }
 
     @FXML
@@ -59,16 +64,42 @@ public class GestaoPacientesController {
         // Implementar a desativação de um paciente selecionado
     }
 
-    private void loadWindow(String path, String title) {
+    private void openCadastroPacienteView() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doo/sistemanutruco/view/CadastroPacienteView.fxml"));
             Parent parent = loader.load();
+
+            CadastroPacienteController controller = loader.getController();
+            controller.setGestaoPacientesController(this);
+
             Stage stage = new Stage();
-            stage.setTitle(title);
+            stage.setTitle("Cadastrar Paciente");
             stage.setScene(new Scene(parent));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void openEditarPacienteView(Paciente paciente) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doo/sistemanutruco/view/EditarPacienteView.fxml"));
+            Parent parent = loader.load();
+
+            EditarPacienteController controller = loader.getController();
+            controller.setPaciente(paciente);
+            controller.setGestaoPacientesController(this);
+
+            Stage stage = new Stage();
+            stage.setTitle("Editar Paciente");
+            stage.setScene(new Scene(parent));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void refreshTable() {
+        loadPacientes();
     }
 }
