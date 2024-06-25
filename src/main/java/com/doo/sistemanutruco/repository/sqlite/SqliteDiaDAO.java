@@ -1,6 +1,7 @@
 package com.doo.sistemanutruco.repository.sqlite;
 
 import com.doo.sistemanutruco.entities.dia.Dia;
+import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 import com.doo.sistemanutruco.repository.util.AbstractTemplateSqlDAO;
 import com.doo.sistemanutruco.repository.util.ConnectionFactory;
@@ -10,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.DayOfWeek;
-import java.util.List;
 
 public class SqliteDiaDAO extends AbstractTemplateSqlDAO<Dia, Integer> implements DiaDAO {
 
@@ -89,6 +89,27 @@ public class SqliteDiaDAO extends AbstractTemplateSqlDAO<Dia, Integer> implement
     @Override
     protected Integer getEntityKey(Dia entity) {
         return entity.getId();
+    }
+
+    @Override
+    public Integer create(Dia dia) {
+        super.create(dia);
+        Integer dietaId = getLastInsertId();
+        dia.setId(dietaId);
+        return dietaId;
+    }
+
+    private Integer getLastInsertId() {
+        String sql = "SELECT last_insert_rowid()";
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

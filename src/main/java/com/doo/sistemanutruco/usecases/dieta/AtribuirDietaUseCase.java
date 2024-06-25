@@ -2,7 +2,6 @@ package com.doo.sistemanutruco.usecases.dieta;
 
 import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.entities.paciente.Paciente;
-import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 import com.doo.sistemanutruco.usecases.paciente.PacienteDAO;
 import com.doo.sistemanutruco.usecases.utils.EntityNotFoundException;
 

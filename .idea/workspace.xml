@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: views e daos relacionados a criacao de dieta">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/refeicao/CadastrarRefeicoesUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/AtribuirDietaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/AtribuirDietaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/dia/Dia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/dia/Dia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/dieta/Dieta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/dieta/Dieta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/memory/InMemoryDiaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/memory/InMemoryDiaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDiaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDiaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDietaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDietaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dia/CadastrarDiaUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dia/CadastrarDiaUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dia/DiaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dia/DiaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtribuirDietaUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtribuirDietaUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/DietaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/DietaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/DietaValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/DietaValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/AtribuirDietaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/AtribuirDietaView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/MainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,24 +68,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.sistema-nutruco [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/isaacnwt/ADS/DOO/sistema-nutruco/src/main/java/com/doo/sistemanutruco/view/fxml&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Debug",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Maven.sistema-nutruco [clean,install].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/isaacnwt/ADS/DOO/sistema-nutruco/src/main/java/com/doo/sistemanutruco/view/fxml",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.doo.sistemanutruco.usecases.refeicao" />
@@ -388,7 +375,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719269744913</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="feat: views e daos relacionados a criacao de dieta">
+      <option name="closed" value="true" />
+      <created>1719275345065</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1719275345066</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -437,6 +432,15 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/paciente/CadastrarPacienteUseCase.java</url>
           <line>20</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dia/CadastrarDiaUseCase.java</url>
+          <line>20</line>
+          <properties class="com.doo.sistemanutruco.usecases.dia.CadastrarDiaUseCase" method="cadastrarDiasDaDieta">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
