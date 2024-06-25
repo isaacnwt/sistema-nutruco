@@ -3,6 +3,7 @@ package com.doo.sistemanutruco.entities.dieta;
 import com.doo.sistemanutruco.entities.dia.Dia;
 import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Dieta {
@@ -18,16 +19,23 @@ public class Dieta {
     private boolean dietaContemGluten;
     private boolean dietaContemLactose;
     private double gordurasDaDieta;
+    private LocalDate dataInicio;
+    private LocalDate dataFim;
 
-    public Dieta(String nome, String objetivo, List<Dia> dias) {
+    public Dieta() {
+    }
+
+    public Dieta(String nome, String objetivo, List<Dia> dias, LocalDate dataInicio, LocalDate dataFim) {
         this.nome = nome;
         this.objetivo = objetivo;
         this.dias = dias;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
         calcularValoresNutricionais();
     }
 
     private void calcularValoresNutricionais() {
-        for (Dia dia  : this.dias) {
+        for (Dia dia : this.dias) {
             this.caloriasDaDieta += dia.getCaloriasNoDia();
             this.carboidratosDaDieta += dia.getCarboidratosNoDia();
             this.proteinasDaDieta += dia.getProteinasNoDia();
@@ -38,13 +46,6 @@ public class Dieta {
             if (!refeicoesComGlutem.isEmpty()) this.dietaContemGluten = true;
             if (!refeicoesComLactose.isEmpty()) this.dietaContemLactose = true;
         }
-    }
-
-    public Dieta clonarDieta(){
-        return new Dieta(
-                this.nome + " - Clone",
-                this.objetivo,
-                this.dias);
     }
 
     @Override
@@ -87,8 +88,8 @@ public class Dieta {
         this.dias = dias;
     }
 
-    public boolean getInativo() {
-        return inativo;
+    public boolean isInativo() {
+        return this.inativo;
     }
 
     public void setInativo(boolean inativo) {
@@ -149,6 +150,30 @@ public class Dieta {
 
     public void setGordurasDaDieta(double gordurasDaDieta) {
         this.gordurasDaDieta = gordurasDaDieta;
+    }
+
+    public boolean isDietaContemGluten() {
+        return dietaContemGluten;
+    }
+
+    public boolean isDietaContemLactose() {
+        return dietaContemLactose;
+    }
+
+    public LocalDate getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(LocalDate dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public LocalDate getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(LocalDate dataFim) {
+        this.dataFim = dataFim;
     }
 
     @Override

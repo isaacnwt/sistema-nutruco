@@ -1,6 +1,8 @@
 package com.doo.sistemanutruco.repository.memory;
 
+import com.doo.sistemanutruco.entities.dia.Dia;
 import com.doo.sistemanutruco.entities.dieta.Dieta;
+import com.doo.sistemanutruco.entities.paciente.Paciente;
 import com.doo.sistemanutruco.usecases.dieta.DietaDAO;
 
 import java.util.*;
@@ -59,16 +61,12 @@ public class InMemoryDietaDAO implements DietaDAO {
     }
 
     @Override
-    public Optional<Dieta> findByNome(String nome) {
-        return db.values().stream()
-                .filter(dieta -> dieta.getNome().equals(nome))
-                .findAny();
+    public List<Dieta> findByPaciente(Paciente paciente) {
+        return List.of();
     }
 
     @Override
-    public Optional<Dieta> clone(Dieta dieta){
-        Dieta dietaBaseClonada = dieta.clonarDieta();
-        Integer dietaClonadaId = create(dietaBaseClonada);
-        return findOne(dietaClonadaId);
+    public void atribuirDiaADieta(Dieta dieta, Dia dia) {
+
     }
 }

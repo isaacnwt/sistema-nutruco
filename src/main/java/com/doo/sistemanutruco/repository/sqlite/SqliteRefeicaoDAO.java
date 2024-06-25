@@ -9,6 +9,7 @@ import com.doo.sistemanutruco.usecases.refeicao.RefeicaoDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,16 +51,18 @@ public class SqliteRefeicaoDAO extends AbstractTemplateSqlDAO<Refeicao, Integer>
         stmt.setString(2, entity.getDescricao());
         stmt.setString(3, entity.getObjetivo());
         stmt.setBoolean(4, entity.getContemGluten());
-        stmt.setBoolean(5, entity.getContemGluten());
+        stmt.setBoolean(5, entity.getContemLactose());
         stmt.setDouble(6, entity.getCaloriasTotais());
         stmt.setDouble(7, entity.getCarboidratosTotais());
         stmt.setDouble(8, entity.getProteinasTotais());
         stmt.setDouble(9, entity.getSodioTotal());
         stmt.setDouble(10, entity.getGordurasTotais());
+
         if (entity.getId() != null) {
             stmt.setInt(11, entity.getId());
         }
     }
+
 
     @Override
     protected void setKeyToPreparedStatement(Integer key, PreparedStatement stmt) throws SQLException {
@@ -104,6 +107,22 @@ public class SqliteRefeicaoDAO extends AbstractTemplateSqlDAO<Refeicao, Integer>
             return Optional.empty();
         }
         return Optional.of(results.get(0));
+    }
+
+    @Override
+    public List<Refeicao> findByDiaId(Integer diaId) {
+        String sql = "SELECT r.* FROM Refeicao r INNER JOIN DiaRefeicao dr ON r.id = dr.refeicaoId WHERE dr.diaId = ?";
+        List<Refeicao> refeicoes = new ArrayList<>();
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+            stmt.setInt(1, diaId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                refeicoes.add(getEntityFromResultSet(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return refeicoes;
     }
 
     @Override

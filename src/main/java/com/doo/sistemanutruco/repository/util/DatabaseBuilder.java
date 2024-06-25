@@ -121,10 +121,12 @@ public class DatabaseBuilder {
         builder.append("colesterolHDL INTEGER, \n");
         builder.append("hipertenso BOOLEAN, \n");
         builder.append("diabetico BOOLEAN, \n");
-        builder.append("celiaco BOOLEAN \n");
+        builder.append("celiaco BOOLEAN, \n");
+        builder.append("inativo BOOLEAN \n");
         builder.append(");\n");
         return builder.toString();
     }
+
 
     private String createRefeicaoAlimentoTableSql() {
         StringBuilder builder = new StringBuilder();

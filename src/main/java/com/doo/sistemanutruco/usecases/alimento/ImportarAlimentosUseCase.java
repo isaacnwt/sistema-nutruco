@@ -1,12 +1,10 @@
 package com.doo.sistemanutruco.usecases.alimento;
 
 import com.doo.sistemanutruco.entities.alimento.Alimento;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
 
 public class ImportarAlimentosUseCase {
@@ -31,7 +29,7 @@ public class ImportarAlimentosUseCase {
                 Alimento alimento = extractFromLine(linha);
                 Optional<Alimento> existingAlimento = alimentoDAO.findByNome(alimento.getNome());
                 if (existingAlimento.isPresent()) {
-                    Alimento updatedAlimento = extractFromLine(existingAlimento.get(), alimento);
+                    Alimento updatedAlimento = updateAlimento(existingAlimento.get(), alimento);
                     alimentoDAO.update(updatedAlimento);
                 } else
                     alimentoDAO.create(alimento);
@@ -39,17 +37,6 @@ public class ImportarAlimentosUseCase {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private static @NotNull Alimento extractFromLine(Alimento alimento, Alimento alimentoUpdate) {
-        alimento.setCalorias(alimentoUpdate.getCalorias());
-        alimento.setCarboidratos(alimentoUpdate.getCarboidratos());
-        alimento.setProteinas(alimentoUpdate.getProteinas());
-        alimento.setSodio(alimentoUpdate.getSodio());
-        alimento.setGluten(alimentoUpdate.getGluten());
-        alimento.setLactose(alimentoUpdate.getLactose());
-        alimento.setGorduras(alimentoUpdate.getGorduras());
-        return alimento;
     }
 
     private static Alimento extractFromLine(String linha) {
@@ -67,7 +54,14 @@ public class ImportarAlimentosUseCase {
         return new Alimento(nome, calorias, carboidratos, proteinas, sodio, gluten, lactose, gorduras);
     }
 
-    public List<Alimento> getAllAlimentos() {
-        return alimentoDAO.findAll();
+    private static Alimento updateAlimento(Alimento alimento, Alimento alimentoUpdate) {
+        alimento.setCalorias(alimentoUpdate.getCalorias());
+        alimento.setCarboidratos(alimentoUpdate.getCarboidratos());
+        alimento.setProteinas(alimentoUpdate.getProteinas());
+        alimento.setSodio(alimentoUpdate.getSodio());
+        alimento.setGluten(alimentoUpdate.getGluten());
+        alimento.setLactose(alimentoUpdate.getLactose());
+        alimento.setGorduras(alimentoUpdate.getGorduras());
+        return alimento;
     }
 }

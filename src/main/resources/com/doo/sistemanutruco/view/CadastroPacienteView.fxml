@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.doo.sistemanutruco.controller.CadastroPacienteController"
+      alignment="CENTER"
+      spacing="10.0"
+      style="-fx-padding: 20;"
+      prefWidth="800" prefHeight="400">
+    <Label text="Cadastrar Paciente" style="-fx-font-size: 16pt;"/>
+
+    <HBox spacing="10">
+        <VBox spacing="10">
+            <Label text="CPF:"/>
+            <TextField fx:id="cpfTextField" promptText="CPF" prefWidth="150"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label text="Nome:"/>
+            <TextField fx:id="nomeTextField" promptText="Nome Completo" prefWidth="300"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="10">
+        <VBox spacing="10">
+            <Label text="Data de Nascimento:"/>
+            <DatePicker fx:id="dataNascimentoDatePicker" promptText="Data de Nascimento" prefWidth="150"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label text="Telefone:"/>
+            <TextField fx:id="telefoneTextField" promptText="Telefone" prefWidth="150"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label text="Email:"/>
+            <TextField fx:id="emailTextField" promptText="Email" prefWidth="300"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="10">
+        <VBox spacing="10">
+            <Label text="Peso:"/>
+            <TextField fx:id="pesoTextField" promptText="Peso" prefWidth="100"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label text="Altura:"/>
+            <TextField fx:id="alturaTextField" promptText="Altura" prefWidth="100"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label text="Objetivo:"/>
+            <TextField fx:id="objetivoTextField" promptText="Objetivo" prefWidth="300"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="10">
+        <VBox spacing="10">
+            <Label text="Porcentagem Gordura:"/>
+            <TextField fx:id="porcentagemGorduraTextField" promptText="Gordura %" prefWidth="150"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label text="Porcentagem Massa Magra:"/>
+            <TextField fx:id="porcentagemMassaMagraTextField" promptText="Massa Magra %" prefWidth="150"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label text="Porcentagem Massa Gorda:"/>
+            <TextField fx:id="porcentagemMassaGordaTextField" promptText="Massa Gorda %" prefWidth="150"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label text="Colesterol LDL:"/>
+            <TextField fx:id="colesterolLDLTextField" promptText="mg/dL LDL" prefWidth="150"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="10">
+        <VBox spacing="10">
+            <Label text="Colesterol HDL:"/>
+            <TextField fx:id="colesterolHDLTextField" promptText="mg/dL HDL" prefWidth="150"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label text="Hipertenso:"/>
+            <CheckBox fx:id="hipertensoCheckBox"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label text="Diabético:"/>
+            <CheckBox fx:id="diabeticoCheckBox"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label text="Celíaco:"/>
+            <CheckBox fx:id="celiacoCheckBox"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="20">
+        <Button text="Salvar" onAction="#handleSalvarPaciente" prefWidth="100"/>
+    </HBox>
+
+    <Label fx:id="statusLabel" text="" style="-fx-text-fill: red;"/>
+</VBox>

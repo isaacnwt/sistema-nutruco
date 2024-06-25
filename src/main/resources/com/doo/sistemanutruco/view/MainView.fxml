@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.doo.sistemanutruco.controller.MainController"
-      spacing="10.0" alignment="CENTER" style="-fx-padding: 20;">
+      alignment="CENTER"
+      spacing="10.0"
+      style="-fx-padding: 20;"
+      prefWidth="600" prefHeight="400">
+
     <Label text="Bem-vindo ao sistema Nutruco" style="-fx-font-size: 16pt;"/>
     <Label text="Escolha uma categoria:" style="-fx-font-size: 12pt;"/>
-    <Button text="Alimentos" onAction="#handleAlimentos"/>
-    <Button text="Refeições" onAction="#handleRefeicoes"/>
-    <Button text="Dias" onAction="#handleDias"/>
-    <Button text="Dietas" onAction="#handleDietas"/>
-    <Button text="Usuários" onAction="#handleUsuarios"/>
+    <Button text="Gestão de Pacientes" onAction="#handleGestaoPacientes" prefWidth="200"/>
+    <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="200"/>
+    <Button text="Gestão de Refeições" onAction="#handleGestaoRefeicoes" prefWidth="200"/>
+    <Button text="Importar Alimentos" onAction="#handleImportarAlimentos" prefWidth="200"/>
 </VBox>

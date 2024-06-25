@@ -3,6 +3,7 @@ package com.doo.sistemanutruco.controller;
 import com.doo.sistemanutruco.entities.alimento.Alimento;
 import com.doo.sistemanutruco.repository.sqlite.SqliteAlimentoDAO;
 import com.doo.sistemanutruco.usecases.alimento.ImportarAlimentosUseCase;
+import com.doo.sistemanutruco.usecases.alimento.ListarAlimentosUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -58,9 +59,11 @@ public class ImportarAlimentosController {
     private ObservableList<Alimento> alimentosList;
 
     private final ImportarAlimentosUseCase importarAlimentosUseCase;
+    private final ListarAlimentosUseCase listarAlimentosUseCase;
 
     public ImportarAlimentosController() {
         this.importarAlimentosUseCase = new ImportarAlimentosUseCase(new SqliteAlimentoDAO());
+        this.listarAlimentosUseCase = new ListarAlimentosUseCase(new SqliteAlimentoDAO());
     }
 
     @FXML
@@ -82,7 +85,7 @@ public class ImportarAlimentosController {
     }
 
     private void loadAlimentosFromDatabase() {
-        List<Alimento> alimentos = importarAlimentosUseCase.getAllAlimentos();
+        List<Alimento> alimentos = listarAlimentosUseCase.listarAlimentos();
         alimentosList.setAll(alimentos);
     }
 

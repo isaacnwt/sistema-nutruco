@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.doo.sistemanutruco.controller.GestaoPacientesController"
+      alignment="CENTER"
+      spacing="10.0"
+      style="-fx-padding: 20;"
+      prefWidth="400" prefHeight="400">
+    <Label text="Gestão de Pacientes" style="-fx-font-size: 16pt;"/>
+    <TableView fx:id="pacientesTableView" prefWidth="350" prefHeight="200">
+        <columns>
+            <TableColumn text="CPF" fx:id="cpfColumn" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="cpf"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Nome" fx:id="nomeColumn" prefWidth="150">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nome"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+    <Button text="Cadastrar Paciente" onAction="#handleCadastrarPaciente" prefWidth="350"/>
+    <Button text="Editar Paciente" onAction="#handleEditarPaciente" prefWidth="350"/>
+    <Button text="Desativar Paciente" onAction="#handleDesativarPaciente" prefWidth="350"/>
+</VBox>
