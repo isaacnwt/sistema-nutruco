@@ -1,6 +1,5 @@
 package com.doo.sistemanutruco.controller;
 
-
 import com.doo.sistemanutruco.entities.alimento.Alimento;
 import com.doo.sistemanutruco.entities.refeicao.Refeicao;
 import com.doo.sistemanutruco.repository.sqlite.SqliteAlimentoDAO;
@@ -64,8 +63,14 @@ public class CadastroRefeicaoController {
 
     private final CadastrarRefeicaoUseCase cadastrarRefeicaoUseCase;
 
+    private GestaoRefeicoesController gestaoRefeicoesController;
+
     public CadastroRefeicaoController() {
         this.cadastrarRefeicaoUseCase = new CadastrarRefeicaoUseCase(new SqliteRefeicaoDAO());
+    }
+
+    public void setGestaoRefeicoesController(GestaoRefeicoesController gestaoRefeicoesController) {
+        this.gestaoRefeicoesController = gestaoRefeicoesController;
     }
 
     @FXML
@@ -122,6 +127,8 @@ public class CadastroRefeicaoController {
 
             cadastrarRefeicaoUseCase.cadastrar(refeicao);
             statusLabel.setText("Refeição cadastrada com sucesso!");
+            gestaoRefeicoesController.refreshTable();
+
         } catch (Exception e) {
             statusLabel.setText(e.getMessage());
         }

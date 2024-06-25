@@ -33,11 +33,6 @@ public class GestaoRefeicoesController {
     @FXML
     private TableColumn<Refeicao, String> objetivoColumn;
 
-    private ObservableList<Refeicao> refeicoes;
-
-    public GestaoRefeicoesController() {
-    }
-
     private ObservableList<Refeicao> refeicoesList;
     private final SqliteRefeicaoDAO refeicaoDAO = new SqliteRefeicaoDAO();
 
@@ -51,7 +46,8 @@ public class GestaoRefeicoesController {
     }
 
     private void loadRefeicoes() {
-        refeicoesList = FXCollections.observableArrayList(refeicaoDAO.findAll());
+        List<Refeicao> refeicoes = refeicaoDAO.findAll();
+        refeicoesList = FXCollections.observableArrayList(refeicoes);
         refeicoesTableView.setItems(refeicoesList);
     }
 
@@ -89,6 +85,11 @@ public class GestaoRefeicoesController {
         }
     }
 
+    public void refreshTable() {
+        refeicoesList.clear();
+        loadRefeicoes();
+    }
+
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -101,6 +102,10 @@ public class GestaoRefeicoesController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
             Parent parent = loader.load();
+
+            CadastroRefeicaoController controller = loader.getController();
+            controller.setGestaoRefeicoesController(this);
+
             Stage stage = new Stage();
             stage.setTitle(title);
             stage.setScene(new Scene(parent));
