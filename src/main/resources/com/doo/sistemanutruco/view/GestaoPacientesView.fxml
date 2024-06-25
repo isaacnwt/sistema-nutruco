@@ -26,12 +26,12 @@
             </TableColumn>
             <TableColumn text="Inativo" fx:id="statusAtivoColumn" prefWidth="150">
                 <cellValueFactory>
-                    <PropertyValueFactory property="nome"/>
+                    <PropertyValueFactory property="inativo"/>
                 </cellValueFactory>
             </TableColumn>
         </columns>
     </TableView>
     <Button text="Cadastrar Paciente" onAction="#handleCadastrarPaciente" prefWidth="350"/>
     <Button text="Editar Paciente" onAction="#handleEditarPaciente" prefWidth="350"/>
-    <Button text="Desativar Paciente" onAction="#handleDesativarPaciente" prefWidth="350"/>
+    <Button text="Desativar/Ativar Paciente" onAction="#handleDesativarAtivarPaciente" prefWidth="350"/>
 </VBox>

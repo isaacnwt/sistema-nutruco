@@ -70,18 +70,18 @@ public class GestaoPacientesController {
     }
 
     @FXML
-    private void handleDesativarPaciente() {
+    private void handleDesativarAtivarPaciente() {
         Paciente selectedPaciente = pacientesTableView.getSelectionModel().getSelectedItem();
         if (selectedPaciente != null) {
             try {
-                ativarPacienteUseCase.inativar(selectedPaciente);
+                ativarPacienteUseCase.alternarStatus(selectedPaciente);
                 refreshTable();
-                showAlert("Paciente desativado com sucesso!");
+                showAlert("Estado do paciente alterado com sucesso!");
             } catch (IllegalStateException e) {
                 showAlert("Erro: " + e.getMessage());
             }
         } else {
-            showAlert("Por favor, selecione um paciente para desativar.");
+            showAlert("Por favor, selecione um paciente para alterar o estado.");
         }
     }
 
