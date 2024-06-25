@@ -42,23 +42,43 @@ public class SqlitePacienteDAO extends AbstractTemplateSqlDAO<Paciente, String> 
 
     @Override
     protected void setEntityToPreparedStatement(Paciente entity, PreparedStatement stmt) throws SQLException {
-        stmt.setString(1, entity.getNome());
-        stmt.setDate(2, java.sql.Date.valueOf(entity.getDataNascimento()));
-        stmt.setLong(3, entity.getTelefone());
-        stmt.setString(4, entity.getEmail());
-        stmt.setDouble(5, entity.getPeso());
-        stmt.setDouble(6, entity.getAltura());
-        stmt.setString(7, entity.getObjetivo());
-        stmt.setInt(8, entity.getPorcentagemGordura());
-        stmt.setInt(9, entity.getPorcentagemMassaMagra());
-        stmt.setInt(10, entity.getPorcentagemMassaGorda());
-        stmt.setInt(11, entity.getColesterolLDL());
-        stmt.setInt(12, entity.getColesterolHDL());
-        stmt.setBoolean(13, entity.getHipertenso());
-        stmt.setBoolean(14, entity.getDiabetico());
-        stmt.setBoolean(15, entity.getCeliaco());
-        stmt.setBoolean(16, entity.getInativo());
-        stmt.setString(17, entity.getCpf());
+        if (stmt.toString().contains("UPDATE")) {
+            stmt.setString(1, entity.getNome());
+            stmt.setDate(2, java.sql.Date.valueOf(entity.getDataNascimento()));
+            stmt.setLong(3, entity.getTelefone());
+            stmt.setString(4, entity.getEmail());
+            stmt.setDouble(5, entity.getPeso());
+            stmt.setDouble(6, entity.getAltura());
+            stmt.setString(7, entity.getObjetivo());
+            stmt.setInt(8, entity.getPorcentagemGordura());
+            stmt.setInt(9, entity.getPorcentagemMassaMagra());
+            stmt.setInt(10, entity.getPorcentagemMassaGorda());
+            stmt.setInt(11, entity.getColesterolLDL());
+            stmt.setInt(12, entity.getColesterolHDL());
+            stmt.setBoolean(13, entity.getHipertenso());
+            stmt.setBoolean(14, entity.getDiabetico());
+            stmt.setBoolean(15, entity.getCeliaco());
+            stmt.setBoolean(16, entity.getInativo());
+            stmt.setString(17, entity.getCpf());
+        } else {
+            stmt.setString(1, entity.getCpf());
+            stmt.setString(2, entity.getNome());
+            stmt.setDate(3, java.sql.Date.valueOf(entity.getDataNascimento()));
+            stmt.setLong(4, entity.getTelefone());
+            stmt.setString(5, entity.getEmail());
+            stmt.setDouble(6, entity.getPeso());
+            stmt.setDouble(7, entity.getAltura());
+            stmt.setString(8, entity.getObjetivo());
+            stmt.setInt(9, entity.getPorcentagemGordura());
+            stmt.setInt(10, entity.getPorcentagemMassaMagra());
+            stmt.setInt(11, entity.getPorcentagemMassaGorda());
+            stmt.setInt(12, entity.getColesterolLDL());
+            stmt.setInt(13, entity.getColesterolHDL());
+            stmt.setBoolean(14, entity.getHipertenso());
+            stmt.setBoolean(15, entity.getDiabetico());
+            stmt.setBoolean(16, entity.getCeliaco());
+            stmt.setBoolean(17, entity.getInativo());
+        }
     }
 
 
