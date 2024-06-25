@@ -61,10 +61,12 @@ public class GestaoPacientesController {
 
     @FXML
     private void handleEditarPaciente() {
-        Paciente selectedPaciente = pacientesTableView.getSelectionModel().getSelectedItem();
-        if (selectedPaciente != null) {
-            openEditarPacienteView(selectedPaciente);
-        }
+            Paciente selectedPaciente = pacientesTableView.getSelectionModel().getSelectedItem();
+            if (selectedPaciente != null) {
+                openEditarPacienteView(selectedPaciente);
+            } else {
+                showAlert("Por favor, selecione um paciente para editar.");
+            }
     }
 
     @FXML
