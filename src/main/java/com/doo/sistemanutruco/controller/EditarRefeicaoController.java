@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import java.util.List;
@@ -112,7 +113,6 @@ public class EditarRefeicaoController {
             descricaoTextField.setText(refeicao.getDescricao());
             objetivoTextField.setText(refeicao.getObjetivo());
 
-            // Inicializa alimentosSelecionados se necessário
             if (alimentosSelecionados == null) {
                 alimentosSelecionados = FXCollections.observableArrayList();
             }
@@ -127,7 +127,13 @@ public class EditarRefeicaoController {
         }
     }
 
-
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     @FXML
     private void handleSalvarRefeicao() {
@@ -138,9 +144,9 @@ public class EditarRefeicaoController {
             refeicao.setAlimentos(alimentosSelecionados);
 
             editarRefeicaoUseCase.editar(refeicao);
-            statusLabel.setText("Refeição atualizada com sucesso!");
-            // gestaoRefeicoesController.refreshTable();
-
+            showAlert("Refeição Atualizada!", "Refeição atualizada com sucesso!");
+            gestaoRefeicoesController.refreshTable();
+            close();
         } catch (Exception e) {
             statusLabel.setText(e.getMessage());
         }
@@ -162,6 +168,16 @@ public class EditarRefeicaoController {
             alimentosSelecionados.remove(selectedAlimento);
             alimentosTableView.setItems(alimentosSelecionados); // Atualiza a tabela ao remover um alimento
         }
+    }
+
+    @FXML
+    private void handleCancelar() {
+        close();
+    }
+
+    private void close(){
+        Stage stage = (Stage) nomeTextField.getScene().getWindow();
+        stage.close();
     }
 
     public void setRefeicao(Refeicao refeicao) {

@@ -83,4 +83,6 @@
     </GridPane>
 
     <Button text="Salvar" onAction="#handleSalvarRefeicao"/>
+    <Button text="Cancelar" onAction="#handleCancelar"/>
+
 </VBox>
