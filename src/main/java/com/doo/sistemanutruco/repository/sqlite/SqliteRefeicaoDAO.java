@@ -195,7 +195,12 @@ public class SqliteRefeicaoDAO extends AbstractTemplateSqlDAO<Refeicao, Integer>
                 alimento.setId(rs.getInt("id"));
                 alimento.setNome(rs.getString("nome"));
                 alimento.setCalorias(rs.getDouble("calorias"));
-                // Configurar outras propriedades de Alimento, se necessário...
+                alimento.setCarboidratos(rs.getDouble("carboidratos"));
+                alimento.setProteinas(rs.getDouble("proteinas"));
+                alimento.setSodio(rs.getDouble("sodio"));
+                alimento.setGorduras(rs.getDouble("gorduras"));
+                alimento.setGluten(rs.getBoolean("gluten"));
+                alimento.setLactose(rs.getBoolean("lactose"));
                 alimentos.add(alimento);
             }
         } catch (SQLException e) {
