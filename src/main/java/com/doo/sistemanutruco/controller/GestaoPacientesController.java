@@ -2,12 +2,14 @@ package com.doo.sistemanutruco.controller;
 
 import com.doo.sistemanutruco.entities.paciente.Paciente;
 import com.doo.sistemanutruco.repository.sqlite.SqlitePacienteDAO;
+import com.doo.sistemanutruco.usecases.paciente.AtivarPacienteUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,10 +28,14 @@ public class GestaoPacientesController {
 
     @FXML
     private TableColumn<Paciente, String> nomeColumn;
+
     @FXML
-    private TableColumn<Paciente, String> statusAtivoColumn;
+    private TableColumn<Paciente, Boolean> statusAtivoColumn;
 
     private ObservableList<Paciente> pacientes;
+
+    private final SqlitePacienteDAO pacienteDAO = new SqlitePacienteDAO();
+    private final AtivarPacienteUseCase ativarPacienteUseCase = new AtivarPacienteUseCase(pacienteDAO);
 
     public GestaoPacientesController() {
     }
@@ -43,7 +49,6 @@ public class GestaoPacientesController {
     }
 
     private void loadPacientes() {
-        SqlitePacienteDAO pacienteDAO = new SqlitePacienteDAO();
         List<Paciente> pacientesList = pacienteDAO.findAll();
         pacientes = FXCollections.observableArrayList(pacientesList);
         pacientesTableView.setItems(pacientes);
@@ -64,7 +69,18 @@ public class GestaoPacientesController {
 
     @FXML
     private void handleDesativarPaciente() {
-        // Implementar a desativação de um paciente selecionado
+        Paciente selectedPaciente = pacientesTableView.getSelectionModel().getSelectedItem();
+        if (selectedPaciente != null) {
+            try {
+                ativarPacienteUseCase.inativar(selectedPaciente);
+                refreshTable();
+                showAlert("Paciente desativado com sucesso!");
+            } catch (IllegalStateException e) {
+                showAlert("Erro: " + e.getMessage());
+            }
+        } else {
+            showAlert("Por favor, selecione um paciente para desativar.");
+        }
     }
 
     private void openCadastroPacienteView() {
@@ -103,6 +119,15 @@ public class GestaoPacientesController {
     }
 
     public void refreshTable() {
+        pacientes.clear();
         loadPacientes();
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
