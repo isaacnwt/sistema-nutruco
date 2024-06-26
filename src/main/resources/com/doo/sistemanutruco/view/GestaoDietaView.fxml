@@ -50,7 +50,8 @@
             </columns>
         </TableView>
 
-        <Button text="Alterar Status Dieta" onAction="#handleAlterarStatusDieta" GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+        <Button text="Alterar Status Dieta" onAction="#handleAlterarStatusDieta" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <Button text="Remover Dieta" onAction="#handleRemoverDieta" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
 
         <Label text="Refeições da Dieta:" GridPane.rowIndex="7" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
         <TableView fx:id="refeicoesTableView" GridPane.rowIndex="8" GridPane.columnIndex="0" GridPane.columnSpan="4" prefHeight="200">

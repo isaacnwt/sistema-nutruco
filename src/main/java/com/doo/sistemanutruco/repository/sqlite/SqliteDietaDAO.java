@@ -155,4 +155,15 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
         }
     }
 
+    @Override
+    public void removerDietaDoPaciente(String pacienteId, Integer dietaId) {
+        String sql = "DELETE FROM PacienteDieta WHERE pacienteCpf = ? AND dietaId = ?";
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+            stmt.setInt(1, Integer.parseInt(pacienteId));
+            stmt.setInt(2, dietaId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

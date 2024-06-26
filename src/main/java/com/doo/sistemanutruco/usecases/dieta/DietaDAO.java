@@ -10,4 +10,5 @@ import java.util.List;
 public interface DietaDAO extends DAO<Dieta, Integer> {
     List<Dieta> findByPaciente(Paciente paciente);
     void atribuirDiaADieta(Integer dietaId, Dia dia);
+    void removerDietaDoPaciente(String pacienteCpf, Integer dietaId);
 }

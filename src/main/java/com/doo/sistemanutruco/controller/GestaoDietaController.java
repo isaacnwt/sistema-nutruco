@@ -12,6 +12,7 @@ import com.doo.sistemanutruco.usecases.dia.CadastrarDiaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.AtivarDietaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.AtribuirDietaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.BuscarDietasDoPacienteUseCase;
+import com.doo.sistemanutruco.usecases.dieta.RemoverDietaUseCase;
 import com.doo.sistemanutruco.usecases.refeicao.AtribuirRefeicoesUseCase;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -77,6 +78,7 @@ public class GestaoDietaController {
     private final AtribuirRefeicoesUseCase atribuirRefeicoesUseCase;
     private final BuscarDietasDoPacienteUseCase buscarDietasDoPacienteUseCase;
     private final AtivarDietaUseCase ativarDietaUseCase;
+    private final RemoverDietaUseCase removerDietaUseCase;
 
     private List<Refeicao> refeicoesSelecionadas;
 
@@ -86,6 +88,7 @@ public class GestaoDietaController {
         this.atribuirRefeicoesUseCase = new AtribuirRefeicoesUseCase(new SqliteDiaDAO());
         this.buscarDietasDoPacienteUseCase = new BuscarDietasDoPacienteUseCase(new SqliteDietaDAO());
         this.ativarDietaUseCase = new AtivarDietaUseCase(new SqliteDietaDAO());
+        this.removerDietaUseCase = new RemoverDietaUseCase(new SqliteDietaDAO());
     }
 
     @FXML
@@ -184,6 +187,23 @@ public class GestaoDietaController {
     }
 
     @FXML
+    private void handleRemoverDieta() {
+        Dieta dieta = dietasTableView.getSelectionModel().getSelectedItem();
+        Paciente paciente = pacientesComboBox.getValue();
+        if (dieta != null && paciente != null) {
+            try {
+                removerDietaUseCase.removerDietaDoPaciente(paciente.getCpf(), dieta.getId());
+                showAlert("Dieta Removida", "Dieta removida do paciente com sucesso!", Alert.AlertType.INFORMATION);
+                dietasTableView.getItems().remove(dieta);
+            } catch (Exception e) {
+                showAlert("Atenção!", e.getMessage(), Alert.AlertType.WARNING);
+            }
+        } else {
+            showAlert("Atenção!", "Selecione um paciente e uma dieta!", Alert.AlertType.WARNING);
+        }
+    }
+
+    @FXML
     private void handleAtribuirDieta() {
         try {
             Paciente paciente = pacientesComboBox.getValue();
@@ -194,7 +214,6 @@ public class GestaoDietaController {
             atribuirRefeicoesUseCase.atribuirRefeicoesDosDias(diasDaDieta);
 
             showAlert("Dieta cadastrada!","Dieta cadastrada com sucesso!", Alert.AlertType.INFORMATION);
-            close();
         } catch (Exception e) {
             showAlert("Atenção!", e.getMessage(), Alert.AlertType.WARNING);
         }
