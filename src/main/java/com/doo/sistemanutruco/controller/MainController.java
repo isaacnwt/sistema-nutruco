@@ -16,8 +16,8 @@ public class MainController {
     }
 
     @FXML
-    private void handleAtribuirDieta() {
-        loadWindow("/com/doo/sistemanutruco/view/AtribuirDietaView.fxml", "Atribuir Dieta");
+    private void handleGestaoDietas() {
+        loadWindow("/com/doo/sistemanutruco/view/GestaoDietaView.fxml", "Gestão de Dietas");
     }
 
     @FXML

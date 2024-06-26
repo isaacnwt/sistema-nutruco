@@ -5,12 +5,12 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.doo.sistemanutruco.controller.AtribuirDietaController"
+      fx:controller="com.doo.sistemanutruco.controller.GestaoDietaController"
       alignment="CENTER"
       spacing="10.0"
       style="-fx-padding: 20;"
       prefWidth="800" prefHeight="600">
-    <Label text="Atribuir Dieta" style="-fx-font-size: 16pt;"/>
+    <Label text="Gestão de Dietas" style="-fx-font-size: 16pt;"/>
 
     <GridPane hgap="10" vgap="10">
         <columnConstraints>
@@ -19,14 +19,6 @@
             <ColumnConstraints percentWidth="25"/>
             <ColumnConstraints percentWidth="25"/>
         </columnConstraints>
-
-        <rowConstraints>
-            <RowConstraints vgrow="NEVER"/>
-            <RowConstraints vgrow="NEVER"/>
-            <RowConstraints vgrow="NEVER"/>
-            <RowConstraints vgrow="NEVER"/>
-            <RowConstraints vgrow="NEVER"/>
-        </rowConstraints>
 
         <Label text="Paciente:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
         <ComboBox fx:id="pacientesComboBox" promptText="Selecione um paciente" onAction="#handlePacienteSelecionado" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
@@ -48,7 +40,7 @@
         <Button text="Adicionar Refeição" onAction="#handleAdicionarRefeicao" GridPane.rowIndex="3" GridPane.columnIndex="2" GridPane.columnSpan="2"/>
 
         <Label text="Dietas do Paciente:" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
-        <TableView fx:id="dietasTableView" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="4" prefHeight="150">
+        <TableView fx:id="dietasTableView" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="4">
             <columns>
                 <TableColumn text="Nome" fx:id="nomeDietaColumn"/>
                 <TableColumn text="Objetivo" fx:id="objetivoDietaColumn"/>
@@ -58,14 +50,16 @@
             </columns>
         </TableView>
 
-        <Label text="Refeições da Dieta:" GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
-        <TableView fx:id="refeicoesTableView" GridPane.rowIndex="7" GridPane.columnIndex="0" GridPane.columnSpan="4" prefHeight="200">
+        <Button text="Alterar Status Dieta" onAction="#handleAlterarStatusDieta" GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+
+        <Label text="Refeições da Dieta:" GridPane.rowIndex="7" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+        <TableView fx:id="refeicoesTableView" GridPane.rowIndex="8" GridPane.columnIndex="0" GridPane.columnSpan="4" prefHeight="200">
             <columns>
                 <TableColumn text="Nome" fx:id="nomeColumn"/>
             </columns>
         </TableView>
 
-        <Button text="Remover Refeição Selecionada" onAction="#handleRemoverRefeicao" GridPane.rowIndex="8" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+        <Button text="Remover Refeição Selecionada" onAction="#handleRemoverRefeicao" GridPane.rowIndex="9" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
     </GridPane>
 
     <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="150"/>

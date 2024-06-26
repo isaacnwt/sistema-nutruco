@@ -9,6 +9,7 @@ import com.doo.sistemanutruco.repository.sqlite.SqliteDietaDAO;
 import com.doo.sistemanutruco.repository.sqlite.SqlitePacienteDAO;
 import com.doo.sistemanutruco.repository.sqlite.SqliteRefeicaoDAO;
 import com.doo.sistemanutruco.usecases.dia.CadastrarDiaUseCase;
+import com.doo.sistemanutruco.usecases.dieta.AtivarDietaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.AtribuirDietaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.BuscarDietasDoPacienteUseCase;
 import com.doo.sistemanutruco.usecases.refeicao.AtribuirRefeicoesUseCase;
@@ -27,7 +28,7 @@ import java.util.List;
 import static java.util.Arrays.stream;
 import static com.doo.sistemanutruco.controller.util.AlertUtil.showAlert;
 
-public class AtribuirDietaController {
+public class GestaoDietaController {
 
     @FXML
     private ComboBox<Paciente> pacientesComboBox;
@@ -75,14 +76,16 @@ public class AtribuirDietaController {
     private final CadastrarDiaUseCase cadastrarDiaUseCase;
     private final AtribuirRefeicoesUseCase atribuirRefeicoesUseCase;
     private final BuscarDietasDoPacienteUseCase buscarDietasDoPacienteUseCase;
+    private final AtivarDietaUseCase ativarDietaUseCase;
 
     private List<Refeicao> refeicoesSelecionadas;
 
-    public AtribuirDietaController() {
+    public GestaoDietaController() {
         this.atribuirDietaUseCase = new AtribuirDietaUseCase(new SqlitePacienteDAO(), new SqliteDietaDAO());
         this.cadastrarDiaUseCase = new CadastrarDiaUseCase(new SqliteDiaDAO(), new SqliteDietaDAO());
         this.atribuirRefeicoesUseCase = new AtribuirRefeicoesUseCase(new SqliteDiaDAO());
         this.buscarDietasDoPacienteUseCase = new BuscarDietasDoPacienteUseCase(new SqliteDietaDAO());
+        this.ativarDietaUseCase = new AtivarDietaUseCase(new SqliteDietaDAO());
     }
 
     @FXML
@@ -157,6 +160,26 @@ public class AtribuirDietaController {
         if (refeicao != null) {
             refeicoesSelecionadas.remove(refeicao);
             refeicoesTableView.setItems(FXCollections.observableArrayList(refeicoesSelecionadas));
+        }
+    }
+    @FXML
+    private void handleAlterarStatusDieta() {
+        Dieta dieta = dietasTableView.getSelectionModel().getSelectedItem();
+        if (dieta != null) {
+            try {
+                if (dieta.isAtiva()) {
+                    ativarDietaUseCase.inativar(dieta);
+                    showAlert("Status da Dieta Alterado", "Dieta desativada com sucesso!", Alert.AlertType.INFORMATION);
+                } else {
+                    ativarDietaUseCase.ativar(dieta);
+                    showAlert("Status da Dieta Alterado", "Dieta ativada com sucesso!", Alert.AlertType.INFORMATION);
+                }
+                dietasTableView.refresh();
+            } catch (Exception e) {
+                showAlert("Atenção!", e.getMessage(), Alert.AlertType.WARNING);
+            }
+        } else {
+            showAlert("Atenção!", "Nenhuma dieta selecionada!", Alert.AlertType.WARNING);
         }
     }
 

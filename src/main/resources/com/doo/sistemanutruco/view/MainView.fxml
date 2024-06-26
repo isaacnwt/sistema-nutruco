@@ -14,7 +14,7 @@
     <Label text="Bem-vindo ao sistema Nutruco" style="-fx-font-size: 16pt;"/>
     <Label text="Escolha uma categoria:" style="-fx-font-size: 12pt;"/>
     <Button text="Gestão de Pacientes" onAction="#handleGestaoPacientes" prefWidth="200"/>
-    <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="200"/>
+    <Button text="Gestão de Dietas" onAction="#handleGestaoDietas" prefWidth="200"/>
     <Button text="Gestão de Refeições" onAction="#handleGestaoRefeicoes" prefWidth="200"/>
     <Button text="Importar Alimentos" onAction="#handleImportarAlimentos" prefWidth="200"/>
 </VBox>
