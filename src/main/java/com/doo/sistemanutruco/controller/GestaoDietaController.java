@@ -72,6 +72,16 @@ public class GestaoDietaController {
     @FXML
     private TableColumn<Refeicao, String> nomeColumn;
 
+    public TableColumn<Refeicao, String>  descricaoColumn;
+    public TableColumn<Refeicao, Double>  caloriasTotaisColumn;
+    public TableColumn<Refeicao, Double>  carboidratosTotaisColumn;
+    public TableColumn<Refeicao, Double>  proteinasTotaisColumn;
+    public TableColumn<Refeicao, Double>  gordurasTotaisColumn;
+    public TableColumn<Refeicao, Double> sodioTotalColumn;
+    public TableColumn<Refeicao, Boolean>  contemLactoseColumn;
+    public TableColumn<Refeicao, Boolean>  contemGlutenColumn;
+    public TableColumn<Refeicao, String>  objetivoRefeicaoColumn;
+
 
     private final AtribuirDietaUseCase atribuirDietaUseCase;
     private final CadastrarDiaUseCase cadastrarDiaUseCase;
@@ -135,6 +145,15 @@ public class GestaoDietaController {
 
         refeicoesSelecionadas = new ArrayList<>();
         nomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+        objetivoRefeicaoColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getObjetivo()));
+        descricaoColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescricao()));
+        caloriasTotaisColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCaloriasTotais()));
+        carboidratosTotaisColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCarboidratosTotais()));
+        proteinasTotaisColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getProteinasTotais()));
+        gordurasTotaisColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getGordurasTotais()));
+        sodioTotalColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSodioTotal()));
+        contemLactoseColumn.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getContemLactose()));
+        contemGlutenColumn.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getContemGluten()));
         refeicoesTableView.setItems(FXCollections.observableArrayList(refeicoesSelecionadas));
     }
 

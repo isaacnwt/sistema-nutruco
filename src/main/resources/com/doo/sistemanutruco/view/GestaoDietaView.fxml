@@ -39,8 +39,27 @@
         <ComboBox fx:id="refeicoesComboBox" promptText="Selecione uma refeição" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
         <Button text="Adicionar Refeição" onAction="#handleAdicionarRefeicao" GridPane.rowIndex="3" GridPane.columnIndex="2" GridPane.columnSpan="2"/>
 
-        <Label text="Dietas do Paciente:" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
-        <TableView fx:id="dietasTableView" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="4">
+        <Label text="Refeições da Dieta:" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+        <TableView fx:id="refeicoesTableView" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="4">
+            <columns>
+                <TableColumn text="Nome" fx:id="nomeColumn"/>
+                <TableColumn text="Descrição" fx:id="descricaoColumn"/>
+                <TableColumn text="Objetivo" fx:id="objetivoRefeicaoColumn"/>
+                <TableColumn text="Calorias Totais" fx:id="caloriasTotaisColumn"/>
+                <TableColumn text="Carboidratos Totais" fx:id="carboidratosTotaisColumn"/>
+                <TableColumn text="Proteínas Totais" fx:id="proteinasTotaisColumn"/>
+                <TableColumn text="Gorduras Totais" fx:id="gordurasTotaisColumn"/>
+                <TableColumn text="Sódio Total" fx:id="sodioTotalColumn"/>
+                <TableColumn text="Contém Lactose" fx:id="contemLactoseColumn"/>
+                <TableColumn text="Contém Glúten" fx:id="contemGlutenColumn"/>
+            </columns>
+        </TableView>
+
+        <Button text="Remover Refeição Selecionada" onAction="#handleRemoverRefeicao" GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+        <Button text="Atribuir Dieta ao Paciente" onAction="#handleAtribuirDieta" prefWidth="150" GridPane.rowIndex="7" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+
+        <Label text="Dietas do Paciente:" GridPane.rowIndex="8" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+        <TableView fx:id="dietasTableView" GridPane.rowIndex="9" GridPane.columnIndex="0" GridPane.columnSpan="4">
             <columns>
                 <TableColumn text="Nome" fx:id="nomeDietaColumn"/>
                 <TableColumn text="Objetivo" fx:id="objetivoDietaColumn"/>
@@ -50,18 +69,7 @@
             </columns>
         </TableView>
 
-        <Button text="Alterar Status Dieta" onAction="#handleAlterarStatusDieta" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
-        <Button text="Remover Dieta" onAction="#handleRemoverDieta" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
-
-        <Label text="Refeições da Dieta:" GridPane.rowIndex="7" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
-        <TableView fx:id="refeicoesTableView" GridPane.rowIndex="8" GridPane.columnIndex="0" GridPane.columnSpan="4" prefHeight="200">
-            <columns>
-                <TableColumn text="Nome" fx:id="nomeColumn"/>
-            </columns>
-        </TableView>
-
-        <Button text="Remover Refeição Selecionada" onAction="#handleRemoverRefeicao" GridPane.rowIndex="9" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+        <Button text="Alterar Status Dieta" onAction="#handleAlterarStatusDieta" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+        <Button text="Remover Dieta" onAction="#handleRemoverDieta" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
     </GridPane>
-
-    <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="150"/>
 </VBox>
