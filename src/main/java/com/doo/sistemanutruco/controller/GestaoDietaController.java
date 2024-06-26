@@ -171,8 +171,16 @@ public class GestaoDietaController {
     private void handleAdicionarRefeicao() {
         Refeicao refeicao = refeicoesComboBox.getValue();
         if (refeicao != null) {
-            refeicoesSelecionadas.add(refeicao);
-            refeicoesTableView.setItems(FXCollections.observableArrayList(refeicoesSelecionadas));
+            if (refeicoesSelecionadas.contains(refeicao)) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Refeição Já Adicionada!");
+                alert.setHeaderText(null);
+                alert.setContentText("Esta refeição já foi adicionada à lista.");
+                alert.showAndWait();
+            } else {
+                refeicoesSelecionadas.add(refeicao);
+                refeicoesTableView.setItems(FXCollections.observableArrayList(refeicoesSelecionadas));
+            }
         }
     }
 
