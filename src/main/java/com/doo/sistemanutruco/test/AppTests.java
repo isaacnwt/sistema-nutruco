@@ -1,11 +1,6 @@
 package com.doo.sistemanutruco.test;
 
-import com.doo.sistemanutruco.entities.alimento.Alimento;
-import com.doo.sistemanutruco.entities.dia.Dia;
-import com.doo.sistemanutruco.entities.dieta.Dieta;
-import com.doo.sistemanutruco.entities.paciente.Paciente;
-import com.doo.sistemanutruco.entities.refeicao.Refeicao;
-import com.doo.sistemanutruco.repository.memory.*;
+
 import com.doo.sistemanutruco.usecases.alimento.ImportarAlimentosUseCase;
 import com.doo.sistemanutruco.usecases.dia.CadastrarDiaUseCase;
 import com.doo.sistemanutruco.usecases.dia.EditarDiaUseCase;
@@ -22,12 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppTests {
-
-    private static InMemoryPacienteDAO inMemoryPacienteDAO;
-    private static InMemoryAlimentoDAO inMemoryAlimentoDAO;
-    private static InMemoryRefeicaoDAO inMemoryRefeicaoDAO;
-    private static InMemoryDiaDAO inMemoryDiaDAO;
-    private static InMemoryDietaDAO inMemoryDietaDAO;
 
     private static CadastrarPacienteUseCase cadastrarPacienteUseCase;
     private static EditarPacienteUseCase editarPacienteUseCase;

@@ -12,16 +12,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static java.sql.Date.valueOf;
+
 public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> implements DietaDAO {
 
     @Override
     protected String createSaveSql() {
-        return "INSERT INTO Dieta (nome, objetivo, inativo, calorias, carboidratos, proteinas, sodio, contemGluten, contemLactose, gorduras) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        return "INSERT INTO Dieta (nome, objetivo, inativo, calorias, carboidratos, proteinas, sodio, contemGluten, contemLactose, gorduras, dataInicio, dataFim) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     @Override
     protected String createUpdateSql() {
-        return "UPDATE Dieta SET nome = ?, objetivo = ?, inativo = ?, calorias = ?, carboidratos = ?, proteinas = ?, sodio = ?, contemGluten = ?, contemLactose = ?, gorduras = ? WHERE id = ?";
+        return "UPDATE Dieta SET nome = ?, objetivo = ?, inativo = ?, calorias = ?, carboidratos = ?, proteinas = ?, sodio = ?, contemGluten = ?, contemLactose = ?, gorduras = ?, dataInicio = ?, dataFim = ? WHERE id = ?";
     }
 
     @Override
@@ -56,10 +58,14 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
         stmt.setBoolean(8, entity.isDietaContemGluten());
         stmt.setBoolean(9, entity.isDietaContemLactose());
         stmt.setDouble(10, entity.getGordurasDaDieta());
+        stmt.setDate(11, valueOf(entity.getDataInicio()));
+        stmt.setDate(12, valueOf(entity.getDataFim()));
+
         if (entity.getId() != null) {
-            stmt.setInt(11, entity.getId());
+            stmt.setInt(13, entity.getId());
         }
     }
+
 
     @Override
     protected void setKeyToPreparedStatement(Integer key, PreparedStatement stmt) throws SQLException {
@@ -89,8 +95,11 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
         dieta.setDietaContemGluten(rs.getBoolean("contemGluten"));
         dieta.setDietaContemLactose(rs.getBoolean("contemLactose"));
         dieta.setGordurasDaDieta(rs.getDouble("gorduras"));
+        dieta.setDataInicio(rs.getDate("dataInicio").toLocalDate());
+        dieta.setDataFim(rs.getDate("dataFim").toLocalDate());
         return dieta;
     }
+
 
     @Override
     protected Integer getEntityKey(Dieta entity) {
@@ -99,18 +108,17 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
 
     @Override
     public Integer create(Dieta dieta) {
-        super.create(dieta);
-        Integer dietaId = getLastInsertId();
-        dieta.setId(dietaId);
-        return dietaId;
-    }
+        String sql = createSaveSql();
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+            setEntityToPreparedStatement(dieta, stmt);
+            int affectedRows = stmt.executeUpdate();
 
-    private Integer getLastInsertId() {
-        String sql = "SELECT last_insert_rowid()";
-        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-            if (rs.next()) {
-                return rs.getInt(1);
+            if (affectedRows > 0) {
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getInt(1);
+                    }
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -136,10 +144,10 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
     }
 
     @Override
-    public void atribuirDiaADieta(Dieta dieta, Dia dia) {
+    public void atribuirDiaADieta(Integer dietaId, Dia dia) {
         String sql = "INSERT INTO DietaDia (dietaId, diaId) VALUES (?, ?)";
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
-            stmt.setInt(1, dieta.getId());
+            stmt.setInt(1, dietaId);
             stmt.setInt(2, dia.getId());
             stmt.execute();
         } catch (SQLException e) {

@@ -10,7 +10,7 @@ import com.doo.sistemanutruco.repository.sqlite.SqlitePacienteDAO;
 import com.doo.sistemanutruco.repository.sqlite.SqliteRefeicaoDAO;
 import com.doo.sistemanutruco.usecases.dia.CadastrarDiaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.AtribuirDietaUseCase;
-import com.doo.sistemanutruco.usecases.refeicao.CadastrarRefeicoesUseCase;
+import com.doo.sistemanutruco.usecases.refeicao.AtribuirRefeicoesUseCase;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -20,7 +20,6 @@ import javafx.beans.property.SimpleStringProperty;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.stream;
@@ -56,14 +55,14 @@ public class AtribuirDietaController {
 
     private final AtribuirDietaUseCase atribuirDietaUseCase;
     private final CadastrarDiaUseCase cadastrarDiaUseCase;
-    private final CadastrarRefeicoesUseCase cadastrarRefeicoesUseCase;
+    private final AtribuirRefeicoesUseCase atribuirRefeicoesUseCase;
 
     private List<Refeicao> refeicoesSelecionadas;
 
     public AtribuirDietaController() {
         this.atribuirDietaUseCase = new AtribuirDietaUseCase(new SqlitePacienteDAO(), new SqliteDietaDAO());
         this.cadastrarDiaUseCase = new CadastrarDiaUseCase(new SqliteDiaDAO(), new SqliteDietaDAO());
-        this.cadastrarRefeicoesUseCase = new CadastrarRefeicoesUseCase(new SqliteRefeicaoDAO(), new SqliteDiaDAO());
+        this.atribuirRefeicoesUseCase = new AtribuirRefeicoesUseCase(new SqliteDiaDAO());
     }
 
     @FXML
@@ -122,9 +121,9 @@ public class AtribuirDietaController {
             Paciente paciente = pacientesComboBox.getValue();
             Dieta dieta = getDieta();
 
-            atribuirDietaUseCase.atribuirDieta(paciente, dieta);
-            cadastrarDiaUseCase.cadastrarDiasDaDieta(dieta);
-            cadastrarRefeicoesUseCase.cadastrarRefeicoesDosDias(dieta.getDias());
+            Integer dietaId = atribuirDietaUseCase.atribuirDieta(paciente, dieta);
+            List<Dia> diasDaDieta = cadastrarDiaUseCase.cadastrarDiasDaDieta(dietaId);
+            atribuirRefeicoesUseCase.atribuirRefeicoesDosDias(diasDaDieta);
 
             statusLabel.setText("Dieta atribuída com sucesso!");
         } catch (Exception e) {

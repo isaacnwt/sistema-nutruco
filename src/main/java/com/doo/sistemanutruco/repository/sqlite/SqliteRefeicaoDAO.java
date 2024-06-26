@@ -105,39 +105,26 @@ public class SqliteRefeicaoDAO extends AbstractTemplateSqlDAO<Refeicao, Integer>
     }
 
     @Override
-    public Optional<Refeicao> findByNome(String nome) {
-        List<Refeicao> results = selectBy("nome", nome);
-        if (results.isEmpty()) {
-            return Optional.empty();
-        }
-        return Optional.of(results.get(0));
-    }
-
-    @Override
-    public List<Refeicao> findByDiaId(Integer diaId) {
-        String sql = "SELECT r.* FROM Refeicao r INNER JOIN DiaRefeicao dr ON r.id = dr.refeicaoId WHERE dr.diaId = ?";
-        List<Refeicao> refeicoes = new ArrayList<>();
+    public Integer create(Refeicao refeicao) {
+        String sql = createSaveSql();
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
-            stmt.setInt(1, diaId);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                refeicoes.add(getEntityFromResultSet(rs));
+            setEntityToPreparedStatement(refeicao, stmt);
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows > 0) {
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        Integer refeicaoId = generatedKeys.getInt(1);
+                        for (Alimento alimento : refeicao.getAlimentos())
+                            saveRefeicaoAlimento(refeicaoId, alimento.getId());
+                        return refeicaoId;
+                    }
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return refeicoes;
-    }
-
-    @Override
-    public Integer create(Refeicao refeicao) {
-        super.create(refeicao);
-        Integer refeicaoId = getLastInsertId();
-
-        for (Alimento alimento : refeicao.getAlimentos()) {
-            saveRefeicaoAlimento(refeicaoId, alimento.getId());
-        }
-        return refeicaoId;
+        return null;
     }
 
     @Override
@@ -149,6 +136,15 @@ public class SqliteRefeicaoDAO extends AbstractTemplateSqlDAO<Refeicao, Integer>
             saveRefeicaoAlimento(refeicao.getId(), alimento.getId());
         }
         return updated;
+    }
+
+    @Override
+    public Optional<Refeicao> findByNome(String nome) {
+        List<Refeicao> results = selectBy("nome", nome);
+        if (results.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(results.get(0));
     }
 
     private void saveRefeicaoAlimento(Integer refeicaoId, Integer alimentoId) {
@@ -172,18 +168,6 @@ public class SqliteRefeicaoDAO extends AbstractTemplateSqlDAO<Refeicao, Integer>
         }
     }
 
-    private Integer getLastInsertId() {
-        String sql = "SELECT last_insert_rowid()";
-        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-            if (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
     private List<Alimento> loadAlimentosByRefeicaoId(Integer refeicaoId) {
         String sql = "SELECT a.* FROM Alimento a INNER JOIN RefeicaoAlimento ra ON a.id = ra.alimentoId WHERE ra.refeicaoId = ?";
         List<Alimento> alimentos = new ArrayList<>();

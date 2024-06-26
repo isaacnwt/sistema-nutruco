@@ -36,6 +36,7 @@ public class AtribuirDietaUseCase {
 
         Integer dietaId = dietaDAO.create(dieta);
         dieta.setId(dietaId);
+        pacienteDAO.atribuirDietaAPaciente(dieta, paciente);
 
         return dietaId;
     }

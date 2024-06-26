@@ -30,6 +30,7 @@ public class DatabaseBuilder {
             stmt.addBatch(createPacienteTableSql());
             stmt.addBatch(createRefeicaoAlimentoTableSql());
             stmt.addBatch(createDietaDiaTableSql());
+            stmt.addBatch(createDiaRefeicaoTableSql());
             stmt.addBatch(createPacienteDietaTableSql());
             stmt.executeBatch();
 
@@ -101,7 +102,9 @@ public class DatabaseBuilder {
         builder.append("sodio DOUBLE, \n");
         builder.append("contemGluten BOOLEAN, \n");
         builder.append("contemLactose BOOLEAN, \n");
-        builder.append("gorduras DOUBLE \n");
+        builder.append("gorduras DOUBLE, \n");
+        builder.append("dataInicio DATE, \n");
+        builder.append("dataFim DATE \n");
         builder.append(");\n");
         return builder.toString();
     }
@@ -172,8 +175,6 @@ public class DatabaseBuilder {
         builder.append("CREATE TABLE IF NOT EXISTS PacienteDieta (\n");
         builder.append("pacienteCpf TEXT NOT NULL, \n");
         builder.append("dietaId INTEGER NOT NULL, \n");
-        builder.append("dataIni DATE, \n");
-        builder.append("dataFim DATE, \n");
         builder.append("PRIMARY KEY (pacienteCpf, dietaId), \n");
         builder.append("FOREIGN KEY (pacienteCpf) REFERENCES Paciente(cpf), \n");
         builder.append("FOREIGN KEY (dietaId) REFERENCES Dieta(id) \n");

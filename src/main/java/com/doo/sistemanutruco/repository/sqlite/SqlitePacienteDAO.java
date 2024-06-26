@@ -1,7 +1,9 @@
 package com.doo.sistemanutruco.repository.sqlite;
 
+import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.entities.paciente.Paciente;
 import com.doo.sistemanutruco.repository.util.AbstractTemplateSqlDAO;
+import com.doo.sistemanutruco.repository.util.ConnectionFactory;
 import com.doo.sistemanutruco.usecases.paciente.PacienteDAO;
 
 import java.sql.*;
@@ -136,6 +138,18 @@ public class SqlitePacienteDAO extends AbstractTemplateSqlDAO<Paciente, String> 
     @Override
     public Optional<Paciente> findByNome(String nome) {
         return selectBy("nome", nome).stream().findFirst();
+    }
+
+    @Override
+    public void atribuirDietaAPaciente(Dieta dieta, Paciente paciente) {
+        String sql = "INSERT INTO PacienteDieta (pacienteCpf, dietaId) VALUES (?, ?)";
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+            stmt.setString(1, paciente.getCpf());
+            stmt.setInt(2, dieta.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 
