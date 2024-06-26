@@ -155,7 +155,7 @@ public class AtribuirDietaController {
             Dieta dieta = getDieta();
 
             Integer dietaId = atribuirDietaUseCase.atribuirDieta(paciente, dieta);
-            List<Dia> diasDaDieta = cadastrarDiaUseCase.cadastrarDiasDaDieta(dietaId);
+            List<Dia> diasDaDieta = cadastrarDiaUseCase.cadastrarDiasDaDieta(dietaId, refeicoesSelecionadas);
             atribuirRefeicoesUseCase.atribuirRefeicoesDosDias(diasDaDieta);
 
             statusLabel.setText("Dieta atribuída com sucesso!");

@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="feat: listagem das dietas do paciente">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/AtribuirDietaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/AtribuirDietaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/dieta/Dieta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/entities/dieta/Dieta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDietaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/sqlite/SqliteDietaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/DatabaseBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/repository/util/DatabaseBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtivarDietaUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtivarDietaUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtribuirDietaUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/usecases/dieta/AtribuirDietaUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/AtribuirDietaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/AtribuirDietaView.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="refactor: dieta inativo -&gt; ativo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -412,7 +403,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719373434873</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="refactor: dieta inativo -&gt; ativo">
+      <option name="closed" value="true" />
+      <created>1719374549719</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1719374549719</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,7 +426,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: criacao e validacao de Refeicao" />
     <MESSAGE value="test: CadastrarRefeicaoUseCase" />
     <MESSAGE value="refactor: atributos boolean de Paciente" />
     <MESSAGE value="refactor: modelo e validador de Dia" />
@@ -452,7 +450,8 @@
     <MESSAGE value="refactor: validacao dieta" />
     <MESSAGE value="fix: relacionamento dos elementos" />
     <MESSAGE value="feat: listagem das dietas do paciente" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: listagem das dietas do paciente" />
+    <MESSAGE value="refactor: dieta inativo -&gt; ativo" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: dieta inativo -&gt; ativo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
