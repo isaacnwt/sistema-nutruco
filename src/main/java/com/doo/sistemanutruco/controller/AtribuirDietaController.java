@@ -49,6 +49,8 @@ public class AtribuirDietaController {
 
     @FXML
     private TableColumn<Dieta, String> nomeDietaColumn;
+    @FXML
+    private TableColumn<Dieta, String> objetivoDietaColumn;
 
     @FXML
     private TableColumn<Dieta, LocalDate> dataInicioColumn;
@@ -120,6 +122,7 @@ public class AtribuirDietaController {
         });
 
         nomeDietaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+        objetivoDietaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getObjetivo()));
         dataInicioColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDataInicio()));
         dataFimColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDataFim()));
         ativaColumn.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isAtiva()));
@@ -144,6 +147,15 @@ public class AtribuirDietaController {
         Refeicao refeicao = refeicoesComboBox.getValue();
         if (refeicao != null) {
             refeicoesSelecionadas.add(refeicao);
+            refeicoesTableView.setItems(FXCollections.observableArrayList(refeicoesSelecionadas));
+        }
+    }
+
+    @FXML
+    private void handleRemoverRefeicao() {
+        Refeicao refeicao = refeicoesTableView.getSelectionModel().getSelectedItem();
+        if (refeicao != null) {
+            refeicoesSelecionadas.remove(refeicao);
             refeicoesTableView.setItems(FXCollections.observableArrayList(refeicoesSelecionadas));
         }
     }

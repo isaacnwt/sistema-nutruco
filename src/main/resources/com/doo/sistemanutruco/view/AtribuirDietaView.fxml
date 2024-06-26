@@ -25,6 +25,7 @@
             <RowConstraints vgrow="NEVER"/>
             <RowConstraints vgrow="NEVER"/>
             <RowConstraints vgrow="NEVER"/>
+            <RowConstraints vgrow="NEVER"/>
         </rowConstraints>
 
         <Label text="Paciente:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
@@ -50,6 +51,7 @@
         <TableView fx:id="dietasTableView" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="4" prefHeight="150">
             <columns>
                 <TableColumn text="Nome" fx:id="nomeDietaColumn"/>
+                <TableColumn text="Objetivo" fx:id="objetivoDietaColumn"/>
                 <TableColumn text="Data de Início" fx:id="dataInicioColumn"/>
                 <TableColumn text="Data de Fim" fx:id="dataFimColumn"/>
                 <TableColumn text="Ativa" fx:id="ativaColumn"/>
@@ -62,6 +64,8 @@
                 <TableColumn text="Nome" fx:id="nomeColumn"/>
             </columns>
         </TableView>
+
+        <Button text="Remover Refeição Selecionada" onAction="#handleRemoverRefeicao" GridPane.rowIndex="8" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
     </GridPane>
 
     <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="150"/>
