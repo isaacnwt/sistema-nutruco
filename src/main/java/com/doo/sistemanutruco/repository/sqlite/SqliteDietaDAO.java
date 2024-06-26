@@ -11,6 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static java.sql.Date.valueOf;
 
@@ -141,6 +142,30 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
             e.printStackTrace();
         }
         return Collections.emptyList();
+    }
+
+    @Override
+    public Optional<Dieta> clone(Dieta dieta) {
+        Dieta dietaClonada = new Dieta();
+        dietaClonada.setNome(dieta.getNome() + " clone");
+        dietaClonada.setObjetivo(dieta.getObjetivo());
+        dietaClonada.setAtiva(dieta.isAtiva());
+        dietaClonada.setCaloriasDaDieta(dieta.getCaloriasDaDieta());
+        dietaClonada.setCarboidratosDaDieta(dieta.getCarboidratosDaDieta());
+        dietaClonada.setProteinasDaDieta(dieta.getProteinasDaDieta());
+        dietaClonada.setSodioDaDieta(dieta.getSodioDaDieta());
+        dietaClonada.setDietaContemGluten(dieta.isDietaContemGluten());
+        dietaClonada.setDietaContemLactose(dieta.isDietaContemLactose());
+        dietaClonada.setGordurasDaDieta(dieta.getGordurasDaDieta());
+        dietaClonada.setDataInicio(dieta.getDataInicio());
+        dietaClonada.setDataFim(dieta.getDataFim());
+
+        Integer idClonada = create(dietaClonada);
+        if (idClonada != null) {
+            dietaClonada.setId(idClonada);
+            return Optional.of(dietaClonada);
+        }
+        return Optional.empty();
     }
 
     @Override

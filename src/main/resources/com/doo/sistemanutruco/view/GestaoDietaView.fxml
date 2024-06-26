@@ -24,5 +24,6 @@
         </columns>
     </TableView>
     <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="350"/>
+    <Button text="Clonar Dieta" onAction="#handleClonarDieta" prefWidth="350"/>
 
 </VBox>

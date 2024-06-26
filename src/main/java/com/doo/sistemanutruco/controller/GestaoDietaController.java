@@ -4,6 +4,8 @@ import com.doo.sistemanutruco.entities.dieta.Dieta;
 import com.doo.sistemanutruco.entities.paciente.Paciente;
 import com.doo.sistemanutruco.repository.sqlite.SqliteDietaDAO;
 import com.doo.sistemanutruco.repository.sqlite.SqlitePacienteDAO;
+import com.doo.sistemanutruco.usecases.dieta.ClonarDietaUseCase;
+import com.doo.sistemanutruco.usecases.paciente.AtivarPacienteUseCase;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -44,6 +47,8 @@ public class GestaoDietaController {
     private TableColumn<Dieta, Double> sodioTotalColumn;
     private final SqliteDietaDAO dietaDAO = new SqliteDietaDAO();
     private ObservableList<Dieta> dietas;
+    private final ClonarDietaUseCase clonarDietaUseCase = new ClonarDietaUseCase(dietaDAO);
+
     public GestaoDietaController() {
     }
 
@@ -62,6 +67,34 @@ public class GestaoDietaController {
     @FXML
     private void handleAtribuirDieta() {
         openAtribuirDietaView();
+    }
+    @FXML
+    private void handleClonarDieta() {
+        Dieta selectedDieta = dietasTableView.getSelectionModel().getSelectedItem();
+        if (selectedDieta != null) {
+            try {
+                clonarDietaUseCase.clonarDieta(selectedDieta);
+                refreshTable();
+                showAlert("Dieta clonada com sucesso!");
+            } catch (IllegalStateException e) {
+                showAlert("Erro: " + e.getMessage());
+            }
+        } else {
+            showAlert("Por favor, selecione uma dieta para ser clonada.");
+        }
+    }
+
+    public void refreshTable() {
+        dietas.clear();
+        loadDietas();
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private void loadDietas() {

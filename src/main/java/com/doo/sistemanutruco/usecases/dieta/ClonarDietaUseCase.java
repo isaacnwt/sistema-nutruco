@@ -15,6 +15,6 @@ public class ClonarDietaUseCase {
         DietaValidator dietaValidator = new DietaValidator();
         dietaValidator.validar(dieta);
 
-        return Optional.of(dieta);
+        return dietaDAO.clone(dieta);
     }
 }
