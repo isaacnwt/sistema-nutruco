@@ -240,15 +240,16 @@ public class ConfigurarDietaController {
         Dieta selectedDieta = dietasTableView.getSelectionModel().getSelectedItem();
         if (selectedDieta != null) {
             try {
-                Dieta dietaClonada = clonarDietaUseCase.clonarDieta(selectedDieta).get();
                 Paciente paciente = pacientesComboBox.getValue();
+                List<Dieta> dietas = buscarDietasDoPacienteUseCase.buscarDietas(paciente);
+                Dieta dietaClonada = clonarDietaUseCase.clonarDieta(selectedDieta, dietas).get();
 
                 Integer dietaId = atribuirDietaUseCase.atribuirDieta(paciente, dietaClonada);
                 List<Dia> diasDaDieta = cadastrarDiaUseCase.cadastrarDiasDaDieta(dietaId, refeicoesSelecionadas);
                 atribuirRefeicoesUseCase.atribuirRefeicoesDosDias(diasDaDieta);
 
-                List<Dieta> dietas = buscarDietasDoPacienteUseCase.buscarDietas(paciente);
-                dietasTableView.setItems(FXCollections.observableArrayList(dietas));
+                List<Dieta> novasDietas = buscarDietasDoPacienteUseCase.buscarDietas(paciente);
+                dietasTableView.setItems(FXCollections.observableArrayList(novasDietas));
                 showAlert("Dieta Clonada!", "Dieta clonada com sucesso!", Alert.AlertType.INFORMATION);
             } catch (IllegalStateException e) {
                 showAlert("Erro", e.getMessage(), Alert.AlertType.ERROR);

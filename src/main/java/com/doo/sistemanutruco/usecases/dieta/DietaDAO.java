@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface DietaDAO extends DAO<Dieta, Integer> {
     List<Dieta> findByPaciente(Paciente paciente);
-    Optional<Dieta> clone(Dieta dieta);
+    Optional<Dieta> clone(Dieta dieta, List<Dieta> todasDietasDoPaciente);
     void atribuirDiaADieta(Integer dietaId, Dia dia);
     void removerDietaDoPaciente(String pacienteCpf, Integer dietaId);
 }

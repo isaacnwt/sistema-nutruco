@@ -2,6 +2,7 @@ package com.doo.sistemanutruco.usecases.dieta;
 
 import com.doo.sistemanutruco.entities.dieta.Dieta;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ClonarDietaUseCase {
@@ -11,10 +12,10 @@ public class ClonarDietaUseCase {
         this.dietaDAO = dietaDAO;
     }
 
-    public Optional<Dieta> clonarDieta(Dieta dieta){
+    public Optional<Dieta> clonarDieta(Dieta dieta, List<Dieta> todasDietasDoPaciente){
         DietaValidator dietaValidator = new DietaValidator();
         dietaValidator.validar(dieta);
 
-        return dietaDAO.clone(dieta);
+        return dietaDAO.clone(dieta, todasDietasDoPaciente);
     }
 }

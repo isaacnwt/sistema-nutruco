@@ -145,8 +145,7 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
         return Collections.emptyList();
     }
 
-    @Override
-    public Optional<Dieta> clone(Dieta dieta) {
+    public Optional<Dieta> clone(Dieta dieta, List<Dieta> todasAsDietas) {
         Dieta dietaClonada = new Dieta();
         dietaClonada.setNome(dieta.getNome() + " clone");
         dietaClonada.setObjetivo(dieta.getObjetivo());
@@ -163,8 +162,14 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
         LocalDate dataFimOriginal = dieta.getDataFim();
 
         if (dataInicioOriginal != null && dataFimOriginal != null) {
+            LocalDate ultimaDataFinal = todasAsDietas.stream()
+                    .filter(d -> d.getDataFim() != null)
+                    .map(Dieta::getDataFim)
+                    .max(LocalDate::compareTo)
+                    .orElse(dataFimOriginal);
+
             long duracao = dataFimOriginal.toEpochDay() - dataInicioOriginal.toEpochDay();
-            LocalDate novaDataInicio = dataFimOriginal.plusDays(1);
+            LocalDate novaDataInicio = ultimaDataFinal.plusDays(1);
             LocalDate novaDataFim = novaDataInicio.plusDays(duracao);
 
             dietaClonada.setDataInicio(novaDataInicio);
