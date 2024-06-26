@@ -1,12 +1,7 @@
 package com.doo.sistemanutruco.controller;
 
 import com.doo.sistemanutruco.entities.dieta.Dieta;
-import com.doo.sistemanutruco.entities.paciente.Paciente;
 import com.doo.sistemanutruco.repository.sqlite.SqliteDietaDAO;
-import com.doo.sistemanutruco.repository.sqlite.SqlitePacienteDAO;
-import com.doo.sistemanutruco.usecases.dieta.ClonarDietaUseCase;
-import com.doo.sistemanutruco.usecases.paciente.AtivarPacienteUseCase;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -18,12 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 
 import static java.util.Arrays.stream;
@@ -64,7 +56,7 @@ public class GestaoDietaController {
     }
 
     @FXML
-    private void handleAtribuirDieta() {
+    private void handleConfigurarDieta() {
         openAtribuirDietaView();
     }
 
@@ -89,10 +81,10 @@ public class GestaoDietaController {
 
     private void openAtribuirDietaView() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doo/sistemanutruco/view/AtribuirDietaView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/doo/sistemanutruco/view/ConfigurarDietaView.fxml"));
             Parent parent = loader.load();
 
-            AtribuirDietaController controller = loader.getController();
+            ConfigurarDietaController controller = loader.getController();
             controller.setGestaoDietaController(this);
 
             Stage stage = new Stage();

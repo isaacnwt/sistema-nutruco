@@ -28,7 +28,7 @@ import java.util.List;
 import static com.doo.sistemanutruco.controller.util.AlertUtil.showAlert;
 import static java.util.Arrays.stream;
 
-public class AtribuirDietaController {
+public class ConfigurarDietaController {
     @FXML
     private ComboBox<Paciente> pacientesComboBox;
 
@@ -92,7 +92,7 @@ public class AtribuirDietaController {
 
     private List<Refeicao> refeicoesSelecionadas;
 
-    public AtribuirDietaController() {
+    public ConfigurarDietaController() {
         this.atribuirDietaUseCase = new AtribuirDietaUseCase(new SqlitePacienteDAO(), new SqliteDietaDAO());
         this.cadastrarDiaUseCase = new CadastrarDiaUseCase(new SqliteDiaDAO(), new SqliteDietaDAO());
         this.atribuirRefeicoesUseCase = new AtribuirRefeicoesUseCase(new SqliteDiaDAO());

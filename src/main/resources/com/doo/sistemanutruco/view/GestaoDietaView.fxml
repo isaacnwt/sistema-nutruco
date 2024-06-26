@@ -23,6 +23,6 @@
             <TableColumn text="Sódio Total" fx:id="sodioTotalColumn"/>
         </columns>
     </TableView>
-    <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="350"/>
+    <Button text="Configurar Dieta" onAction="#handleConfigurarDieta" prefWidth="350"/>
 
 </VBox>
