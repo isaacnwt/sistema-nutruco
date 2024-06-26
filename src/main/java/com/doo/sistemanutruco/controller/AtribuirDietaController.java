@@ -12,7 +12,7 @@ import com.doo.sistemanutruco.usecases.dia.CadastrarDiaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.AtivarDietaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.AtribuirDietaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.BuscarDietasDoPacienteUseCase;
-import com.doo.sistemanutruco.usecases.dieta.RemoverDietaUseCase;
+import com.doo.sistemanutruco.usecases.dieta.DesatribuirDietaUseCase;
 import com.doo.sistemanutruco.usecases.refeicao.AtribuirRefeicoesUseCase;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -89,7 +89,7 @@ public class AtribuirDietaController {
     private final AtribuirRefeicoesUseCase atribuirRefeicoesUseCase;
     private final BuscarDietasDoPacienteUseCase buscarDietasDoPacienteUseCase;
     private final AtivarDietaUseCase ativarDietaUseCase;
-    private final RemoverDietaUseCase removerDietaUseCase;
+    private final DesatribuirDietaUseCase removerDietaUseCase;
     private GestaoDietaController gestaoDietaController;
 
     private List<Refeicao> refeicoesSelecionadas;
@@ -100,7 +100,7 @@ public class AtribuirDietaController {
         this.atribuirRefeicoesUseCase = new AtribuirRefeicoesUseCase(new SqliteDiaDAO());
         this.buscarDietasDoPacienteUseCase = new BuscarDietasDoPacienteUseCase(new SqliteDietaDAO());
         this.ativarDietaUseCase = new AtivarDietaUseCase(new SqliteDietaDAO());
-        this.removerDietaUseCase = new RemoverDietaUseCase(new SqliteDietaDAO());
+        this.removerDietaUseCase = new DesatribuirDietaUseCase(new SqliteDietaDAO());
     }
 
     public void setGestaoDietaController(GestaoDietaController gestaoDietaController) {
@@ -225,7 +225,7 @@ public class AtribuirDietaController {
         Paciente paciente = pacientesComboBox.getValue();
         if (dieta != null && paciente != null) {
             try {
-                removerDietaUseCase.removerDietaDoPaciente(paciente.getCpf(), dieta.getId());
+                removerDietaUseCase.desatribuirDietaDoPaciente(paciente.getCpf(), dieta.getId());
                 showAlert("Dieta Removida", "Dieta removida do paciente com sucesso!", Alert.AlertType.INFORMATION);
                 dietasTableView.getItems().remove(dieta);
             } catch (Exception e) {

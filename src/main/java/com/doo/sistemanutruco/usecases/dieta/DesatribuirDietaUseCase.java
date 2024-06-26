@@ -1,13 +1,13 @@
 package com.doo.sistemanutruco.usecases.dieta;
 
-public class RemoverDietaUseCase {
+public class DesatribuirDietaUseCase {
     private final DietaDAO dietaDAO;
 
-    public RemoverDietaUseCase(DietaDAO dietaDAO) {
+    public DesatribuirDietaUseCase(DietaDAO dietaDAO) {
         this.dietaDAO = dietaDAO;
     }
 
-    public void removerDietaDoPaciente(String pacienteCpf, int dietaId) {
+    public void desatribuirDietaDoPaciente(String pacienteCpf, int dietaId) {
         dietaDAO.removerDietaDoPaciente(pacienteCpf, dietaId);
     }
 }
