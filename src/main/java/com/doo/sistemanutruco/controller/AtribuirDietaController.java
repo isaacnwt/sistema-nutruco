@@ -9,10 +9,7 @@ import com.doo.sistemanutruco.repository.sqlite.SqliteDietaDAO;
 import com.doo.sistemanutruco.repository.sqlite.SqlitePacienteDAO;
 import com.doo.sistemanutruco.repository.sqlite.SqliteRefeicaoDAO;
 import com.doo.sistemanutruco.usecases.dia.CadastrarDiaUseCase;
-import com.doo.sistemanutruco.usecases.dieta.AtivarDietaUseCase;
-import com.doo.sistemanutruco.usecases.dieta.AtribuirDietaUseCase;
-import com.doo.sistemanutruco.usecases.dieta.BuscarDietasDoPacienteUseCase;
-import com.doo.sistemanutruco.usecases.dieta.DesatribuirDietaUseCase;
+import com.doo.sistemanutruco.usecases.dieta.*;
 import com.doo.sistemanutruco.usecases.refeicao.AtribuirRefeicoesUseCase;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -91,6 +88,7 @@ public class AtribuirDietaController {
     private final AtivarDietaUseCase ativarDietaUseCase;
     private final DesatribuirDietaUseCase removerDietaUseCase;
     private GestaoDietaController gestaoDietaController;
+    private final ClonarDietaUseCase clonarDietaUseCase;
 
     private List<Refeicao> refeicoesSelecionadas;
 
@@ -101,6 +99,7 @@ public class AtribuirDietaController {
         this.buscarDietasDoPacienteUseCase = new BuscarDietasDoPacienteUseCase(new SqliteDietaDAO());
         this.ativarDietaUseCase = new AtivarDietaUseCase(new SqliteDietaDAO());
         this.removerDietaUseCase = new DesatribuirDietaUseCase(new SqliteDietaDAO());
+        this.clonarDietaUseCase = new ClonarDietaUseCase(new SqliteDietaDAO());
     }
 
     public void setGestaoDietaController(GestaoDietaController gestaoDietaController) {
@@ -233,6 +232,29 @@ public class AtribuirDietaController {
             }
         } else {
             showAlert("Atenção!", "Selecione um paciente e uma dieta!", Alert.AlertType.WARNING);
+        }
+    }
+
+    @FXML
+    private void handleClonarDieta() {
+        Dieta selectedDieta = dietasTableView.getSelectionModel().getSelectedItem();
+        if (selectedDieta != null) {
+            try {
+                Dieta dietaClonada = clonarDietaUseCase.clonarDieta(selectedDieta).get();
+                Paciente paciente = pacientesComboBox.getValue();
+
+                Integer dietaId = atribuirDietaUseCase.atribuirDieta(paciente, dietaClonada);
+                List<Dia> diasDaDieta = cadastrarDiaUseCase.cadastrarDiasDaDieta(dietaId, refeicoesSelecionadas);
+                atribuirRefeicoesUseCase.atribuirRefeicoesDosDias(diasDaDieta);
+
+                List<Dieta> dietas = buscarDietasDoPacienteUseCase.buscarDietas(paciente);
+                dietasTableView.setItems(FXCollections.observableArrayList(dietas));
+                showAlert("Dieta Clonada!", "Dieta clonada com sucesso!", Alert.AlertType.INFORMATION);
+            } catch (IllegalStateException e) {
+                showAlert("Erro", e.getMessage(), Alert.AlertType.ERROR);
+            }
+        } else {
+            showAlert("Erro", "Por favor, selecione uma dieta para ser clonada.", Alert.AlertType.ERROR);
         }
     }
 

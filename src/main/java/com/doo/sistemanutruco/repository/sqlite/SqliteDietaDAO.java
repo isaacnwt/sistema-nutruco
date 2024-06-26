@@ -8,6 +8,7 @@ import com.doo.sistemanutruco.repository.util.ConnectionFactory;
 import com.doo.sistemanutruco.usecases.dieta.DietaDAO;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -157,15 +158,23 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
         dietaClonada.setDietaContemGluten(dieta.isDietaContemGluten());
         dietaClonada.setDietaContemLactose(dieta.isDietaContemLactose());
         dietaClonada.setGordurasDaDieta(dieta.getGordurasDaDieta());
-        dietaClonada.setDataInicio(dieta.getDataInicio());
-        dietaClonada.setDataFim(dieta.getDataFim());
 
-        Integer idClonada = create(dietaClonada);
-        if (idClonada != null) {
-            dietaClonada.setId(idClonada);
-            return Optional.of(dietaClonada);
+        LocalDate dataInicioOriginal = dieta.getDataInicio();
+        LocalDate dataFimOriginal = dieta.getDataFim();
+
+        if (dataInicioOriginal != null && dataFimOriginal != null) {
+            long duracao = dataFimOriginal.toEpochDay() - dataInicioOriginal.toEpochDay();
+            LocalDate novaDataInicio = dataFimOriginal.plusDays(1);
+            LocalDate novaDataFim = novaDataInicio.plusDays(duracao);
+
+            dietaClonada.setDataInicio(novaDataInicio);
+            dietaClonada.setDataFim(novaDataFim);
+        } else {
+            dietaClonada.setDataInicio(null);
+            dietaClonada.setDataFim(null);
         }
-        return Optional.empty();
+
+        return Optional.of(dietaClonada);
     }
 
     @Override

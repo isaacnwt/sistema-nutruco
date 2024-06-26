@@ -47,7 +47,6 @@ public class GestaoDietaController {
     private TableColumn<Dieta, Double> sodioTotalColumn;
     private final SqliteDietaDAO dietaDAO = new SqliteDietaDAO();
     private ObservableList<Dieta> dietas;
-    private final ClonarDietaUseCase clonarDietaUseCase = new ClonarDietaUseCase(dietaDAO);
 
     public GestaoDietaController() {
     }
@@ -67,21 +66,6 @@ public class GestaoDietaController {
     @FXML
     private void handleAtribuirDieta() {
         openAtribuirDietaView();
-    }
-    @FXML
-    private void handleClonarDieta() {
-        Dieta selectedDieta = dietasTableView.getSelectionModel().getSelectedItem();
-        if (selectedDieta != null) {
-            try {
-                clonarDietaUseCase.clonarDieta(selectedDieta);
-                refreshTable();
-                showAlert("Dieta clonada com sucesso!");
-            } catch (IllegalStateException e) {
-                showAlert("Erro: " + e.getMessage());
-            }
-        } else {
-            showAlert("Por favor, selecione uma dieta para ser clonada.");
-        }
     }
 
     public void refreshTable() {

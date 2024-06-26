@@ -64,6 +64,7 @@
         </TableView>
 
         <Button text="Alterar Status Dieta" onAction="#handleAlterarStatusDieta" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
-        <Button text="Remover Dieta" onAction="#handleRemoverDieta" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+        <Button text="Clonar Dieta" onAction="#handleClonarDieta" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+        <Button text="Remover Dieta" onAction="#handleRemoverDieta" GridPane.rowIndex="10" GridPane.columnIndex="2"/>
     </GridPane>
 </VBox>
