@@ -28,7 +28,7 @@
         </rowConstraints>
 
         <Label text="Paciente:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <ComboBox fx:id="pacientesComboBox" promptText="Selecione um paciente" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+        <ComboBox fx:id="pacientesComboBox" promptText="Selecione um paciente" onAction="#handlePacienteSelecionado" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
 
         <Label text="Nome da Dieta:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
         <TextField fx:id="nomeDietaTextField" promptText="Nome da Dieta" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
@@ -42,11 +42,18 @@
         <Label text="Data de Fim:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
         <DatePicker fx:id="dataFimDatePicker" promptText="Data de Fim" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
 
-        <Label text="Refeições:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-        <ComboBox fx:id="refeicoesComboBox" promptText="Selecione uma refeição" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
-        <Button text="Adicionar Refeição" onAction="#handleAdicionarRefeicao" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+        <Label text="Dietas do Paciente:" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+        <TableView fx:id="dietasTableView" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="4" prefHeight="150">
+            <columns>
+                <TableColumn text="Nome" fx:id="nomeDietaColumn"/>
+                <TableColumn text="Data de Início" fx:id="dataInicioColumn"/>
+                <TableColumn text="Data de Fim" fx:id="dataFimColumn"/>
+                <TableColumn text="Inativa" fx:id="inativaColumn"/>
+            </columns>
+        </TableView>
 
-        <TableView fx:id="refeicoesTableView" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="4" prefHeight="200">
+        <Label text="Refeições da Dieta:" GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+        <TableView fx:id="refeicoesTableView" GridPane.rowIndex="7" GridPane.columnIndex="0" GridPane.columnSpan="4" prefHeight="200">
             <columns>
                 <TableColumn text="Nome" fx:id="nomeColumn"/>
             </columns>

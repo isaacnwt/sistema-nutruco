@@ -10,12 +10,13 @@ import com.doo.sistemanutruco.repository.sqlite.SqlitePacienteDAO;
 import com.doo.sistemanutruco.repository.sqlite.SqliteRefeicaoDAO;
 import com.doo.sistemanutruco.usecases.dia.CadastrarDiaUseCase;
 import com.doo.sistemanutruco.usecases.dieta.AtribuirDietaUseCase;
+import com.doo.sistemanutruco.usecases.dieta.BuscarDietasDoPacienteUseCase;
 import com.doo.sistemanutruco.usecases.refeicao.AtribuirRefeicoesUseCase;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -42,6 +43,21 @@ public class AtribuirDietaController {
     private DatePicker dataFimDatePicker;
 
     @FXML
+    private TableView<Dieta> dietasTableView;
+
+    @FXML
+    private TableColumn<Dieta, String> nomeDietaColumn;
+
+    @FXML
+    private TableColumn<Dieta, LocalDate> dataInicioColumn;
+
+    @FXML
+    private TableColumn<Dieta, LocalDate> dataFimColumn;
+
+    @FXML
+    private TableColumn<Dieta, Boolean> inativaColumn;
+
+    @FXML
     private ComboBox<Refeicao> refeicoesComboBox;
 
     @FXML
@@ -56,6 +72,7 @@ public class AtribuirDietaController {
     private final AtribuirDietaUseCase atribuirDietaUseCase;
     private final CadastrarDiaUseCase cadastrarDiaUseCase;
     private final AtribuirRefeicoesUseCase atribuirRefeicoesUseCase;
+    private final BuscarDietasDoPacienteUseCase buscarDietasDoPacienteUseCase;
 
     private List<Refeicao> refeicoesSelecionadas;
 
@@ -63,6 +80,7 @@ public class AtribuirDietaController {
         this.atribuirDietaUseCase = new AtribuirDietaUseCase(new SqlitePacienteDAO(), new SqliteDietaDAO());
         this.cadastrarDiaUseCase = new CadastrarDiaUseCase(new SqliteDiaDAO(), new SqliteDietaDAO());
         this.atribuirRefeicoesUseCase = new AtribuirRefeicoesUseCase(new SqliteDiaDAO());
+        this.buscarDietasDoPacienteUseCase = new BuscarDietasDoPacienteUseCase(new SqliteDietaDAO());
     }
 
     @FXML
@@ -101,9 +119,24 @@ public class AtribuirDietaController {
             }
         });
 
+        nomeDietaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+        dataInicioColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDataInicio()));
+        dataFimColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDataFim()));
+        inativaColumn.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isInativo()));
+
         refeicoesSelecionadas = new ArrayList<>();
         nomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
         refeicoesTableView.setItems(FXCollections.observableArrayList(refeicoesSelecionadas));
+    }
+
+
+    @FXML
+    private void handlePacienteSelecionado() {
+        Paciente paciente = pacientesComboBox.getValue();
+        if (paciente != null) {
+            List<Dieta> dietas = buscarDietasDoPacienteUseCase.buscarDietas(paciente);
+            dietasTableView.setItems(FXCollections.observableArrayList(dietas));
+        }
     }
 
     @FXML
