@@ -232,7 +232,10 @@ public class GestaoDietaController {
             List<Dia> diasDaDieta = cadastrarDiaUseCase.cadastrarDiasDaDieta(dietaId, refeicoesSelecionadas);
             atribuirRefeicoesUseCase.atribuirRefeicoesDosDias(diasDaDieta);
 
-            showAlert("Dieta cadastrada!","Dieta cadastrada com sucesso!", Alert.AlertType.INFORMATION);
+            List<Dieta> dietas = buscarDietasDoPacienteUseCase.buscarDietas(paciente);
+            dietasTableView.setItems(FXCollections.observableArrayList(dietas));
+
+            showAlert("Dieta cadastrada!", "Dieta cadastrada com sucesso!", Alert.AlertType.INFORMATION);
         } catch (Exception e) {
             showAlert("Atenção!", e.getMessage(), Alert.AlertType.WARNING);
         }

@@ -55,8 +55,8 @@
             </columns>
         </TableView>
 
-        <Button text="Remover Refeição Selecionada" onAction="#handleRemoverRefeicao" GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
-        <Button text="Atribuir Dieta ao Paciente" onAction="#handleAtribuirDieta" prefWidth="150" GridPane.rowIndex="7" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
+        <Button text="Remover Refeição Selecionada" onAction="#handleRemoverRefeicao" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <Button text="Atribuir Dieta ao Paciente" onAction="#handleAtribuirDieta" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
 
         <Label text="Dietas do Paciente:" GridPane.rowIndex="8" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
         <TableView fx:id="dietasTableView" GridPane.rowIndex="9" GridPane.columnIndex="0" GridPane.columnSpan="4">
