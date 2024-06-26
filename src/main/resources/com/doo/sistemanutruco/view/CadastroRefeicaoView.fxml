@@ -77,5 +77,4 @@
 
     <Button text="Salvar" onAction="#handleSalvarRefeicao" prefWidth="500"/>
     <Button text="Cancelar" onAction="#handleCancelar" prefWidth="500"/>
-    <Label fx:id="statusLabel" text="" style="-fx-text-fill: red;"/>
 </VBox>

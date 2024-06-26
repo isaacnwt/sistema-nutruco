@@ -7,10 +7,7 @@ import com.doo.sistemanutruco.usecases.alimento.ListarAlimentosUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -18,13 +15,12 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.util.List;
 
+import static com.doo.sistemanutruco.controller.util.AlertUtil.showAlert;
+
 public class ImportarAlimentosController {
 
     @FXML
     private TextField pathTextField;
-
-    @FXML
-    private Label statusLabel;
 
     @FXML
     private TableView<Alimento> alimentosTableView;
@@ -105,13 +101,19 @@ public class ImportarAlimentosController {
         String filePath = pathTextField.getText();
 
         if (filePath == null || filePath.isEmpty()) {
-            statusLabel.setText("Por favor, selecione um arquivo CSV.");
+            showAlert("Atenção!", "Selecionar aquivo CSV", Alert.AlertType.WARNING);
             return;
         }
 
         importarAlimentosUseCase.importarAlimentosCSV(filePath);
 
         loadAlimentosFromDatabase();
-        statusLabel.setText("Alimentos importados com sucesso.");
+        showAlert("Alimentos importados!","Alimentos salvos com sucesso!", Alert.AlertType.INFORMATION);
+        close();
+    }
+
+    private void close(){
+        Stage stage = (Stage) pathTextField.getScene().getWindow();
+        stage.close();
     }
 }

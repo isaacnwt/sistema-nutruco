@@ -15,6 +15,7 @@ import com.doo.sistemanutruco.usecases.refeicao.AtribuirRefeicoesUseCase;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javafx.beans.property.*;
 
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.stream;
+import static com.doo.sistemanutruco.controller.util.AlertUtil.showAlert;
 
 public class AtribuirDietaController {
 
@@ -66,8 +68,6 @@ public class AtribuirDietaController {
     @FXML
     private TableColumn<Refeicao, String> nomeColumn;
 
-    @FXML
-    private Label statusLabel;
 
     private final AtribuirDietaUseCase atribuirDietaUseCase;
     private final CadastrarDiaUseCase cadastrarDiaUseCase;
@@ -158,9 +158,10 @@ public class AtribuirDietaController {
             List<Dia> diasDaDieta = cadastrarDiaUseCase.cadastrarDiasDaDieta(dietaId, refeicoesSelecionadas);
             atribuirRefeicoesUseCase.atribuirRefeicoesDosDias(diasDaDieta);
 
-            statusLabel.setText("Dieta atribuída com sucesso!");
+            showAlert("Dieta cadastrada!","Dieta cadastrada com sucesso!", Alert.AlertType.INFORMATION);
+            close();
         } catch (Exception e) {
-            statusLabel.setText(e.getMessage());
+            showAlert("Atenção!", e.getMessage(), Alert.AlertType.WARNING);
         }
     }
 
@@ -172,5 +173,10 @@ public class AtribuirDietaController {
         List<Dia> dias = stream(DayOfWeek.values()).map(diaDaSemana -> new Dia(diaDaSemana, refeicoesSelecionadas)).toList();
 
         return new Dieta(nomeDieta, objetivoDieta, dias, dataInicio, dataFim);
+    }
+
+    private void close(){
+        Stage stage = (Stage) nomeDietaTextField.getScene().getWindow();
+        stage.close();
     }
 }

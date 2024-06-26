@@ -78,8 +78,6 @@
         </TableView>
 
         <Button text="Remover Alimento" onAction="#handleRemoverAlimento" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
-
-        <Label fx:id="statusLabel" textFill="red" GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
     </GridPane>
 
     <Button text="Salvar" onAction="#handleSalvarRefeicao"/>

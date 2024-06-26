@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="refactor: dieta inativo -&gt; ativo" />
+    <list default="true" id="a826ce8a-03a2-478e-a0b9-cb20a4c08d2d" name="Changes" comment="fix: persistencia valores nutricionais do dia">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/util/AlertUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/AtribuirDietaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/AtribuirDietaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/CadastroPacienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/CadastroPacienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/CadastroRefeicaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/CadastroRefeicaoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/EditarPacienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/EditarPacienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/EditarRefeicaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/EditarRefeicaoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/ImportarAlimentosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/doo/sistemanutruco/controller/ImportarAlimentosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/AtribuirDietaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/AtribuirDietaView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/CadastroPacienteView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/CadastroPacienteView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/CadastroRefeicaoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/CadastroRefeicaoView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/EditarPacienteView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/EditarPacienteView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/EditarRefeicaoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/EditarRefeicaoView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/ImportarAlimentosView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/ImportarAlimentosView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/RefeicaoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/doo/sistemanutruco/view/RefeicaoView.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -411,7 +427,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719374549719</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="fix: persistencia valores nutricionais do dia">
+      <option name="closed" value="true" />
+      <created>1719374983340</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1719374983340</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +450,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test: CadastrarRefeicaoUseCase" />
     <MESSAGE value="refactor: atributos boolean de Paciente" />
     <MESSAGE value="refactor: modelo e validador de Dia" />
     <MESSAGE value="test: CadastrarDiaUseCase" />
@@ -451,7 +474,8 @@
     <MESSAGE value="fix: relacionamento dos elementos" />
     <MESSAGE value="feat: listagem das dietas do paciente" />
     <MESSAGE value="refactor: dieta inativo -&gt; ativo" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: dieta inativo -&gt; ativo" />
+    <MESSAGE value="fix: persistencia valores nutricionais do dia" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: persistencia valores nutricionais do dia" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

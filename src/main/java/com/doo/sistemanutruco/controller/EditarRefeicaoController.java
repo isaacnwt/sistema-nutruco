@@ -15,6 +15,8 @@ import javafx.util.StringConverter;
 
 import java.util.List;
 
+import static com.doo.sistemanutruco.controller.util.AlertUtil.showAlert;
+
 public class EditarRefeicaoController {
 
     @FXML
@@ -55,9 +57,6 @@ public class EditarRefeicaoController {
 
     @FXML
     private TableColumn<Alimento, Boolean> lactoseColumn;
-
-    @FXML
-    private Label statusLabel;
 
     private ObservableList<Alimento> alimentosDisponiveis;
     private ObservableList<Alimento> alimentosSelecionados;
@@ -127,13 +126,7 @@ public class EditarRefeicaoController {
         }
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+    
 
     @FXML
     private void handleSalvarRefeicao() {
@@ -144,11 +137,11 @@ public class EditarRefeicaoController {
             refeicao.setAlimentos(alimentosSelecionados);
 
             editarRefeicaoUseCase.editar(refeicao);
-            showAlert("Refeição Atualizada!", "Refeição atualizada com sucesso!");
+            showAlert("Refeição Atualizada!", "Refeição atualizada com sucesso!", Alert.AlertType.INFORMATION);
             gestaoRefeicoesController.refreshTable();
             close();
         } catch (Exception e) {
-            statusLabel.setText(e.getMessage());
+            showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 

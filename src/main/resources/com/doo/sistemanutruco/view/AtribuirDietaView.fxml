@@ -65,5 +65,4 @@
     </GridPane>
 
     <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="150"/>
-    <Label fx:id="statusLabel" text="" style="-fx-text-fill: red;"/>
 </VBox>

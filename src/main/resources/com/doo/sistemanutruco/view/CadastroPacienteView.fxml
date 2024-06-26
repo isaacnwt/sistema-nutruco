@@ -96,5 +96,4 @@
         <Button text="Cancelar" onAction="#handleCancelar" prefWidth="100"/>
     </HBox>
 
-    <Label fx:id="statusLabel" text="" style="-fx-text-fill: red;"/>
 </VBox>

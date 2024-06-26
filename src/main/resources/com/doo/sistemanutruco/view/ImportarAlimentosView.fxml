@@ -24,7 +24,6 @@
         </Button>
     </HBox>
     <Button text="Importar" onAction="#handleImportarButtonAction"/>
-    <Label fx:id="statusLabel" text="" style="-fx-text-fill: red;"/>
 
     <Label text="Alimentos Importados" style="-fx-font-size: 14pt;"/>
     <TableView fx:id="alimentosTableView" prefWidth="600" prefHeight="400">

@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 
+import static com.doo.sistemanutruco.controller.util.AlertUtil.showAlert;
+
 public class CadastroPacienteController {
 
     @FXML
@@ -43,8 +45,6 @@ public class CadastroPacienteController {
     private CheckBox diabeticoCheckBox;
     @FXML
     private CheckBox celiacoCheckBox;
-    @FXML
-    private Label statusLabel;
 
     private final CadastrarPacienteUseCase cadastrarPacienteUseCase;
     private GestaoPacientesController gestaoPacientesController;
@@ -81,22 +81,13 @@ public class CadastroPacienteController {
 
             cadastrarPacienteUseCase.cadastrar(paciente);
             gestaoPacientesController.refreshTable();
-            showAlert("Paciente Cadastrado!","Paciente cadastrado com sucesso!");
+            showAlert("Paciente Cadastrado!","Paciente cadastrado com sucesso!", Alert.AlertType.INFORMATION);
             close();
         } catch (NumberFormatException e) {
-            statusLabel.setText("Erro: Um dos campos numéricos possui valor inválido.");
+            showAlert("Atenção!","Um dos campos numéricos possui valor inválido", Alert.AlertType.WARNING);
         } catch (Exception e) {
-            statusLabel.setText("Erro ao cadastrar paciente: " + e.getMessage());
+            showAlert("Erro!",e.getMessage(), Alert.AlertType.ERROR);
         }
-    }
-
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     @FXML
