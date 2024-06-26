@@ -186,6 +186,7 @@ public class ConfigurarDietaController {
                 refeicoesSelecionadas.add(refeicao);
                 refeicoesTableView.setItems(FXCollections.observableArrayList(refeicoesSelecionadas));
             }
+            gestaoDietaController.refreshTable();
         }
     }
 
@@ -196,6 +197,7 @@ public class ConfigurarDietaController {
             refeicoesSelecionadas.remove(refeicao);
             refeicoesTableView.setItems(FXCollections.observableArrayList(refeicoesSelecionadas));
         }
+        gestaoDietaController.refreshTable();
     }
     @FXML
     private void handleAlterarStatusDieta() {
@@ -216,6 +218,7 @@ public class ConfigurarDietaController {
         } else {
             showAlert("Atenção!", "Nenhuma dieta selecionada!", Alert.AlertType.WARNING);
         }
+        gestaoDietaController.refreshTable();
     }
 
     @FXML
@@ -233,6 +236,7 @@ public class ConfigurarDietaController {
         } else {
             showAlert("Atenção!", "Selecione um paciente e uma dieta!", Alert.AlertType.WARNING);
         }
+        gestaoDietaController.refreshTable();
     }
 
     @FXML
@@ -257,6 +261,7 @@ public class ConfigurarDietaController {
         } else {
             showAlert("Erro", "Por favor, selecione uma dieta para ser clonada.", Alert.AlertType.ERROR);
         }
+        gestaoDietaController.refreshTable();
     }
 
     @FXML
@@ -276,6 +281,7 @@ public class ConfigurarDietaController {
         } catch (Exception e) {
             showAlert("Atenção!", e.getMessage(), Alert.AlertType.WARNING);
         }
+        gestaoDietaController.refreshTable();
     }
 
     private Dieta getDieta() {
