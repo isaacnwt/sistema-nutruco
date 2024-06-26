@@ -95,7 +95,7 @@ public class DatabaseBuilder {
         builder.append("id INTEGER PRIMARY KEY AUTOINCREMENT, \n");
         builder.append("nome TEXT NOT NULL, \n");
         builder.append("objetivo TEXT, \n");
-        builder.append("inativo BOOLEAN, \n");
+        builder.append("ativa BOOLEAN, \n");
         builder.append("calorias DOUBLE, \n");
         builder.append("carboidratos DOUBLE, \n");
         builder.append("proteinas DOUBLE, \n");

@@ -42,13 +42,17 @@
         <Label text="Data de Fim:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
         <DatePicker fx:id="dataFimDatePicker" promptText="Data de Fim" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
 
+        <Label text="Refeições:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="refeicoesComboBox" promptText="Selecione uma refeição" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <Button text="Adicionar Refeição" onAction="#handleAdicionarRefeicao" GridPane.rowIndex="3" GridPane.columnIndex="2" GridPane.columnSpan="2"/>
+
         <Label text="Dietas do Paciente:" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="4"/>
         <TableView fx:id="dietasTableView" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="4" prefHeight="150">
             <columns>
                 <TableColumn text="Nome" fx:id="nomeDietaColumn"/>
                 <TableColumn text="Data de Início" fx:id="dataInicioColumn"/>
                 <TableColumn text="Data de Fim" fx:id="dataFimColumn"/>
-                <TableColumn text="Inativa" fx:id="inativaColumn"/>
+                <TableColumn text="Ativa" fx:id="ativaColumn"/>
             </columns>
         </TableView>
 

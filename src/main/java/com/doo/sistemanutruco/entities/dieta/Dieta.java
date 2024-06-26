@@ -11,7 +11,7 @@ public class Dieta {
     private String nome;
     private String objetivo;
     private List<Dia> dias;
-    private boolean inativo;
+    private boolean ativa = true;
     private double caloriasDaDieta;
     private double carboidratosDaDieta;
     private double proteinasDaDieta;
@@ -88,13 +88,6 @@ public class Dieta {
         this.dias = dias;
     }
 
-    public boolean isInativo() {
-        return this.inativo;
-    }
-
-    public void setInativo(boolean inativo) {
-        this.inativo = inativo;
-    }
 
     public double getCaloriasDaDieta() {
         return caloriasDaDieta;
@@ -168,6 +161,14 @@ public class Dieta {
         this.dataInicio = dataInicio;
     }
 
+    public boolean isAtiva() {
+        return ativa;
+    }
+
+    public void setAtiva(boolean ativa) {
+        this.ativa = ativa;
+    }
+
     public LocalDate getDataFim() {
         return dataFim;
     }
@@ -183,7 +184,7 @@ public class Dieta {
                 ", nome='" + nome + '\'' +
                 ", objetivo='" + objetivo + '\'' +
                 ", dias=" + dias +
-                ", inativo=" + inativo +
+                ", ativa=" + ativa +
                 ", caloriasDaDieta=" + caloriasDaDieta +
                 ", carboidratosDaDieta=" + carboidratosDaDieta +
                 ", proteinasDaDieta=" + proteinasDaDieta +

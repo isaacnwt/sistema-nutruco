@@ -27,7 +27,7 @@ public class AtribuirDietaUseCase {
         List<Dieta> dietasDoPaciente = dietaDAO.findByPaciente(paciente);
 
         for (Dieta dietaExistente : dietasDoPaciente) {
-            if (!dietaExistente.isInativo() &&
+            if (dietaExistente.isAtiva() &&
                     dietaExistente.getDataInicio().isBefore(dieta.getDataFim()) &&
                     dietaExistente.getDataFim().isAfter(dieta.getDataInicio())) {
                 throw new IllegalStateException("Paciente já possui uma dieta ativa nesse período");

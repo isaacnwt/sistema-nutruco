@@ -10,25 +10,19 @@ public class AtivarDietaUseCase {
     }
 
     public boolean ativar(Dieta dieta){
-        DietaValidator dietaValidator = new DietaValidator();
-        dietaValidator.validar(dieta);
-
-        if (!dieta.isInativo()){
+        if (dieta.isAtiva())
             throw new IllegalStateException("Dieta já ativa!");
-        }
-        dieta.setInativo(false);
+
+        dieta.setAtiva(true);
         return dietaDAO.update(dieta);
     }
 
     public boolean inativar(Dieta dieta){
-        DietaValidator dietaValidator = new DietaValidator();
-        dietaValidator.validar(dieta);
-
-        if (dieta.isInativo()){
+        if (!dieta.isAtiva())
             throw new IllegalStateException("Dieta já inativa!");
-        }
-        // Adicionar validação se a dieta estiver em uso (CDU006 - Fluxo Alt 1)
-        dieta.setInativo(true);
+
+        // TODO - validar
+        dieta.setAtiva(false);
         return dietaDAO.update(dieta);
     }
 }

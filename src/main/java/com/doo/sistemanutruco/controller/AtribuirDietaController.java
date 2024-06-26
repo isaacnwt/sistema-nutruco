@@ -55,7 +55,7 @@ public class AtribuirDietaController {
     private TableColumn<Dieta, LocalDate> dataFimColumn;
 
     @FXML
-    private TableColumn<Dieta, Boolean> inativaColumn;
+    private TableColumn<Dieta, Boolean> ativaColumn;
 
     @FXML
     private ComboBox<Refeicao> refeicoesComboBox;
@@ -122,7 +122,7 @@ public class AtribuirDietaController {
         nomeDietaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
         dataInicioColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDataInicio()));
         dataFimColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDataFim()));
-        inativaColumn.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isInativo()));
+        ativaColumn.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isAtiva()));
 
         refeicoesSelecionadas = new ArrayList<>();
         nomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));

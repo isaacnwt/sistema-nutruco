@@ -18,12 +18,12 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
 
     @Override
     protected String createSaveSql() {
-        return "INSERT INTO Dieta (nome, objetivo, inativo, calorias, carboidratos, proteinas, sodio, contemGluten, contemLactose, gorduras, dataInicio, dataFim) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        return "INSERT INTO Dieta (nome, objetivo, ativa, calorias, carboidratos, proteinas, sodio, contemGluten, contemLactose, gorduras, dataInicio, dataFim) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     @Override
     protected String createUpdateSql() {
-        return "UPDATE Dieta SET nome = ?, objetivo = ?, inativo = ?, calorias = ?, carboidratos = ?, proteinas = ?, sodio = ?, contemGluten = ?, contemLactose = ?, gorduras = ?, dataInicio = ?, dataFim = ? WHERE id = ?";
+        return "UPDATE Dieta SET nome = ?, objetivo = ?, ativa = ?, calorias = ?, carboidratos = ?, proteinas = ?, sodio = ?, contemGluten = ?, contemLactose = ?, gorduras = ?, dataInicio = ?, dataFim = ? WHERE id = ?";
     }
 
     @Override
@@ -50,7 +50,7 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
     protected void setEntityToPreparedStatement(Dieta entity, PreparedStatement stmt) throws SQLException {
         stmt.setString(1, entity.getNome());
         stmt.setString(2, entity.getObjetivo());
-        stmt.setBoolean(3, entity.isInativo());
+        stmt.setBoolean(3, entity.isAtiva());
         stmt.setDouble(4, entity.getCaloriasDaDieta());
         stmt.setDouble(5, entity.getCarboidratosDaDieta());
         stmt.setDouble(6, entity.getProteinasDaDieta());
@@ -87,7 +87,7 @@ public class SqliteDietaDAO extends AbstractTemplateSqlDAO<Dieta, Integer> imple
         dieta.setId(rs.getInt("id"));
         dieta.setNome(rs.getString("nome"));
         dieta.setObjetivo(rs.getString("objetivo"));
-        dieta.setInativo(rs.getBoolean("inativo"));
+        dieta.setAtiva(rs.getBoolean("ativa"));
         dieta.setCaloriasDaDieta(rs.getDouble("calorias"));
         dieta.setCarboidratosDaDieta(rs.getDouble("carboidratos"));
         dieta.setProteinasDaDieta(rs.getDouble("proteinas"));
