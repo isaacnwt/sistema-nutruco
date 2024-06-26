@@ -10,27 +10,19 @@
       alignment="CENTER"
       spacing="10.0"
       style="-fx-padding: 20;"
-      prefWidth="400" prefHeight="400">
+      prefWidth="600" prefHeight="400">
     <Label text="Gestão de Dietas" style="-fx-font-size: 16pt;"/>
-<!--    <TableView fx:id="dietasTableView" prefWidth="350" prefHeight="200">-->
-<!--        <columns>-->
-<!--            <TableColumn text="CPF" fx:id="cpfColumn" prefWidth="100">-->
-<!--                <cellValueFactory>-->
-<!--                    <PropertyValueFactory property="cpf"/>-->
-<!--                </cellValueFactory>-->
-<!--            </TableColumn>-->
-<!--            <TableColumn text="Nome" fx:id="nomeColumn" prefWidth="150">-->
-<!--                <cellValueFactory>-->
-<!--                    <PropertyValueFactory property="nome"/>-->
-<!--                </cellValueFactory>-->
-<!--            </TableColumn>-->
-<!--            <TableColumn text="Inativo" fx:id="statusAtivoColumn" prefWidth="150">-->
-<!--                <cellValueFactory>-->
-<!--                    <PropertyValueFactory property="inativo"/>-->
-<!--                </cellValueFactory>-->
-<!--            </TableColumn>-->
-<!--        </columns>-->
-<!--    </TableView>-->
+    <TableView fx:id="dietasTableView" prefWidth="600" prefHeight="200">
+        <columns>
+            <TableColumn text="Nome" fx:id="nomeColumn"/>
+            <TableColumn text="Objetivo" fx:id="objetivoColumn"/>
+            <TableColumn text="Calorias Totais" fx:id="caloriasTotaisColumn"/>
+            <TableColumn text="Carboidratos Totais" fx:id="carboidratosTotaisColumn"/>
+            <TableColumn text="Proteínas Totais" fx:id="proteinasTotaisColumn"/>
+            <TableColumn text="Gorduras Totais" fx:id="gordurasTotaisColumn"/>
+            <TableColumn text="Sódio Total" fx:id="sodioTotalColumn"/>
+        </columns>
+    </TableView>
     <Button text="Atribuir Dieta" onAction="#handleAtribuirDieta" prefWidth="350"/>
 
 </VBox>
